@@ -1,5 +1,5 @@
 #ifndef _JUDY_INCLUDED
-#define _JUDY_INCLUDED
+#define	_JUDY_INCLUDED
 // _________________
 //
 // Copyright (C) 2000 - 2002 Hewlett-Packard Company
@@ -30,37 +30,33 @@
 // and some tools on some platforms.
 
 
-// PLATFORM-SPECIFIC
+// PLATFORM-SPECIFIC OVERHEAD:
 
-#ifdef JU_WIN /* =============================================== */
+#ifdef notdef
+The following lines allow Judy.h to be included on both Windows and
+non-Windows systems, and for Judy.h to be used both as-is (for internal
+compiles) and after unifdef-ing (when delivered).  See also the definitions of
+uint*_t in JudyPrivate.h.
+#endif
+#ifndef JU_WIN
+#ifdef JU_FLAVOR_COV
+#pragma C-Cover off	/* exclude inline functions in public header files */
+#endif
+#include <inttypes.h>	/* pre-include explicitly, for Linux */
+#ifdef JU_FLAVOR_COV
+#pragma C-Cover on
+#endif
+#endif
 
-typedef __int8           int8_t;
-typedef __int16          int16_t;
-typedef __int32          int32_t;
-typedef __int64          int64_t;
+#ifdef JU_FLAVOR_COV
+#pragma C-Cover off	/* exclude inline functions in public header files */
+#endif
+#include <stdlib.h>	/* auto-includes inttypes.h on some platforms */
+#ifdef JU_FLAVOR_COV
+#pragma C-Cover on
+#endif
 
-typedef unsigned __int8  uint8_t;
-typedef unsigned __int16 uint16_t;
-typedef unsigned __int32 uint32_t;
-typedef unsigned __int64 uint64_t;
-
-#else /* ================ ! JU_WIN ============================= */
-
-// ISO C99: 7.8 Format conversion of integer types <inttypes.h>
-#include <inttypes.h>  /* if this FAILS, try #include <stdint.h> */ 
-
-// ISO C99: 7.18 Integer types uint*_t 
-//#include <stdint.h>  
-
-#endif /* ================ ! JU_WIN ============================= */
-
-// ISO C99 Standard: 7.20 General utilities
-#include <stdlib.h>  
-
-// ISO C99 Standard: 7.10/5.2.4.2.1 Sizes of integer types
-#include <limits.h>  
-
-#ifdef __cplusplus      /* support use by C++ code */
+#ifdef __cplusplus		/* support use by C++ code */
 extern "C" {
 #endif
 
@@ -74,28 +70,46 @@ extern "C" {
 // that the called function internally does not modify the pointer itself, such
 // as, "void * const Pindex".
 //
-// Note that its OK to pass a Pvoid_t to a Pcvoid_t; the latter is the same,
+// Note that it's OK to pass a Pvoid_t to a Pcvoid_t; the latter is the same,
 // only constant.  Callers need to do this so they can also pass & Pvoid_t to
 // PPvoid_t (non-constant).
 
-#ifndef _PCVOID_T
-#define _PCVOID_T
+#ifndef	_PCVOID_T
+#define	_PCVOID_T
 typedef const void * Pcvoid_t;
 #endif
 
-#ifndef _PVOID_T
-#define _PVOID_T
-typedef void *   Pvoid_t;
-typedef void ** PPvoid_t;
+#ifndef	_PVOID_T
+#define	_PVOID_T
+typedef	void *	 Pvoid_t;
+typedef	void **	PPvoid_t;
 #endif
 
 #ifndef _WORD_T
 #define _WORD_T
-typedef unsigned long    Word_t, * PWord_t;  // expect 32-bit or 64-bit words.
+#ifdef notdef
+The following lines allow Judy.h to be included on both Windows and
+non-Windows systems, and for Judy.h to be used both as-is (for internal
+compiles) and after unifdef-ing (when delivered).
+#endif
+#ifndef JU_WIN_IPF
+typedef unsigned long	 Word_t, * PWord_t;  // expect 32-bit or 64-bit words.
+#else
+typedef unsigned __int64 Word_t, * PWord_t;  // expect 64-bit words.
+#endif
 #endif
 
-#ifndef NULL
-#define NULL 0
+// TBD:  For compatibility with existing regression tests that need ulong_t,
+// which is not always available on all platforms, although Judy itself, and
+// newly written Judy-using code, should not need ulong_t:
+
+#ifndef _ULONG_T
+#define _ULONG_T
+typedef Word_t ulong_t;
+#endif
+
+#ifndef	NULL
+#define	NULL 0
 #endif
 
 
@@ -104,10 +118,10 @@ typedef unsigned long    Word_t, * PWord_t;  // expect 32-bit or 64-bit words.
 //
 // Judy error numbers:
 //
-// Note:  These are an enum so theres a related typedef, but the numbers are
+// Note:  These are an enum so there's a related typedef, but the numbers are
 // spelled out so you can map a number back to its name.
 
-typedef enum            // uint8_t -- but C does not support this type of enum.
+typedef	enum		// uint8_t -- but C does not support this type of enum.
 {
 
 // Note:  JU_ERRNO_NONE and JU_ERRNO_FULL are not real errors.  They specify
@@ -117,9 +131,9 @@ typedef enum            // uint8_t -- but C does not support this type of enum.
 // be unambiguously represented in a 32-bit word, and will never occur on a
 // 64-bit system.
 
-        JU_ERRNO_NONE           = 0,
-        JU_ERRNO_FULL           = 1,
-        JU_ERRNO_NFMAX          = JU_ERRNO_FULL,
+	JU_ERRNO_NONE		= 0,
+	JU_ERRNO_FULL		= 1,
+	JU_ERRNO_NFMAX		= JU_ERRNO_FULL,
 
 // JU_ERRNO_NOMEM comes from malloc(3C) when Judy cannot obtain needed memory.
 // The system errno value is also set to ENOMEM.  This error can be recoverable
@@ -128,7 +142,7 @@ typedef enum            // uint8_t -- but C does not support this type of enum.
 // TBD:  Currently there is no guarantee the Judy array has no memory leaks
 // upon JU_ERRNO_NOMEM.
 
-        JU_ERRNO_NOMEM          = 2,
+	JU_ERRNO_NOMEM		= 2,
 
 // Problems with parameters from the calling program:
 //
@@ -139,14 +153,14 @@ typedef enum            // uint8_t -- but C does not support this type of enum.
 // higher numbers), mean:  A non-null array was passed in where a null pointer
 // was required; PValue was null; and unsorted indexes were detected.
 
-        JU_ERRNO_NULLPPARRAY    = 3,    // see above.
-        JU_ERRNO_NONNULLPARRAY  = 10,   // see above.
-        JU_ERRNO_NULLPINDEX     = 4,    // see above.
-        JU_ERRNO_NULLPVALUE     = 11,   // see above.
-        JU_ERRNO_NOTJUDY1       = 5,    // PArray is not to a Judy1 array.
-        JU_ERRNO_NOTJUDYL       = 6,    // PArray is not to a JudyL array.
-        JU_ERRNO_NOTJUDYSL      = 7,    // PArray is not to a JudySL array.
-        JU_ERRNO_UNSORTED       = 12,   // see above.
+	JU_ERRNO_NULLPPARRAY	= 3,	// see above.
+	JU_ERRNO_NONNULLPARRAY	= 10,	// see above.
+	JU_ERRNO_NULLPINDEX	= 4,	// see above.
+	JU_ERRNO_NULLPVALUE	= 11,	// see above.
+	JU_ERRNO_NOTJUDY1	= 5,	// PArray is not to a Judy1 array.
+	JU_ERRNO_NOTJUDYL	= 6,	// PArray is not to a JudyL array.
+	JU_ERRNO_NOTJUDYSL	= 7,	// PArray is not to a JudySL array.
+	JU_ERRNO_UNSORTED	= 12,	// see above.
 
 // Errors below this point are not recoverable; further tries to access the
 // Judy array might result in EFAULT and a core dump:
@@ -154,7 +168,7 @@ typedef enum            // uint8_t -- but C does not support this type of enum.
 // JU_ERRNO_OVERRUN occurs when Judy detects, upon reallocation, that a block
 // of memory in its own freelist was modified since being freed.
 
-        JU_ERRNO_OVERRUN        = 8,
+	JU_ERRNO_OVERRUN	= 8,
 
 // JU_ERRNO_CORRUPT occurs when Judy detects an impossible value in a Judy data
 // structure:
@@ -162,7 +176,7 @@ typedef enum            // uint8_t -- but C does not support this type of enum.
 // Note:  The Judy data structure contains some redundant elements that support
 // this type of checking.
 
-        JU_ERRNO_CORRUPT        = 9
+	JU_ERRNO_CORRUPT	= 9
 
 // Warning:  At least some C or C++ compilers do not tolerate a trailing comma
 // above here.  At least we know of one case, in aCC; see JAGad58928.
@@ -178,11 +192,11 @@ typedef enum            // uint8_t -- but C does not support this type of enum.
 
 // This structure should be declared on the stack in a threaded process.
 
-typedef struct J_UDY_ERROR_STRUCT
+typedef	struct _JUDY_ERROR_STRUCT
 {
-        JU_Errno_t je_Errno;            // one of the enums above.
-        int        je_ErrID;            // often an internal source line number.
-        Word_t     je_reserved[4];      // for future backward compatibility.
+	JU_Errno_t je_Errno;		// one of the enums above.
+	int	   je_ErrID;		// often an internal source line number.
+	Word_t	   je_reserved[4];	// for future backward compatibility.
 
 } JError_t, * PJError_t;
 
@@ -191,8 +205,8 @@ typedef struct J_UDY_ERROR_STRUCT
 //
 // Fields from error struct:
 
-#define JU_ERRNO(PJError)  ((PJError)->je_Errno)
-#define JU_ERRID(PJError)  ((PJError)->je_ErrID)
+#define	JU_ERRNO(PJError)  ((PJError)->je_Errno)
+#define	JU_ERRID(PJError)  ((PJError)->je_ErrID)
 
 // For checking return values from various Judy functions:
 //
@@ -200,110 +214,123 @@ typedef struct J_UDY_ERROR_STRUCT
 // (~0UL), to avoid a compiler "overflow in implicit constant conversion"
 // warning.
 
-#define   JERR (-1)                     /* functions returning int or Word_t */
-#define  PJERR ((Pvoid_t)  (~0UL))      /* mainly for use here, see below    */
-#define PPJERR ((PPvoid_t) (~0UL))      /* functions that return PPvoid_t    */
+#define	  JERR (-1)			/* functions returning int or Word_t */
+#define	 PJERR ((Pvoid_t)  (~0UL))	/* mainly for use here, see below    */
+#define	PPJERR ((PPvoid_t) (~0UL))	/* functions that return PPvoid_t    */
 
 // Convenience macro for when detailed error information (PJError_t) is not
 // desired by the caller; a purposely short name:
 
-#define PJE0  ((PJError_t) NULL)
+#define	PJE0  ((PJError_t) NULL)
 
 
 // ****************************************************************************
 // JUDY FUNCTIONS:
 //
-// P_JE is a shorthand for use below:
+// PJE is a shorthand for use below:
 
-#define P_JE  PJError_t PJError
+#define	_PJE  PJError_t PJError
 
-// ****************************************************************************
-// JUDY1 FUNCTIONS:
+extern int	__Judy1Test(	 Pvoid_t   Pjpm,   Word_t   Index);
+extern int	Judy1Test(	 Pcvoid_t  PArray, Word_t   Index,   _PJE);
+extern int	Judy1Set(	 PPvoid_t PPArray, Word_t   Index,   _PJE);
+extern int	Judy1SetArray(	 PPvoid_t PPArray, Word_t   Count,
+					     const Word_t * const PIndex,
+								     _PJE);
+extern int	Judy1Unset(	 PPvoid_t PPArray, Word_t   Index,   _PJE);
+extern Word_t	Judy1Count(	 Pcvoid_t  PArray, Word_t   Index1,
+						   Word_t   Index2,  _PJE);
+extern int	Judy1ByCount(	 Pcvoid_t  PArray, Word_t   Count,
+						   Word_t * PIndex,  _PJE);
+extern Word_t	Judy1FreeArray(	 PPvoid_t PPArray,		     _PJE);
+extern Word_t	Judy1MemUsed(	 Pcvoid_t  PArray);
+extern Word_t	Judy1MemActive(	 Pcvoid_t  PArray);
+extern int	Judy1First(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	Judy1Next(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	__Judy1Next(	 Pvoid_t   Pjpm,   Word_t * PIndex);
+extern int	Judy1Last(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	Judy1Prev(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	Judy1FirstEmpty( Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	Judy1NextEmpty(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	Judy1LastEmpty(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	Judy1PrevEmpty(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
 
-extern int      j__udy1Test(     Pvoid_t   Pjpm,   Word_t   Index);
-extern int      Judy1Test(       Pcvoid_t  PArray, Word_t   Index,   P_JE);
-extern int      Judy1Set(        PPvoid_t PPArray, Word_t   Index,   P_JE);
-extern int      Judy1SetArray(   PPvoid_t PPArray, Word_t   Count,
-                                             const Word_t * const PIndex,
-                                                                     P_JE);
-extern int      Judy1Unset(      PPvoid_t PPArray, Word_t   Index,   P_JE);
-extern Word_t   Judy1Count(      Pcvoid_t  PArray, Word_t   Index1,
-                                                   Word_t   Index2,  P_JE);
-extern int      Judy1ByCount(    Pcvoid_t  PArray, Word_t   Count,
-                                                   Word_t * PIndex,  P_JE);
-extern Word_t   Judy1FreeArray(  PPvoid_t PPArray,                   P_JE);
-extern Word_t   Judy1MemUsed(    Pcvoid_t  PArray);
-extern Word_t   Judy1MemActive(  Pcvoid_t  PArray);
-extern int      Judy1First(      Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      Judy1Next(       Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      j__udy1Next(     Pvoid_t   Pjpm,   Word_t * PIndex);
-extern int      Judy1Last(       Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      Judy1Prev(       Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      Judy1FirstEmpty( Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      Judy1NextEmpty(  Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      Judy1LastEmpty(  Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      Judy1PrevEmpty(  Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
+extern PPvoid_t	__JudyLGet(	 Pvoid_t   Pjpm,   Word_t    Index);
+extern PPvoid_t	JudyLGet(	 Pcvoid_t  PArray, Word_t    Index,  _PJE);
+extern PPvoid_t	JudyLIns(	 PPvoid_t PPArray, Word_t    Index,  _PJE);
+extern int	JudyLInsArray(	 PPvoid_t PPArray, Word_t    Count,
+					     const Word_t * const PIndex,
+					     const Word_t * const PValue,
+								     _PJE);
+extern int	JudyLDel(	 PPvoid_t PPArray, Word_t    Index,  _PJE);
+extern Word_t	JudyLCount(	 Pcvoid_t  PArray, Word_t    Index1,
+						   Word_t    Index2, _PJE);
+extern PPvoid_t	JudyLByCount(	 Pcvoid_t  PArray, Word_t    Count,
+						   Word_t *  PIndex, _PJE);
+extern Word_t	JudyLFreeArray(	 PPvoid_t PPArray,		     _PJE);
+extern Word_t	JudyLMemUsed(	 Pcvoid_t  PArray);
+extern Word_t	JudyLMemActive(	 Pcvoid_t  PArray);
+extern PPvoid_t	JudyLFirst(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern PPvoid_t	JudyLNext(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern PPvoid_t	__JudyLNext(	 Pvoid_t   Pjpm,   Word_t * PIndex);
+extern PPvoid_t	JudyLLast(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern PPvoid_t	JudyLPrev(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	JudyLFirstEmpty( Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	JudyLNextEmpty(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	JudyLLastEmpty(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
+extern int	JudyLPrevEmpty(	 Pcvoid_t  PArray, Word_t * PIndex,  _PJE);
 
-extern PPvoid_t j__udyLGet(      Pvoid_t   Pjpm,   Word_t    Index);
-extern PPvoid_t JudyLGet(        Pcvoid_t  PArray, Word_t    Index,  P_JE);
-extern PPvoid_t JudyLIns(        PPvoid_t PPArray, Word_t    Index,  P_JE);
-extern int      JudyLInsArray(   PPvoid_t PPArray, Word_t    Count,
-                                             const Word_t * const PIndex,
-                                             const Word_t * const PValue,
+extern PPvoid_t	JudySLGet(	 Pcvoid_t  PArray, const char * Index, _PJE);
+extern PPvoid_t	JudySLIns(	 PPvoid_t PPArray, const char * Index, _PJE);
+extern int	JudySLDel(	 PPvoid_t PPArray, const char * Index, _PJE);
+extern Word_t	JudySLFreeArray( PPvoid_t PPArray,		       _PJE);
+extern PPvoid_t	JudySLFirst(	 Pcvoid_t  PArray,	 char * Index, _PJE);
+extern PPvoid_t	JudySLNext(	 Pcvoid_t  PArray,	 char * Index, _PJE);
+extern PPvoid_t	JudySLLast(	 Pcvoid_t  PArray,	 char * Index, _PJE);
+extern PPvoid_t	JudySLPrev(	 Pcvoid_t  PArray,	 char * Index, _PJE);
 
-// ****************************************************************************
-// JUDYL FUNCTIONS:
-                                                                     P_JE);
-extern int      JudyLDel(        PPvoid_t PPArray, Word_t    Index,  P_JE);
-extern Word_t   JudyLCount(      Pcvoid_t  PArray, Word_t    Index1,
-                                                   Word_t    Index2, P_JE);
-extern PPvoid_t JudyLByCount(    Pcvoid_t  PArray, Word_t    Count,
-                                                   Word_t *  PIndex, P_JE);
-extern Word_t   JudyLFreeArray(  PPvoid_t PPArray,                   P_JE);
-extern Word_t   JudyLMemUsed(    Pcvoid_t  PArray);
-extern Word_t   JudyLMemActive(  Pcvoid_t  PArray);
-extern PPvoid_t JudyLFirst(      Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern PPvoid_t JudyLNext(       Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern PPvoid_t j__udyLNext(     Pvoid_t   Pjpm,   Word_t * PIndex);
-extern PPvoid_t JudyLLast(       Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern PPvoid_t JudyLPrev(       Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      JudyLFirstEmpty( Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      JudyLNextEmpty(  Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      JudyLLastEmpty(  Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
-extern int      JudyLPrevEmpty(  Pcvoid_t  PArray, Word_t * PIndex,  P_JE);
+// The following are exported but not (yet) documented, and they have no macro
+// equivalents:
 
-// ****************************************************************************
-// JUDYSL FUNCTIONS:
+extern Word_t	JudyGetTotalMem(void);
 
-extern PPvoid_t JudySLGet(       Pcvoid_t, const uint8_t * Index, P_JE);
-extern PPvoid_t JudySLIns(       PPvoid_t, const uint8_t * Index, P_JE);
-extern int      JudySLDel(       PPvoid_t, const uint8_t * Index, P_JE);
-extern Word_t   JudySLFreeArray( PPvoid_t,                        P_JE);
-extern PPvoid_t JudySLFirst(     Pcvoid_t,       uint8_t * Index, P_JE);
-extern PPvoid_t JudySLNext(      Pcvoid_t,       uint8_t * Index, P_JE);
-extern PPvoid_t JudySLLast(      Pcvoid_t,       uint8_t * Index, P_JE);
-extern PPvoid_t JudySLPrev(      Pcvoid_t,       uint8_t * Index, P_JE);
+// JUDYL ARRAY POINTER LOW BITS PROTECTED FOR USE BY APPLICATIONS:
+//
+// The JLAP_INVALID pattern never appears in a JudyL array pointer.  Hence
+// applications that build trees of JudyL arrays can use this pattern to
+// distinguish a JudyL array value that is a pointer to another JudyL array
+// from one that is a pointer to some other, application-defined object.
+//
+// Note:  J1LAP_NEXTTYPE is used to build a mask, but must agree with the
+// J1*/JL* values below.
+//
+// Note:  Use old-style comments here because some tools insist on it for
+// macros referenced in other macros.
 
-// ****************************************************************************
-// JUDYHSL FUNCTIONS:
+#define	J1LAP_NEXTTYPE	0x8		/* first enum value beyond J*AP types */
 
-extern PPvoid_t JudyHSGet(       Pcvoid_t,  void *, Word_t);
-extern PPvoid_t JudyHSIns(       PPvoid_t,  void *, Word_t, P_JE);
-extern int      JudyHSDel(       PPvoid_t,  void *, Word_t, P_JE);
-extern Word_t   JudyHSFreeArray( PPvoid_t,                  P_JE);
+#define	JLAP_MASK    (J1LAP_NEXTTYPE-1) /* mask pointer for JLAP_INVALID     */
+#define JLAP_INVALID	0x4		/* not a JLAP			     */
 
-extern const char *Judy1MallocSizes;
-extern const char *JudyLMallocSizes;
 
-// ****************************************************************************
-// JUDY memory interface to malloc() FUNCTIONS:
+// JUDY ARRAY POINTER LOW BITS = TYPES:
+//
+// Note:  Judy libraries can be constructed with JLAPLEAF_POPU* unused, but
+// external callers cannot tell if this is the case, so in this header file
+// they are still defined and supported.
 
-extern Word_t JudyMalloc(Word_t);               // words reqd => words allocd.
-extern Word_t JudyMallocVirtual(Word_t);        // words reqd => words allocd.
-extern void   JudyFree(Pvoid_t, Word_t);        // free, size in words.
-extern void   JudyFreeVirtual(Pvoid_t, Word_t); // free, size in words.
+enum {
+	JLAPNULL	= 0x0,		/* must be == 0			    */
+	J1APNULL	= 0x0,		/* must be == 0			    */
+	JLAPLEAF	= 0x1,		/* Word_t leafW with Pop0 in word 1 */
+//	JLAPLEAF_POPU2	= 0x2,		/* Word_t leafW with Pop1 == 2      */
+	JLAPBRANCH	= 0x3,		/* pointer to jLpm_t => branch	    */
+	JLAPINVALID	= JLAP_INVALID,	/* not a JLAP, assume == 4	    */
+//	JLAPLEAF_POPU1	= 0x5,		/* Word_t leafW with Pop1 == 1      */
+	J1APLEAF	= 0x6,		/* Word_t leafW with Pop0 in word 1 */
+	J1APBRANCH	= 0x7		/* pointer to j1pm_t => branch	    */
+};
 
-#define JLAP_INVALID    0x1     /* flag to mark pointer "not a Judy array" */
 
 // ****************************************************************************
 // MACRO EQUIVALENTS FOR JUDY FUNCTIONS:
@@ -322,11 +349,11 @@ extern void   JudyFreeVirtual(Pvoid_t, Word_t); // free, size in words.
 // Note: the back-slashes are removed because some compilers will not accept
 // them in comments.
 //
-// void HandleJudyError(uint8_t *, int, uint8_t *, int, int);
+// void HandleJudyError(char *, int, char *, int, int);
 // #define JUDYERROR(CallerFile, CallerLine, JudyFunc, JudyErrno, JudyErrID)
-// {
+//  {
 //    HandleJudyError(CallerFile, CallerLine, JudyFunc, JudyErrno, JudyErrID);
-// }
+//  }
 //
 // The routine HandleJudyError could do checking on specific error numbers and
 // print a different message dependent on the error.
@@ -340,17 +367,23 @@ extern void   JudyFreeVirtual(Pvoid_t, Word_t); // free, size in words.
 // 5.  JudyErrID:   The je_ErrID field described above.
 
 #ifndef JUDYERROR_NOTEST
-#ifndef JUDYERROR       /* supply a default error macro */
+#ifndef JUDYERROR	/* supply a default error macro */
+#ifdef JU_FLAVOR_COV
+#pragma C-Cover off	/* exclude inline functions in public header files */
+#endif
 #include <stdio.h>
+#ifdef JU_FLAVOR_COV
+#pragma C-Cover on
+#endif
 
 #define JUDYERROR(CallerFile, CallerLine, JudyFunc, JudyErrno, JudyErrID) \
-    {                                                                     \
-        (void) fprintf(stderr, "File '%s', line %d: %s(), "               \
-           "JU_ERRNO_* == %d, ID == %d\n",                                \
-           CallerFile, CallerLine,                                        \
-           JudyFunc, JudyErrno, JudyErrID);                               \
-        exit(1);                                                          \
-    }
+	{							\
+	    (void) fprintf(stderr, "File '%s', line %d: %s(), "	\
+			   "JU_ERRNO_* == %d, ID == %d\n",	\
+			   CallerFile, CallerLine,		\
+			   JudyFunc, JudyErrno, JudyErrID);	\
+	    exit(1);						\
+	}
 
 #endif /* JUDYERROR */
 #endif /* JUDYERROR_NOTEST */
@@ -376,8 +409,8 @@ extern void   JudyFreeVirtual(Pvoid_t, Word_t); // free, size in words.
 //
 // or:
 //
-//   JLI(PValue, PArray, Index);
-//   if (PValue == PJERR) goto ...error
+//   JLI(Pvalue, PArray, Index);
+//   if (Pvalue == PJERR) goto ...error
 
 
 // Internal shorthand macros for writing the J1S, etc. macros:
@@ -386,355 +419,322 @@ extern void   JudyFreeVirtual(Pvoid_t, Word_t); // free, size in words.
 
 // "Judy Set Error":
 
-#define J_SE(FuncName,Errno)  ((void) 0)
+#define	_JSE(FuncName,Errno)  ((void) 0)
 
-// Note:  In each J_*() case below, the digit is the number of key parameters
-// to the Judy*() call.  Just assign the Func result to the callers Rc value
+// Note:  In each _J*() case below, the digit is the number of key parameters
+// to the Judy*() call.  Just assign the Func result to the caller's Rc value
 // without a cast because none is required, and this keeps the API simpler.
-// However, a family of different J_*() macros is needed to support the
+// However, a family of different _J*() macros is needed to support the
 // different numbers of key parameters (0,1,2) and the Func return type.
 //
 // In the names below, "I" = integer result; "P" = pointer result.  Note, the
-// Funcs for J_*P() return PPvoid_t, but cast this to a Pvoid_t for flexible,
+// Funcs for _J*P() return PPvoid_t, but cast this to a Pvoid_t for flexible,
 // error-free assignment, and then compare to PJERR.
 
-#define J_0I(Rc,PArray,Func,FuncName) \
-        { (Rc) = Func(PArray, PJE0); }
+#define	_J0I(Rc,PArray,Func,FuncName) \
+	{ (Rc) = Func(PArray, PJE0); }
 
-#define J_1I(Rc,PArray,Index,Func,FuncName) \
-        { (Rc) = Func(PArray, Index, PJE0); }
+#define	_J1I(Rc,PArray,Index,Func,FuncName) \
+	{ (Rc) = Func(PArray, Index, PJE0); }
 
-#define J_1P(PV,PArray,Index,Func,FuncName) \
-        { (PV) = (Pvoid_t) Func(PArray, Index, PJE0); }
+#define	_J1P(PV,PArray,Index,Func,FuncName) \
+	{ (PV) = (Pvoid_t) Func(PArray, Index, PJE0); }
 
-#define J_2I(Rc,PArray,Index,Arg2,Func,FuncName) \
-        { (Rc) = Func(PArray, Index, Arg2, PJE0); }
+#define	_J2I(Rc,PArray,Index,Arg2,Func,FuncName) \
+	{ (Rc) = Func(PArray, Index, Arg2, PJE0); }
 
-#define J_2C(Rc,PArray,Index1,Index2,Func,FuncName) \
-        { (Rc) = Func(PArray, Index1, Index2, PJE0); }
+#define	_J2C(Rc,PArray,Index1,Index2,Func,FuncName) \
+	{ (Rc) = Func(PArray, Index1, Index2, PJE0); }
 
-#define J_2P(PV,PArray,Index,Arg2,Func,FuncName) \
-        { (PV) = (Pvoid_t) Func(PArray, Index, Arg2, PJE0); }
+#define	_J2P(PV,PArray,Index,Arg2,Func,FuncName) \
+	{ (PV) = (Pvoid_t) Func(PArray, Index, Arg2, PJE0); }
 
 // Variations for Judy*Set/InsArray functions:
 
-#define J_2AI(Rc,PArray,Count,PIndex,Func,FuncName) \
-        { (Rc) = Func(PArray, Count, PIndex, PJE0); }
-#define J_3AI(Rc,PArray,Count,PIndex,PValue,Func,FuncName) \
-        { (Rc) = Func(PArray, Count, PIndex, PValue, PJE0); }
+#define	_J2AI(Rc,PArray,Count,PIndex,Func,FuncName) \
+	{ (Rc) = Func(PArray, Count, PIndex, PJE0); }
+#define	_J3AI(Rc,PArray,Count,PIndex,PValue,Func,FuncName) \
+	{ (Rc) = Func(PArray, Count, PIndex, PValue, PJE0); }
 
 #else /* ================ ! JUDYERROR_NOTEST ============================= */
 
-#define J_E(FuncName,PJE) \
-        JUDYERROR(__FILE__, __LINE__, FuncName, JU_ERRNO(PJE), JU_ERRID(PJE))
+#define	_JE(FuncName,PJE) \
+	JUDYERROR(__FILE__, __LINE__, FuncName, JU_ERRNO(PJE), JU_ERRID(PJE))
 
-#define J_SE(FuncName,Errno)                                            \
-        {                                                               \
-            JError_t J_Error;                                           \
-            JU_ERRNO(&J_Error) = (Errno);                               \
-            JU_ERRID(&J_Error) = __LINE__;                              \
-            J_E(FuncName, &J_Error);                                    \
-        }
+#define	_JSE(FuncName,Errno)						\
+	{								\
+	    JError_t _JError;						\
+	    JU_ERRNO(&_JError) = (Errno);				\
+	    JU_ERRID(&_JError) = __LINE__;				\
+	    _JE(FuncName, &_JError);					\
+	}
 
-// Note:  In each J_*() case below, the digit is the number of key parameters
-// to the Judy*() call.  Just assign the Func result to the callers Rc value
+// Note:  In each _J*() case below, the digit is the number of key parameters
+// to the Judy*() call.  Just assign the Func result to the caller's Rc value
 // without a cast because none is required, and this keeps the API simpler.
-// However, a family of different J_*() macros is needed to support the
+// However, a family of different _J*() macros is needed to support the
 // different numbers of key parameters (0,1,2) and the Func return type.
 //
 // In the names below, "I" = integer result; "P" = pointer result.  Note, the
-// Funcs for J_*P() return PPvoid_t, but cast this to a Pvoid_t for flexible,
+// Funcs for _J*P() return PPvoid_t, but cast this to a Pvoid_t for flexible,
 // error-free assignment, and then compare to PJERR.
 
-#define J_0I(Rc,PArray,Func,FuncName)                                   \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if (((Rc) = Func(PArray, &J_Error)) == JERR)                \
-                J_E(FuncName, &J_Error);                                \
-        }
+#define	_J0I(Rc,PArray,Func,FuncName)					\
+	{								\
+	    JError_t _JError;						\
+	    if (((Rc) = Func(PArray, &_JError)) == JERR)		\
+		_JE(FuncName, &_JError);				\
+	}
 
-#define J_1I(Rc,PArray,Index,Func,FuncName)                             \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if (((Rc) = Func(PArray, Index, &J_Error)) == JERR)         \
-                J_E(FuncName, &J_Error);                                \
-        }
+#define	_J1I(Rc,PArray,Index,Func,FuncName)				\
+	{								\
+	    JError_t _JError;						\
+	    if (((Rc) = Func(PArray, Index, &_JError)) == JERR)		\
+		_JE(FuncName, &_JError);				\
+	}
 
-#define J_1P(Rc,PArray,Index,Func,FuncName)                             \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if (((Rc) = (Pvoid_t) Func(PArray, Index, &J_Error)) == PJERR) \
-                J_E(FuncName, &J_Error);                                \
-        }
+#define	_J1P(Rc,PArray,Index,Func,FuncName)				\
+	{								\
+	    JError_t _JError;						\
+	    if (((Rc) = (Pvoid_t) Func(PArray, Index, &_JError)) == PJERR) \
+		_JE(FuncName, &_JError);				\
+	}
 
-#define J_2I(Rc,PArray,Index,Arg2,Func,FuncName)                        \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if (((Rc) = Func(PArray, Index, Arg2, &J_Error)) == JERR)   \
-                J_E(FuncName, &J_Error);                                \
-        }
+#define	_J2I(Rc,PArray,Index,Arg2,Func,FuncName)			\
+	{								\
+	    JError_t _JError;						\
+	    if (((Rc) = Func(PArray, Index, Arg2, &_JError)) == JERR)	\
+		_JE(FuncName, &_JError);				\
+	}
 
 // Variation for Judy*Count functions, which return 0, not JERR, for error (and
 // also for other non-error cases):
 //
 // Note:  JU_ERRNO_NFMAX should only apply to 32-bit Judy1, but this header
-// file lacks the necessary ifdefs to make it go away otherwise, so always
+// file lacks the necessary ifdef's to make it go away otherwise, so always
 // check against it.
 
-#define J_2C(Rc,PArray,Index1,Index2,Func,FuncName)                     \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if ((((Rc) = Func(PArray, Index1, Index2, &J_Error)) == 0)  \
-             && (JU_ERRNO(&J_Error) > JU_ERRNO_NFMAX))                  \
-            {                                                           \
-                J_E(FuncName, &J_Error);                                \
-            }                                                           \
-        }
+#define	_J2C(Rc,PArray,Index1,Index2,Func,FuncName)			\
+	{								\
+	    JError_t _JError;						\
+	    if ((((Rc) = Func(PArray, Index1, Index2, &_JError)) == 0)	\
+	     && (JU_ERRNO(&_JError) > JU_ERRNO_NFMAX))			\
+	    {								\
+		_JE(FuncName, &_JError);				\
+	    }								\
+	}
 
-#define J_2P(PV,PArray,Index,Arg2,Func,FuncName)                        \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if (((PV) = (Pvoid_t) Func(PArray, Index, Arg2, &J_Error))  \
-                == PJERR) J_E(FuncName, &J_Error);                      \
-        }
+#define	_J2P(PV,PArray,Index,Arg2,Func,FuncName)			\
+	{								\
+	    JError_t _JError;						\
+	    if (((PV) = (Pvoid_t) Func(PArray, Index, Arg2, &_JError))	\
+		== PJERR) _JE(FuncName, &_JError);			\
+	}
 
 // Variations for Judy*Set/InsArray functions:
 
-#define J_2AI(Rc,PArray,Count,PIndex,Func,FuncName)                     \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if (((Rc) = Func(PArray, Count, PIndex, &J_Error)) == JERR) \
-                J_E(FuncName, &J_Error);                                \
-        }
+#define	_J2AI(Rc,PArray,Count,PIndex,Func,FuncName)			\
+	{								\
+	    JError_t _JError;						\
+	    if (((Rc) = Func(PArray, Count, PIndex, &_JError)) == JERR)	\
+		_JE(FuncName, &_JError);				\
+	}
 
-#define J_3AI(Rc,PArray,Count,PIndex,PValue,Func,FuncName)              \
-        {                                                               \
-            JError_t J_Error;                                           \
-            if (((Rc) = Func(PArray, Count, PIndex, PValue, &J_Error))  \
-                == JERR) J_E(FuncName, &J_Error);                       \
-        }
+#define	_J3AI(Rc,PArray,Count,PIndex,PValue,Func,FuncName)		\
+	{								\
+	    JError_t _JError;						\
+	    if (((Rc) = Func(PArray, Count, PIndex, PValue, &_JError))	\
+		== JERR) _JE(FuncName, &_JError);			\
+	}
 
 #endif /* ================ ! JUDYERROR_NOTEST ============================= */
 
 // Some of the macros are special cases that use inlined shortcuts for speed
 // with root-level leaves:
 
-// This is a slower version with current processors, but in the future...
-#ifdef notdef
-#define J1T(Rc,PArray,Index)                                    \
-{                                                               \
-    PWord_t P_L  = (PWord_t)(PArray);                           \
-    (Rc) = 0;                                                   \
-    if (P_L)                    /* cannot be a NULL pointer */  \
-    {                                                           \
-        if (P_L[0] < 31)        /* is a LeafL  */               \
-        {                                                       \
-            Word_t  _pop1 = P_L[0] + 1;                         \
-            PWord_t P_LE  = P_L    + _pop1;                     \
-            Word_t  _index = 0;                                 \
-            int ii = 0;                                         \
-            P_L++;                                              \
-            while (_pop1 > 4)                                   \
-            {                                                   \
-                _pop1 /=2;                                      \
-                _index = P_L[_pop1];                            \
-                if ((Index) > _index) P_L += _pop1 + 1;         \
-            }                                                   \
-            while (P_L <= P_LE)                                 \
-            {                                                   \
-                ii++;                                           \
-                _index = P_L[0];                                \
-                if (_index >= (Index)) break;                   \
-                P_L++;                                          \
-            }                                                   \
-            if (_index == (Index)) (Rc) = 1;                    \
-        }                                                       \
-        else                                                    \
-        {                                                       \
-            (Rc) = j__udy1Test((Pvoid_t)P_L, (Index));          \
-        }                                                       \
+#define	J1T(Rc,PArray,Index)					\
+{								\
+    Word_t  _jpt = ((Word_t) (PArray)) & JLAP_MASK;		\
+    PWord_t _PL  = (PWord_t) (((Word_t) (PArray)) ^ _jpt);	\
+    (Rc)	 = 0;						\
+								\
+    if (_jpt == J1APLEAF)					\
+    {								\
+	Word_t  _pop1 = _PL[0] + 1;				\
+	if ((Index) <= _PL[_pop1])				\
+	{							\
+	    for(;;)						\
+	    {							\
+	        if (*(++_PL) >= (Index))			\
+	        {						\
+	            if (*_PL == (Index)) (Rc) = 1;		\
+		    break;                                      \
+	        }						\
+	    }                                                   \
+	}                                                       \
     }                                                           \
-}
-#endif // notdef
-
-#define J1T(Rc,PArray,Index)                                    \
-{                                                               \
-    PWord_t P_L  = (PWord_t)(PArray);                           \
-    (Rc) = 0;                                                   \
-    if (P_L)                    /* cannot be a NULL pointer */  \
-    {                                                           \
-        if (P_L[0] < 31)        /* is a LeafL  */               \
-        {                                                       \
-            Word_t  _pop1 = P_L[0] + 1;                         \
-            Word_t  _EIndex = P_L[_pop1];                       \
-            if (_pop1 >= 16)                                    \
-            {                                                   \
-                if ((Index) > P_L[_pop1/2]) P_L += _pop1/2;     \
-            }                                                   \
-            if ((Index) <= _EIndex)                             \
-            {                                                   \
-                while((Index) > *(++P_L));                      \
-                if (*P_L == (Index)) (Rc) = 1;                  \
-            }                                                   \
-        }                                                       \
-        else                                                    \
-        {                                                       \
-            (Rc) = j__udy1Test((Pvoid_t)P_L, Index);            \
-        }                                                       \
-    }                                                           \
+    else if (_jpt == J1APBRANCH)				\
+    {								\
+	/* note: no error possible here: */			\
+	(Rc) = __Judy1Test((Pvoid_t) _PL, (Index));		\
+    }								\
+    else if (PArray != (Pvoid_t) NULL)				\
+    {								\
+	(Rc) = JERR;						\
+	_JSE("Judy1Test", JU_ERRNO_NOTJUDY1);			\
+    }								\
 }
 
-#define J1S( Rc,    PArray,   Index) \
-        J_1I(Rc, (&(PArray)), Index,  Judy1Set,   "Judy1Set")
-#define J1SA(Rc,    PArray,   Count, PIndex) \
-        J_2AI(Rc,(&(PArray)), Count, PIndex, Judy1SetArray, "Judy1SetArray")
-#define J1U( Rc,    PArray,   Index) \
-        J_1I(Rc, (&(PArray)), Index,  Judy1Unset, "Judy1Unset")
-#define J1F( Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1First, "Judy1First")
-#define J1N( Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1Next,  "Judy1Next")
-#define J1L( Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1Last,  "Judy1Last")
-#define J1P( Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1Prev,  "Judy1Prev")
-#define J1FE(Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1FirstEmpty, "Judy1FirstEmpty")
-#define J1NE(Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1NextEmpty,  "Judy1NextEmpty")
-#define J1LE(Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1LastEmpty,  "Judy1LastEmpty")
-#define J1PE(Rc,    PArray,   Index) \
-        J_1I(Rc,    PArray, &(Index), Judy1PrevEmpty,  "Judy1PrevEmpty")
-#define J1C( Rc,    PArray,   Index1,  Index2) \
-        J_2C(Rc,    PArray,   Index1,  Index2, Judy1Count,   "Judy1Count")
-#define J1BC(Rc,    PArray,   Count,   Index) \
-        J_2I(Rc,    PArray,   Count, &(Index), Judy1ByCount, "Judy1ByCount")
-#define J1FA(Rc,    PArray) \
-        J_0I(Rc, (&(PArray)), Judy1FreeArray, "Judy1FreeArray")
-#define J1MU(Rc,    PArray) \
-        (Rc) = Judy1MemUsed(PArray)
+#define	J1S( Rc,    PArray,   Index) \
+	_J1I(Rc, (&(PArray)), Index,  Judy1Set,   "Judy1Set")
+#define	J1SA(Rc,    PArray,   Count, PIndex) \
+	_J2AI(Rc,(&(PArray)), Count, PIndex, Judy1SetArray, "Judy1SetArray")
+#define	J1U( Rc,    PArray,   Index) \
+	_J1I(Rc, (&(PArray)), Index,  Judy1Unset, "Judy1Unset")
+#define	J1F( Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1First, "Judy1First")
+#define	J1N( Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1Next,  "Judy1Next")
+#define	J1L( Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1Last,  "Judy1Last")
+#define	J1P( Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1Prev,  "Judy1Prev")
+#define	J1FE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1FirstEmpty, "Judy1FirstEmpty")
+#define	J1NE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1NextEmpty,  "Judy1NextEmpty")
+#define	J1LE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1LastEmpty,  "Judy1LastEmpty")
+#define	J1PE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), Judy1PrevEmpty,  "Judy1PrevEmpty")
+#define	J1C( Rc,    PArray,   Index1,  Index2) \
+	_J2C(Rc,    PArray,   Index1,  Index2, Judy1Count,   "Judy1Count")
+#define	J1BC(Rc,    PArray,   Count,   Index) \
+	_J2I(Rc,    PArray,   Count, &(Index), Judy1ByCount, "Judy1ByCount")
+#define	J1FA(Rc,    PArray) \
+	_J0I(Rc, (&(PArray)), Judy1FreeArray, "Judy1FreeArray")
+#define	J1MU(Rc,    PArray) \
+	(Rc) = Judy1MemUsed(PArray)
 
-#define JLG(PV,PArray,Index)                                    \
-{                                                               \
-    extern const uint8_t j__L_LeafWOffset[];                    \
-    PWord_t P_L  = (PWord_t)(PArray);                           \
-    (PV) = (Pvoid_t) NULL;                                      \
-    if (P_L)                    /* cannot be a NULL pointer */  \
-    {                                                           \
-        if (P_L[0] < 31)        /* is a LeafL  */               \
-        {                                                       \
-            Word_t  _pop1 = P_L[0] + 1;                         \
-            Word_t  _EIndex = P_L[_pop1];                       \
-            Word_t  _off  = j__L_LeafWOffset[_pop1] - 1;        \
-            if (_pop1 >= 16)                                    \
-            {                                                   \
-                if ((Index) > P_L[_pop1/2]) P_L += _pop1/2;     \
-            }                                                   \
-            if ((Index) <= _EIndex)                             \
-            {                                                   \
-                while((Index) > *(++P_L));                      \
-                if (*P_L == (Index)) (PV) = (Pvoid_t)(P_L+_off);\
-            }                                                   \
-        }                                                       \
-        else                                                    \
-        {                                                       \
-            (PV) = (Pvoid_t)j__udyLGet((Pvoid_t)P_L, Index);    \
-        }                                                       \
-    }                                                           \
+#define	JLG(PV,PArray,Index)						\
+{									\
+    Word_t  _jpt = ((Word_t) (PArray)) & JLAP_MASK;			\
+    PWord_t _PL  = (PWord_t) (((Word_t) (PArray)) ^ _jpt);		\
+    extern const unsigned char __jL_LeafWOffset[];			\
+									\
+    (PV) = (Pvoid_t) NULL;						\
+									\
+    if (_jpt == JLAPLEAF)						\
+    {									\
+	Word_t  _pop1 = _PL[0] + 1;					\
+	if ((Index) <= _PL[_pop1])					\
+	{								\
+	    while (1)							\
+	    {								\
+	        if (*(++_PL) >= (Index))				\
+	        {							\
+	            if (*_PL == (Index))				\
+		    {							\
+	                (PV) = (Pvoid_t)(_PL+__jL_LeafWOffset[_pop1]-1);\
+		    }							\
+		    break;						\
+	        }							\
+	    }								\
+	}								\
+    }									\
+    else if (_jpt == JLAPBRANCH)					\
+    {									\
+	(PV) = (Pvoid_t) __JudyLGet((Pvoid_t) _PL, (Index));		\
+    }									\
+    else if (PArray != (Pvoid_t) NULL)					\
+    {									\
+	(PV) = PJERR;							\
+	_JSE("JudyLGet", JU_ERRNO_NOTJUDYL);				\
+    }									\
 }
 
-#define JLI( PV,    PArray,   Index)                                    \
-        J_1P(PV, (&(PArray)), Index,  JudyLIns,   "JudyLIns")
+#define	JLI( PV,    PArray,   Index) \
+	_J1P(PV, (&(PArray)), Index,  JudyLIns,   "JudyLIns")
+#define	JLIA(Rc,    PArray,   Count, PIndex, PValue) \
+	_J3AI(Rc,(&(PArray)), Count, PIndex, PValue, JudyLInsArray, \
+						    "JudyLInsArray")
+#define	JLD( Rc,    PArray,   Index) \
+	_J1I(Rc, (&(PArray)), Index,  JudyLDel,   "JudyLDel")
+#define	JLF( PV,    PArray,   Index) \
+	_J1P(PV,    PArray, &(Index), JudyLFirst, "JudyLFirst")
 
-#define JLIA(Rc,    PArray,   Count, PIndex, PValue)                    \
-        J_3AI(Rc,(&(PArray)), Count, PIndex, PValue, JudyLInsArray,     \
-                                                  "JudyLInsArray")
-#define JLD( Rc,    PArray,   Index)                                    \
-        J_1I(Rc, (&(PArray)), Index,  JudyLDel,   "JudyLDel")
-
-#define JLF( PV,    PArray,   Index)                                    \
-        J_1P(PV,    PArray, &(Index), JudyLFirst, "JudyLFirst")
-
-#define JLN(PV,PArray,Index)                                    \
-{                                                               \
-    extern const uint8_t j__L_LeafWOffset[];                    \
-    PWord_t P_L  = (PWord_t) (PArray);                          \
-                                                                \
-    (PV) = (Pvoid_t) NULL;                                      \
-                                                                \
-    if (P_L)                    /* cannot be a NULL pointer */  \
-    {                                                           \
-        if (P_L[0] < 31)        /* is a LeafL  */               \
-        {                                                       \
-            Word_t _pop1 = P_L[0] + 1;                          \
-            Word_t _off  = j__L_LeafWOffset[_pop1] -1;          \
-            if ((Index) < P_L[_pop1])                           \
-            {                                                   \
-                while(1)                                        \
-                {                                               \
-                    if ((Index) < *(++P_L))                     \
-                    {                                           \
-                        (Index) = *P_L;                         \
-                        (PV) = (Pvoid_t) (P_L + _off);          \
-                        break;                                  \
-                    }                                           \
-                }                                               \
-            }                                                   \
-        }                                                       \
-        else                                                    \
-        {                                                       \
-            (PV) = (Pvoid_t)JudyLNext((Pvoid_t) PArray, &(Index), PJE0); \
-        }                                                       \
-    }                                                           \
+#define	JLN(PV,PArray,Index)						\
+{									\
+    Word_t  _jpt = ((Word_t) (PArray)) & JLAP_MASK;			\
+    PWord_t _PL  = (PWord_t) (((Word_t) (PArray)) ^ _jpt);		\
+    extern const unsigned char __jL_LeafWOffset[];			\
+									\
+    (PV) = (Pvoid_t) NULL;						\
+									\
+    if (_jpt == JLAPLEAF)						\
+    {									\
+	Word_t _pop1 = _PL[0] + 1;					\
+	if ((Index) < _PL[_pop1])					\
+	{								\
+	    while (1)							\
+	    {								\
+	        if ((Index) < *(++_PL))					\
+	        {							\
+	            (Index) = *_PL;					\
+	            (PV) = (Pvoid_t) (_PL + __jL_LeafWOffset[_pop1] -1);\
+		    break;						\
+	        }							\
+	    }								\
+	}								\
+    }									\
+    else if (_jpt == JLAPBRANCH)					\
+    {									\
+	(PV) = (Pvoid_t) JudyLNext((Pvoid_t) PArray, &(Index), PJE0);	\
+    }									\
+    else if (PArray != (Pvoid_t) NULL)					\
+    {									\
+	(PV) = PJERR;							\
+	_JSE("JudyLNext", JU_ERRNO_NOTJUDYL);				\
+    }									\
 }
 
-#define JLL( PV,    PArray,   Index)                                    \
-        J_1P(PV,    PArray, &(Index), JudyLLast,  "JudyLLast")
-#define JLP( PV,    PArray,   Index)                                    \
-        J_1P(PV,    PArray, &(Index), JudyLPrev,  "JudyLPrev")
-#define JLFE(Rc,    PArray,   Index)                                    \
-        J_1I(Rc,    PArray, &(Index), JudyLFirstEmpty, "JudyLFirstEmpty")
-#define JLNE(Rc,    PArray,   Index)                                    \
-        J_1I(Rc,    PArray, &(Index), JudyLNextEmpty,  "JudyLNextEmpty")
-#define JLLE(Rc,    PArray,   Index)                                    \
-        J_1I(Rc,    PArray, &(Index), JudyLLastEmpty,  "JudyLLastEmpty")
-#define JLPE(Rc,    PArray,   Index)                                    \
-        J_1I(Rc,    PArray, &(Index), JudyLPrevEmpty,  "JudyLPrevEmpty")
-#define JLC( Rc,    PArray,   Index1,  Index2)                          \
-        J_2C(Rc,    PArray,   Index1,  Index2, JudyLCount,   "JudyLCount")
-#define JLBC(PV,    PArray,   Count,   Index)                           \
-        J_2P(PV,    PArray,   Count, &(Index), JudyLByCount, "JudyLByCount")
-#define JLFA(Rc,    PArray)                                             \
-        J_0I(Rc, (&(PArray)), JudyLFreeArray, "JudyLFreeArray")
-#define JLMU(Rc,    PArray)                                             \
-        (Rc) = JudyLMemUsed(PArray)
+#define	JLL( PV,    PArray,   Index) \
+	_J1P(PV,    PArray, &(Index), JudyLLast,  "JudyLLast")
+#define	JLP( PV,    PArray,   Index) \
+	_J1P(PV,    PArray, &(Index), JudyLPrev,  "JudyLPrev")
+#define	JLFE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), JudyLFirstEmpty, "JudyLFirstEmpty")
+#define	JLNE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), JudyLNextEmpty,  "JudyLNextEmpty")
+#define	JLLE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), JudyLLastEmpty,  "JudyLLastEmpty")
+#define	JLPE(Rc,    PArray,   Index) \
+	_J1I(Rc,    PArray, &(Index), JudyLPrevEmpty,  "JudyLPrevEmpty")
+#define	JLC( Rc,    PArray,   Index1,  Index2) \
+	_J2C(Rc,    PArray,   Index1,  Index2, JudyLCount,   "JudyLCount")
+#define	JLBC(PV,    PArray,   Count,   Index) \
+	_J2P(PV,    PArray,   Count, &(Index), JudyLByCount, "JudyLByCount")
+#define	JLFA(Rc,    PArray) \
+	_J0I(Rc, (&(PArray)), JudyLFreeArray, "JudyLFreeArray")
+#define	JLMU(Rc,    PArray) \
+	(Rc) = JudyLMemUsed(PArray)
 
-#define JHSI(PV,    PArray,   PIndex,   Count)                          \
-        J_2P(PV, (&(PArray)), PIndex,   Count, JudyHSIns, "JudyHSIns")
-#define JHSG(PV,    PArray,   PIndex,   Count)                          \
-        (PV) = (Pvoid_t) JudyHSGet(PArray, PIndex, Count)
-#define JHSD(Rc,    PArray,   PIndex,   Count)                          \
-        J_2I(Rc, (&(PArray)), PIndex, Count, JudyHSDel, "JudyHSDel")
-#define JHSFA(Rc,    PArray)                                            \
-        J_0I(Rc, (&(PArray)), JudyHSFreeArray, "JudyHSFreeArray")
-
-#define JSLG( PV,    PArray,   Index)                                   \
-        J_1P( PV,    PArray,   Index, JudySLGet,   "JudySLGet")
-#define JSLI( PV,    PArray,   Index)                                   \
-        J_1P( PV, (&(PArray)), Index, JudySLIns,   "JudySLIns")
-#define JSLD( Rc,    PArray,   Index)                                   \
-        J_1I( Rc, (&(PArray)), Index, JudySLDel,   "JudySLDel")
-#define JSLF( PV,    PArray,   Index)                                   \
-        J_1P( PV,    PArray,   Index, JudySLFirst, "JudySLFirst")
-#define JSLN( PV,    PArray,   Index)                                   \
-        J_1P( PV,    PArray,   Index, JudySLNext,  "JudySLNext")
-#define JSLL( PV,    PArray,   Index)                                   \
-        J_1P( PV,    PArray,   Index, JudySLLast,  "JudySLLast")
-#define JSLP( PV,    PArray,   Index)                                   \
-        J_1P( PV,    PArray,   Index, JudySLPrev,  "JudySLPrev")
-#define JSLFA(Rc,    PArray)                                            \
-        J_0I( Rc, (&(PArray)), JudySLFreeArray, "JudySLFreeArray")
+#define	JSLG( PV,    PArray,   Index) \
+	_J1P( PV,    PArray,   Index, JudySLGet,   "JudySLGet")
+#define	JSLI( PV,    PArray,   Index) \
+	_J1P( PV, (&(PArray)), Index, JudySLIns,   "JudySLIns")
+#define	JSLD( Rc,    PArray,   Index) \
+	_J1I( Rc, (&(PArray)), Index, JudySLDel,   "JudySLDel")
+#define	JSLF( PV,    PArray,   Index) \
+	_J1P( PV,    PArray,   Index, JudySLFirst, "JudySLFirst")
+#define	JSLN( PV,    PArray,   Index) \
+	_J1P( PV,    PArray,   Index, JudySLNext,  "JudySLNext")
+#define	JSLL( PV,    PArray,   Index) \
+	_J1P( PV,    PArray,   Index, JudySLLast,  "JudySLLast")
+#define	JSLP( PV,    PArray,   Index) \
+	_J1P( PV,    PArray,   Index, JudySLPrev,  "JudySLPrev")
+#define	JSLFA(Rc,    PArray) \
+	_J0I( Rc, (&(PArray)), JudySLFreeArray, "JudySLFreeArray")
 
 #ifdef __cplusplus
 }

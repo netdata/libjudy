@@ -31,7 +31,7 @@
 #include <time.h>
 #include "timeit.h"
 
-double USecPerClock;	// usec per control register count.
+double USecPerClock = 0.0;	// usec per control register count.
 
 
 // ****************************************************************************
@@ -85,8 +85,7 @@ void dummy() {}	 // avoid "empty source file" warnings when no _TIMEIT_TEST.
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-//#include <values.h>             // for MAXDOUBLE
-#define MAXDOUBLE       (10e99)
+#include <values.h>
 #include "timeit.h"
 
 

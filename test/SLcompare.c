@@ -248,7 +248,7 @@ char     *malStart;
 #define STORESTRING(STRING)                                             \
 {                                                                       \
         PWord_t _PValue;                                                \
-        JSLI(_PValue, JudyArray, (uint8_t *) STRING);                   \
+        JSLI(_PValue, JudyArray, STRING);  /* insert string     */      \
         if (++(*_PValue) != 1) gDupCnt++;  /* count dup strings */      \
 }
 
@@ -257,7 +257,7 @@ char     *malStart;
 #define GETSTRING(STRING)                                               \
 {                                                                       \
         PWord_t _PValue;                                                \
-        JSLG(_PValue, JudyArray, (uint8_t *) STRING);                   \
+        JSLG(_PValue, JudyArray, STRING);                               \
         if (_PValue == NULL)                 /* not found -- bug */     \
         {                                                               \
                printf("GETSTRING failed(Judy) -- BUG!\n\n");            \
