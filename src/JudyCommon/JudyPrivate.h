@@ -614,7 +614,6 @@ static inline BITMAPL_t j__udyCountBitsL(BITMAPL_t word)
         return(result);
 }
 
-
 #else // No instructions available, use inline code
 
 // ****************************************************************************
@@ -624,11 +623,7 @@ static inline BITMAPL_t j__udyCountBitsL(BITMAPL_t word)
 //
 // Note:  Bitmap branches have maximum bitmap size = 32 bits.
 
-#ifdef JU_WIN
-static __inline BITMAPB_t j__udyCountBitsB(BITMAPB_t word)
-#else
 static inline BITMAPB_t j__udyCountBitsB(BITMAPB_t word)
-#endif 
 {
         word = (word & 0x55555555) + ((word & 0xAAAAAAAA) >>  1);
         word = (word & 0x33333333) + ((word & 0xCCCCCCCC) >>  2);
@@ -655,11 +650,7 @@ static inline BITMAPB_t j__udyCountBitsB(BITMAPB_t word)
 // Note:  Need both 32-bit and 64-bit versions of j__udyCountBitsL() because
 // bitmap leaves can have 64-bit bitmaps.
 
-#ifdef JU_WIN
-static __inline BITMAPL_t j__udyCountBitsL(BITMAPL_t word)
-#else
 static inline BITMAPL_t j__udyCountBitsL(BITMAPL_t word)
-#endif
 {
 #ifndef JU_64BIT
 
@@ -1548,64 +1539,32 @@ int j__udySearchLeafW(Pjlw_t Pjlw, Word_t LeafPop1, Word_t Index);
 
 #else  // complier support for inline
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeaf1(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeaf1(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNATIVE(uint8_t,  Pjll, LeafPop1, Index); }
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeaf2(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeaf2(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNATIVE(uint16_t, Pjll, LeafPop1, Index); }
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeaf3(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeaf3(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNONNAT(Pjll, LeafPop1, Index, 3, JU_COPY3_PINDEX_TO_LONG); }
 
 #ifdef JU_64BIT
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeaf4(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeaf4(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNATIVE(uint32_t, Pjll, LeafPop1, Index); }
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeaf5(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeaf5(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNONNAT(Pjll, LeafPop1, Index, 5, JU_COPY5_PINDEX_TO_LONG); }
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeaf6(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeaf6(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNONNAT(Pjll, LeafPop1, Index, 6, JU_COPY6_PINDEX_TO_LONG); }
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeaf7(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeaf7(Pjll_t Pjll, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNONNAT(Pjll, LeafPop1, Index, 7, JU_COPY7_PINDEX_TO_LONG); }
 
 #endif // JU_64BIT
 
-#ifdef JU_WIN
-static __inline int j__udySearchLeafW(Pjlw_t Pjlw, Word_t LeafPop1, Word_t Index)
-#else
 static inline int j__udySearchLeafW(Pjlw_t Pjlw, Word_t LeafPop1, Word_t Index)
-#endif
 { SEARCHLEAFNATIVE(Word_t, Pjlw, LeafPop1, Index); }
 
 #endif // compiler support for inline

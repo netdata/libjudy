@@ -21,28 +21,28 @@ Judy1Tables.c: Judy1TablesGen.c
 	$(CC) $(INCLUDES) $(AM_CFLAGS) @CFLAGS@ -o Judy1TablesGen Judy1TablesGen.c; ./Judy1TablesGen
 
 
-Judy1Test.c: copies
+Judy1Test.c: symlinks
 
-copies:
-	cp -f ../JudyCommon/JudyByCount.c      		Judy1ByCount.c   
-	cp -f ../JudyCommon/JudyCascade.c      		Judy1Cascade.c
-	cp -f ../JudyCommon/JudyCount.c        		Judy1Count.c
-	cp -f ../JudyCommon/JudyCreateBranch.c 		Judy1CreateBranch.c
-	cp -f ../JudyCommon/JudyDecascade.c    		Judy1Decascade.c
-	cp -f ../JudyCommon/JudyDel.c          		Judy1Unset.c
-	cp -f ../JudyCommon/JudyFirst.c        		Judy1First.c
-	cp -f ../JudyCommon/JudyFreeArray.c    		Judy1FreeArray.c
-	cp -f ../JudyCommon/JudyGet.c          		Judy1Test.c
-	cp -f ../JudyCommon/JudyGet.c          		j__udy1Test.c
-	cp -f ../JudyCommon/JudyInsArray.c     		Judy1SetArray.c
-	cp -f ../JudyCommon/JudyIns.c          		Judy1Set.c
-	cp -f ../JudyCommon/JudyInsertBranch.c 		Judy1InsertBranch.c
-	cp -f ../JudyCommon/JudyMallocIF.c     		Judy1MallocIF.c
-	cp -f ../JudyCommon/JudyMemActive.c    		Judy1MemActive.c
-	cp -f ../JudyCommon/JudyMemUsed.c      		Judy1MemUsed.c
-	cp -f ../JudyCommon/JudyPrevNext.c     		Judy1Next.c
-	cp -f ../JudyCommon/JudyPrevNext.c     		Judy1Prev.c
-	cp -f ../JudyCommon/JudyPrevNextEmpty.c		Judy1NextEmpty.c
-	cp -f ../JudyCommon/JudyPrevNextEmpty.c		Judy1PrevEmpty.c
-	cp -f ../JudyCommon/JudyTables.c	        Judy1TablesGen.c
+symlinks:
+	ln -sf ../JudyCommon/JudyByCount.c      	Judy1ByCount.c   
+	ln -sf ../JudyCommon/JudyCascade.c      	Judy1Cascade.c
+	ln -sf ../JudyCommon/JudyCount.c        	Judy1Count.c
+	ln -sf ../JudyCommon/JudyCreateBranch.c 	Judy1CreateBranch.c
+	ln -sf ../JudyCommon/JudyDecascade.c    	Judy1Decascade.c
+	ln -sf ../JudyCommon/JudyDel.c          	Judy1Unset.c
+	ln -sf ../JudyCommon/JudyFirst.c        	Judy1First.c
+	ln -sf ../JudyCommon/JudyFreeArray.c    	Judy1FreeArray.c
+	ln -sf ../JudyCommon/JudyGet.c          	Judy1Test.c
+	ln -sf ../JudyCommon/JudyGet.c          	j__udy1Test.c
+	ln -sf ../JudyCommon/JudyInsArray.c     	Judy1SetArray.c
+	ln -sf ../JudyCommon/JudyIns.c          	Judy1Set.c
+	ln -sf ../JudyCommon/JudyInsertBranch.c 	Judy1InsertBranch.c
+	ln -sf ../JudyCommon/JudyMallocIF.c     	Judy1MallocIF.c
+	ln -sf ../JudyCommon/JudyMemActive.c    	Judy1MemActive.c
+	ln -sf ../JudyCommon/JudyMemUsed.c      	Judy1MemUsed.c
+	ln -sf ../JudyCommon/JudyPrevNext.c     	Judy1Next.c
+	ln -sf ../JudyCommon/JudyPrevNext.c     	Judy1Prev.c
+	ln -sf ../JudyCommon/JudyPrevNextEmpty.c	Judy1NextEmpty.c
+	ln -sf ../JudyCommon/JudyPrevNextEmpty.c	Judy1PrevEmpty.c
+	ln -sf ../JudyCommon/JudyTables.c	        Judy1TablesGen.c
 

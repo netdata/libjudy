@@ -1,17 +1,5 @@
-1.   Version ( ) by (twh)
 
-o fixed assumption of signed char in test programs.
-o updated sh_build
-
-1.0.1 Version (Dec 2004) by (twh)
-
-o fixed bootstrap to use later versions
-o fixed manpage naming from (3X) to (3)
-o Code changes to support Microsoft __inline directive
-o Move away from using symlinks to using copies
-o Added build.bat to support building on Windows
-
-1.0.0 Version (Sept 2004) by (twh)
+1.0.0 Version (Setp 2004) by (twh)
 
 o Complete Autoconfisication of Judy
 o Removed previous build environment

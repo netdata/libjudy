@@ -17,9 +17,9 @@
 #define FAILURE(STR, UL)						\
 {									\
 printf(         "Error: %s %lu, file='%s', 'function='%s', line %d\n",	\
-	STR, (Word_t)(UL), __FILE__, __FUNCTI0N__, __LINE__); 		\
+	STR, UL, __FILE__, __FUNCTI0N__, __LINE__); 			\
 fprintf(stderr, "Error: %s %lu, file='%s', 'function='%s', line %d\n",	\
-	STR, (Word_t)(UL), __FILE__, __FUNCTI0N__, __LINE__); 		\
+	STR, UL, __FILE__, __FUNCTI0N__, __LINE__); 			\
 	exit(1);							\
 }
 
@@ -216,7 +216,7 @@ main(int argc, char *argv[])
     Word_t Groups;		// Number of measurement groups
     Word_t grp;
 
-    int    c;
+    char c;
     extern char *optarg;
 
 //////////////////////////////////////////////////////////////
@@ -406,10 +406,10 @@ main(int argc, char *argv[])
 	    TestJudyCount(J1, JL, LowIndex, Delta);
 	}
 //      Test JLN, J1N
-	HighIndex = TestJudyNext(J1, JL, 0UL, TotalPop);
+	HighIndex = TestJudyNext(J1, JL, LowIndex, Delta);
 
 //      Test JLP, J1P
-	TestJudyPrev(J1, JL, ~0UL, TotalPop);
+	TestJudyPrev(J1, JL, HighIndex, Delta);
 
 //      Test JLNE, J1NE
 	TestJudyNextEmpty(J1, JL, LowIndex, Delta);
@@ -604,7 +604,7 @@ TestJudyGet(void *J1, void *JL, void *JH, Word_t Seed, Word_t Elements)
 
 	J1T(Rcode, J1, TstIndex);
 	if (Rcode != 1)
-	    FAILURE("Judy1Test Rcode != 1", Rcode);
+	    FAILURE("Judy1Test Rcode != 1", (Word_t) Rcode);
 
 	JLG(PValue, JL, TstIndex);
 	if (PValue == (Word_t *) NULL)
@@ -649,7 +649,7 @@ TestJudyDup(void **J1, void **JL, void **JH, Word_t Seed, Word_t Elements)
 
 	J1S(Rcode, *J1, TstIndex);
 	if (Rcode != 0)
-	    FAILURE("Judy1Set Rcode != 0", Rcode);
+	    FAILURE("Judy1Set Rcode != 0", (Word_t) Rcode);
 
 	JLI(PValue, *JL, TstIndex);
 	if (PValue == (Word_t *) NULL)
@@ -683,7 +683,7 @@ TestJudyCount(void *J1, void *JL, Word_t LowIndex, Word_t Elements)
     {
 	J1C(Count1, J1, LowIndex, TstIndex);
 	if (Count1 == JERR)
-	    FAILURE("Judy1Count ret JERR", Count1);
+	    FAILURE("Judy1Count ret JERR", (Word_t) Count1);
 
 	if (Count1 != (elm + 1))
 	{
@@ -702,7 +702,7 @@ TestJudyCount(void *J1, void *JL, Word_t LowIndex, Word_t Elements)
 
 	JLC(CountL, JL, LowIndex, TstIndex);
 	if (CountL == JERR)
-	    FAILURE("JudyLCount ret JERR", CountL);
+	    FAILURE("JudyLCount ret JERR", (Word_t) CountL);
 
 	if (CountL != (elm + 1)) FAILURE("JLC at", elm);
 
@@ -732,19 +732,13 @@ Word_t TestJudyNext(void *J1, void *JL, Word_t LowIndex, Word_t Elements)
 	if (PValue == NULL)
 	    FAILURE("JudyLNext ret NULL PValue at", elm);
 	if (Rcode != 1)
-	    FAILURE("Judy1Next Rcode != 1 =", Rcode);
+	    FAILURE("Judy1Next Rcode != 1 =", (Word_t) Rcode);
 	if (JLindex != J1index)
-	    FAILURE("JudyLNext & Judy1Next ret different PIndex at", elm);
+	    FAILURE("Judy1Next & Judy1Next ret different PIndex at", elm);
 
 	JLN(PValue, JL, JLindex);	// Get next one
 	J1N(Rcode, J1, J1index);	// Get next one
     }
-
-    if (PValue != NULL)
-        FAILURE("JudyLNext PValue != NULL", PValue);
-    if (Rcode != 0)
-        FAILURE("Judy1Next Rcode != 1 =", Rcode);
-
 //  perhaps a check should be done here -- if I knew what to expect.
     return(JLindex);		// return last one
 }
@@ -772,17 +766,13 @@ TestJudyPrev(void *J1, void *JL, Word_t HighIndex, Word_t Elements)
 	if (PValue == NULL)
 	    FAILURE("JudyLPrev ret NULL PValue at", elm);
 	if (Rcode != 1)
-	    FAILURE("Judy1Prev Rcode != 1 =", Rcode);
+	    FAILURE("Judy1Prev Rcode != 1 =", (Word_t) Rcode);
 	if (JLindex != J1index)
-	    FAILURE("JudyLPrev & Judy1Prev ret different PIndex at", elm);
+	    FAILURE("Judy1Prev & Judy1Prev ret different PIndex at", elm);
 
 	JLP(PValue, JL, JLindex);	// Get previous one
 	J1P(Rcode, J1, J1index);	// Get previous one
     }
-    if (PValue != NULL)
-        FAILURE("JudyLPrev PValue != NULL", PValue);
-    if (Rcode != 0)
-        FAILURE("Judy1Prev Rcode != 1 =", Rcode);
 //  perhaps a check should be done here -- if I knew what to expect.
     return(0);
 }
@@ -810,14 +800,14 @@ TestJudyNextEmpty(void *J1, void *JL, Word_t LowIndex, Word_t Elements)
 //      Find next Empty Index, JLindex is modified by JLNE
 	JLNE(Rcode, JL, JLindex);	// Rcode = JudyLNextEmpty(JL, &JLindex, PJE0)
 	if (Rcode != 1)
-	    FAILURE("JudyLNextEmpty Rcode != 1 =", Rcode);
+	    FAILURE("JudyLNextEmpty Rcode != 1 =", (Word_t) Rcode);
 
 	if (pFlag) { printf("JNE: %8lu\t0x%lx\n", elm, JLindex); }
 
 //      Find next Empty Index, J1index is modified by J1NE
 	J1NE(Rcode, J1, J1index);	// Rcode = Judy1NextEmpty(J1, &J1index, PJE0)
 	if (Rcode != 1)
-	    FAILURE("Judy1NextEmpty Rcode != 1 =", Rcode);
+	    FAILURE("Judy1NextEmpty Rcode != 1 =", (Word_t) Rcode);
 
 	if (J1index != JLindex)
 	    FAILURE("JLNE != J1NE returned index at", elm);
@@ -860,14 +850,14 @@ TestJudyPrevEmpty(void *J1, void *JL, Word_t HighIndex, Word_t Elements)
 
 	J1PE(Rcode, J1, J1index);	// Rcode = Judy1PrevEmpty(J1, &J1index, PJE0)
 	if (Rcode != 1)
-	    FAILURE("Judy1PrevEmpty Rcode != 1 =", Rcode);
+	    FAILURE("Judy1PrevEmpty Rcode != 1 =", (Word_t) Rcode);
 
 	if (pFlag) { printf("JPE: %8lu\t0x%lx\n", elm, J1index); }
 
 //      Find next Empty Index, JLindex is modified by JLPE
 	JLPE(Rcode, JL, JLindex);	// Rcode = JudyLPrevEmpty(JL, &JLindex, PJE0)
 	if (Rcode != 1)
-	    FAILURE("JudyLPrevEmpty Rcode != 1 =", Rcode);
+	    FAILURE("JudyLPrevEmpty Rcode != 1 =", (Word_t) Rcode);
 
 	if (J1index != JLindex)
 	    FAILURE("JLPE != J1PE returned index at", elm);
@@ -913,15 +903,15 @@ TestJudyDel(void **J1, void **JL, void **JH, Word_t Seed, Word_t Elements)
 
 	J1U(Rcode, *J1, TstIndex);
 	if (Rcode != 1)
-	    FAILURE("Judy1Unset ret Rcode != 1", Rcode);
+	    FAILURE("Judy1Unset ret Rcode != 1", (Word_t) Rcode);
 
 	JLD(Rcode, *JL, TstIndex);
 	if (Rcode != 1)
-	    FAILURE("JudyLDel ret Rcode != 1", Rcode);
+	    FAILURE("JudyLDel ret Rcode != 1", (Word_t) Rcode);
 
 	JHSD(Rcode, *JH, (void *)(&TstIndex), sizeof(Word_t));
 	if (Rcode != 1)
-	    FAILURE("JudyHSDel ret Rcode != 1", Rcode);
+	    FAILURE("JudyHSDel ret Rcode != 1", (Word_t) Rcode);
 
 	TotalPop--;
     }

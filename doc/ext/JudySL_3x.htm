@@ -1,13 +1,13 @@
 <HTML>
 <HEAD>
-<!-- @(#) $Revision: 4.43 $ $Source: /cvsroot/judy/doc/ext/JudySL_3.htm,v $ --->
-<TITLE>JudySL(3)</TITLE>
+<!-- @(#) $Revision: 4.43 $ $Source: /cvsroot/judy/doc/ext/JudySL_3x.htm,v $ --->
+<TITLE>JudySL(3X)</TITLE>
 </HEAD>
 <BODY>
 <TABLE border=0 width="100%"><TR>
-<TD width="40%" align="left">JudySL(3)</TD>
+<TD width="40%" align="left">JudySL(3X)</TD>
 <TD width="10%" align="center">     </TD>
-<TD width="40%" align="right">JudySL(3)</TD>
+<TD width="40%" align="right">JudySL(3X)</TD>
 </TR></TABLE>
 <P>
 <DL>
@@ -35,14 +35,14 @@ Word_t   Rc_word;                    // full word return value
 
 Pvoid_t PJSLArray = (Pvoid_t) NULL;  // initialize JudySL array
 
-<A href="#JSLI" >JSLI</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3.htm#JudySLIns">JudySLIns()</A>
-<A href="#JSLD" >JSLD</A>( Rc_int,  PJSLArray, Index);   // <A href="JudySL_funcs_3.htm#JudySLDel">JudySLDel()</A>
-<A href="#JSLG" >JSLG</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3.htm#JudySLGet">JudySLGet()</A>
-<A href="#JSLFA">JSLFA</A>(Rc_word, PJSLArray);          // <A href="JudySL_funcs_3.htm#JudySLFreeArray">JudySLFreeArray()</A>
-<A href="#JSLF" >JSLF</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3.htm#JudySLFirst">JudySLFirst()</A>
-<A href="#JSLN" >JSLN</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3.htm#JudySLNext">JudySLNext()</A>
-<A href="#JSLL" >JSLL</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3.htm#JudySLLast">JudySLLast()</A>
-<A href="#JSLP" >JSLP</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3.htm#JudySLPrev">JudySLPrev()</A>
+<A href="#JSLI" >JSLI</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3x.htm#JudySLIns">JudySLIns()</A>
+<A href="#JSLD" >JSLD</A>( Rc_int,  PJSLArray, Index);   // <A href="JudySL_funcs_3x.htm#JudySLDel">JudySLDel()</A>
+<A href="#JSLG" >JSLG</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3x.htm#JudySLGet">JudySLGet()</A>
+<A href="#JSLFA">JSLFA</A>(Rc_word, PJSLArray);          // <A href="JudySL_funcs_3x.htm#JudySLFreeArray">JudySLFreeArray()</A>
+<A href="#JSLF" >JSLF</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3x.htm#JudySLFirst">JudySLFirst()</A>
+<A href="#JSLN" >JSLN</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3x.htm#JudySLNext">JudySLNext()</A>
+<A href="#JSLL" >JSLL</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3x.htm#JudySLLast">JudySLLast()</A>
+<A href="#JSLP" >JSLP</A>( PValue,  PJSLArray, Index);   // <A href="JudySL_funcs_3x.htm#JudySLPrev">JudySLPrev()</A>
 
 </PRE></B>
 <!----------------->
@@ -70,12 +70,12 @@ As with an ordinary array, there are no duplicate indexes (strings)
 in a JudySL array.
 <P>
 Using the macros described here, rather than the
-<A href="JudySL_funcs_3.htm">JudySL function calls</A>,
+<A href="JudySL_funcs_3x.htm">JudySL function calls</A>,
 the default error handling sends a
 message to the standard error and terminates the program with
 <B>exit(1)</B>.
 <P>
-<DT><A name="JSLI"><B>JSLI(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3.htm#JudySLIns">JudySLIns()</A></DT>
+<DT><A name="JSLI"><B>JSLI(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLIns">JudySLIns()</A></DT>
 <DD>
 Insert an <B>Index</B> string and <B>Value</B> in the JudySL array <B>PJSLArray</B>.
 If the <B>Index</B> is successfully inserted,
@@ -94,7 +94,7 @@ for example:
 Therefore, pointers returned from previous <B>JudySL</B> calls become
 invalid and must be reacquired.
 <P>
-<DT><A name="JSLD"><B>JSLD(Rc_int, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3.htm#JudySLDel">JudySLDel()</A></DT>
+<DT><A name="JSLD"><B>JSLD(Rc_int, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLDel">JudySLDel()</A></DT>
 <DD>
 Delete the specified <B>Index</B>/<B>Value</B> pair (array element) from the
 JudySL array.
@@ -103,14 +103,14 @@ Return <B>Rc_int</B> set to 1 if successful.
 array and it was previously inserted.
 Return <B>Rc_int</B> set to 0 if <B>Index</B> was not present.
 <P>
-<DT><A name="JSLG"><B>JSLG(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3.htm#JudySLGet">JudySLGet()</A></DT>
+<DT><A name="JSLG"><B>JSLG(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLGet">JudySLGet()</A></DT>
 <DD>
 Get the pointer to <B>Index</B>'s <B>Value</B>.
 <P>
 Return <B>PValue</B> pointing to <B>Index</B>'s <B>Value</B>.
 Return <B>PValue</B> set to <B>NULL</B> if the <B>Index</B> was not present.
 <P>
-<DT><A name="JSLFA"><B>JSLFA(Rc_word, PJSLArray)</B></A> // <A href="JudySL_funcs_3.htm#JudySLFreeArray">JudySLFreeArray()</A></DT>
+<DT><A name="JSLFA"><B>JSLFA(Rc_word, PJSLArray)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLFreeArray">JudySLFreeArray()</A></DT>
 <DD>
 Given a pointer to a JudySL array (<B>PJSLArray</B>), free the entire array (much faster
 than using a <B>JSLN()</B>, <B>JSLD()</B> loop.)
@@ -138,7 +138,7 @@ To accomodate all possible returns, the <B>Index</B> buffer must be
 at least as large
 as the largest string stored in the array.
 <P>
-<DT><A name="JSLF"><B>JSLF(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3.htm#JudySLFirst">JudySLFirst()</A></DT>
+<DT><A name="JSLF"><B>JSLF(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLFirst">JudySLFirst()</A></DT>
 <DD>
 Search (inclusive) for the first index present that is equal to or greater than the
 passed <B>Index</B> string.
@@ -151,7 +151,7 @@ strcpy (Index, "");
 JSLF(PValue, PJSLArray, Index);
 </PRE>
 <P>
-<DT><A name="JSLN"><B>JSLN(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3.htm#JudySLNext">JudySLNext()</A></DT>
+<DT><A name="JSLN"><B>JSLN(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLNext">JudySLNext()</A></DT>
 <DD>
 Search (exclusive) for the next index present that is greater than the passed
 <B>Index</B> string.
@@ -159,7 +159,7 @@ Search (exclusive) for the next index present that is greater than the passed
 the valid indexes in a JudySL array, or to locate a "neighbor" of a given
 index.
 <P>
-<DT><A name="JSLL"><B>JSLL(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3.htm#JudySLLast">JudySLLast()</A></DT>
+<DT><A name="JSLL"><B>JSLL(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLLast">JudySLLast()</A></DT>
 <DD>
 Search (inclusive) for the last index present that is equal to or less
 than the passed <B>Index</B> string.
@@ -168,7 +168,7 @@ such as a max-length string of 0xff bytes.)
 <B>JSLL()</B> is typically used to <I>begin</I> a reverse-sorted-order
 scan of the valid indexes in a JudySL array.
 <P>
-<DT><A name="JSLP"><B>JSLP(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3.htm#JudySLPrev">JudySLPrev()</A></DT>
+<DT><A name="JSLP"><B>JSLP(PValue, PJSLArray, Index)</B></A> // <A href="JudySL_funcs_3x.htm#JudySLPrev">JudySLPrev()</A></DT>
 <DD>
 Search (exclusive) for the previous index present that is less than the
 passed <B>Index</B> string.
@@ -177,7 +177,7 @@ scan of the valid indexes in a JudySL array, or to locate a "neighbor" of
 a given index.
 <!----------------->
 <P>
-<DT><A name="JSLERR"><B>ERRORS:</B> See: </A><A href="Judy_3.htm#ERRORS">Judy_3.htm#ERRORS</A></DT>
+<DT><A name="JSLERR"><B>ERRORS:</B> See: </A><A href="Judy_3x.htm#ERRORS">Judy_3x.htm#ERRORS</A></DT>
 <DD>
 <!----------------->
 <P>
@@ -230,10 +230,10 @@ Judy was invented by Doug Baskins and implemented by Hewlett-Packard.
 <P>
 <DT><B>SEE ALSO</B></DT>
 <DD>
-<A href="Judy_3.htm">Judy(3)</A>,
-<A href="Judy1_3.htm">Judy1(3)</A>,
-<A href="JudyL_3.htm">JudyL(3)</A>,
-<A href="JudyHS_3.htm">JudyHS(3)</A>,
+<A href="Judy_3x.htm">Judy(3X)</A>,
+<A href="Judy1_3x.htm">Judy1(3X)</A>,
+<A href="JudyL_3x.htm">JudyL(3X)</A>,
+<A href="JudyHS_3x.htm">JudyHS(3X)</A>,
 <BR>
 <I>malloc()</I>,
 <BR>

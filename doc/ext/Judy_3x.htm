@@ -1,13 +1,13 @@
 <HTML>
 <HEAD>
-<!-- @(#) $Revision: 4.36 $ $Source: /cvsroot/judy/doc/ext/Judy_3.htm,v $ --->
-<TITLE>Judy(3)</TITLE>
+<!-- @(#) $Revision: 4.36 $ $Source: /cvsroot/judy/doc/ext/Judy_3x.htm,v $ --->
+<TITLE>Judy(3X)</TITLE>
 </HEAD>
 <BODY>
 <TABLE border=0 width="100%"><TR>
-<TD width="40%" align="left">Judy(3)</TD>
+<TD width="40%" align="left">Judy(3X)</TD>
 <TD width="10%" align="center">     </TD>
-<TD width="40%" align="right">Judy(3)</TD>
+<TD width="40%" align="right">Judy(3X)</TD>
 </TR></TABLE>
 <P>
 <!----------------->
@@ -21,10 +21,10 @@ C library functions for creating and accessing dynamic arrays
 <DT><B>SYNOPSIS</B></DT>
 <DD>
 <PRE>
-<A href="Judy1_3.htm">Judy1</A>  - maps an <B>Index</B> (word) to a <B>bit</B>
-<A href="JudyL_3.htm">JudyL</A>  - maps an <B>Index</B> (word) to a <B>Value</B> (word/pointer)
-<A href="JudySL_3.htm">JudySL</A> - maps an <B>Index</B> (null terminated string) to a <B>Value</B>
-<A href="JudyHS_3.htm">JudyHS</A> - maps an <B>Index</B> (array-of-bytes) of <B>Length</B> to a <B>Value</B>
+<A href="Judy1_3x.htm">Judy1</A>  - maps an <B>Index</B> (word) to a <B>bit</B>
+<A href="JudyL_3x.htm">JudyL</A>  - maps an <B>Index</B> (word) to a <B>Value</B> (word/pointer)
+<A href="JudySL_3x.htm">JudySL</A> - maps an <B>Index</B> (null terminated string) to a <B>Value</B>
+<A href="JudyHS_3x.htm">JudyHS</A> - maps an <B>Index</B> (array-of-bytes) of <B>Length</B> to a <B>Value</B>
 </PRE>
 <!----------------->
 <P>
@@ -39,20 +39,20 @@ A dynamic array (sparsely populated) can also be thought of as a
 A <B>Word_t</B> is a <I>typedef unsigned long int </I> in <B>Judy.h</B> 
 and must be the same size as <I>sizeof(void *)</I> I.E. a pointer.
 <P>
-<A href="Judy1_3.htm">Judy1</A> functions: <B>Index</B> is a
+<A href="Judy1_3x.htm">Judy1</A> functions: <B>Index</B> is a
 <B>Word_t</B> and <B>Value</B> is just a <B>bit</B> or simply
 a flag that <B>Index</B> is present or missing from the array.
 This can be thought of as a huge bitmap.
 <P>
-<A href="JudyL_3.htm">JudyL</A> functions: <B>Index</B> is a
+<A href="JudyL_3x.htm">JudyL</A> functions: <B>Index</B> is a
 <B>Word_t</B> and <B>Value</B> is a <B>Word_t</B>.  This makes
 <B>JudyL</B> a pure word-to-word/pointer mapper.  <B>JudySL</B> and
 <B>JudyHL</B> are based on this property of <B>JudyL</B>.
 <P> 
-<A href="JudySL_3.htm">JudySL</A> functions: <B>Index</B> is a
+<A href="JudySL_3x.htm">JudySL</A> functions: <B>Index</B> is a
 null-terminated string and <B>Value</B> is a <B>Word_t</B>.
 <P>
-<A href="JudyHS_3.htm">JudyHS</A> functions:  <B>Index</B> is an
+<A href="JudyHS_3x.htm">JudyHS</A> functions:  <B>Index</B> is an
 array-of-bytes of length:  <B>Length</B>.  <B>Value</B> is a
 <B>Word_t</B>.  This new addition (May 2004) to Judy is a hybird using
 the best features of hashing and Judy methods.  The author believes
@@ -275,9 +275,9 @@ statement in your program.
 <P>
 <DT><B>SEE ALSO</B></DT>
 <DD>
-<A href="Judy1_3.htm">Judy1(3)</A>,
-<A href="JudyL_3.htm">JudyL(3)</A>,
-<A href="JudySL_3.htm">JudySL(3)</A>,
-<A href="JudyHS_3.htm">JudyHS(3)</A>
+<A href="Judy1_3x.htm">Judy1(3X)</A>,
+<A href="JudyL_3x.htm">JudyL(3X)</A>,
+<A href="JudySL_3x.htm">JudySL(3X)</A>,
+<A href="JudyHS_3x.htm">JudyHS(3X)</A>
 </BODY>
 </HTML>
