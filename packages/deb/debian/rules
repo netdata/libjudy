@@ -19,20 +19,12 @@ ifeq ($(ARCH), amd64)
      BIT := --enable-64-bit
 endif
 
-ifeq ($(ARCH), s390)
-     BIT := --enable-32-bit
-endif
-
 ifeq ($(ARCH), ia64)
      BIT := --enable-64-bit
 endif
 
 ifeq ($(ARCH), alpha)
      BIT := --enable-64-bit
-endif
-
-ifeq ($(ARCH), powerpc)
-     BIT := --enable-32-bit
 endif
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
@@ -48,7 +40,7 @@ configure: configure-stamp
 configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
-	./configure $(BIT) --prefix=/usr
+	./configure $(BIT) --prefix=/usr --mandir=/usr/share
 
 	touch configure-stamp
 
@@ -94,7 +86,7 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_movefiles
+	dh_install
 	dh_installdocs
 	dh_installexamples
 	dh_installmenu
