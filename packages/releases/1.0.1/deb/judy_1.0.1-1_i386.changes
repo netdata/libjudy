@@ -1,0 +1,36 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Format: 1.7
+Date: Tue, 14 Dec 2004 09:23:48 -0700
+Source: judy
+Binary: libjudydebian1 libjudy-dev
+Architecture: source i386
+Version: 1.0.1-1
+Distribution: unstable
+Urgency: low
+Maintainer: Troy Heber <troy.heber@hp.com>
+Changed-By: Troy Heber <troy.heber@hp.com>
+Description: 
+ libjudy-dev - C library for creating and accessing dynamic arrays (dev package)
+ libjudydebian1 - C library for creating and accessing dynamic arrays
+Closes: 2277142
+Changes: 
+ judy (1.0.1-1) unstable; urgency=low
+ .
+   * New version of Judy with new 1.0.1 API
+   * Troy Heber is taking over maintainership from Theodore Y. Ts'o.
+   * Closes: Bug#2277142
+Files: 
+ cfe3c279aa0b9284fead96e2eb06ac96 546 libs optional judy_1.0.1-1.dsc
+ 42fbf2e6ba0d7cfff6222a8e6610fe47 728816 libs optional judy_1.0.1-1.tar.gz
+ 10834753b625a3cc83fd45edbc7a7cd3 142650 devel optional libjudy-dev_1.0.1-1_i386.deb
+ ab62ee43edd2f91661fa7afab9fbcda9 68950 libs optional libjudydebian1_1.0.1-1_i386.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.5 (GNU/Linux)
+
+iD8DBQFBxvFAQOr9C+GfGI4RAimrAKCPvVv9JU9B3tGJILufD9+cLy1//QCfYchN
+9PLDI88v8JS5oYk+4D0jivQ=
+=1yU2
+-----END PGP SIGNATURE-----

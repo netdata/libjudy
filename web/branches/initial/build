@@ -1,0 +1,24 @@
+cp -f template/index.m4 template/html.m4 ./
+cp -f template/index.m4 template/html.m4 ./doc
+cp -f template/index.m4 template/html.m4 ./news
+cp -f template/index.m4 template/html.m4 ./examples
+cp -f template/index.m4 template/html.m4 ./downloads
+cp -f template/index.m4 template/html.m4 ./contact
+cp -f template/index.m4 template/html.m4 ./error
+
+m4 ./index.m4 > ./index.html
+cd doc; m4 ./index.m4 > ./index.html; cd ..
+cd news; m4 ./index.m4 > ./index.html; cd ..
+cd examples; m4 ./index.m4 > ./index.html; cd ..
+cd downloads; m4 ./index.m4 > ./index.html; cd ..
+cd contact; m4 ./index.m4 > ./index.html; cd ..
+cd error; m4 ./index.m4 > ./index.html; cd ..
+
+rm -f ./index.m4 ./html.m4
+rm -f ./doc/index.m4 ./doc/html.m4
+rm -f ./news/index.m4 ./news/html.m4
+rm -f ./examples/index.m4 ./examples/html.m4
+rm -f ./downloads/index.m4 ./downloads/html.m4
+rm -f ./contact/index.m4 ./contact/html.m4
+rm -f ./error/index.m4 ./error/html.m4
+

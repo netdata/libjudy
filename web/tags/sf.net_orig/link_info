@@ -1,0 +1,7 @@
+cd application; ln -s ../downloads/10minutes.htm
+ln -s downloads benchmarks
+ln -s downloads  download
+ln -s downloads  Download
+ln -s  Judy_3x.htm index.htm 
+ln -s  Judy_3x.htm index.html 
+

@@ -1,0 +1,551 @@
+<HTML>
+<HEAD>
+<!-- @(#) $Revision: 4.36 $ $Source: /cvsroot/judy/doc/ext/JudyNL_3x.htm,v $ --->
+<TITLE>JudyNL(3X)</TITLE>
+</HEAD>
+
+<BODY>
+<TABLE border=0 width="100%"><TR>
+<TD width="20%" align="left">JudyNL(3X)</TD>
+<TD width="60%" align="center">HP-UX Release 11i</TD>
+<TD width="20%" align="right">JudyNL(3X)</TD>
+</TR></TABLE>
+
+<P>
+<DL>
+
+<!----------------->
+<DT><B>NAME</B></DT>
+<DD>
+JudyNL functions -
+"unbounded" dynamic word arrays with arbitrary multi-word indexes
+and sorting features
+
+<!----------------->
+<P>
+<DT><B>SYNOPSIS</B></DT>
+<DD>
+<B><PRE>
+#include &lt;Judy.h&gt;
+cc prog.c -lJudy
+
+PPvoid_t <A href="#JudyNLGet"      >JudyNLGet</A>(      Pcvoid_t  PArray, const Word_t * PIndex, Word_t Length, PJError_t PJError);
+PPvoid_t <A href="#JudyNLIns"      >JudyNLIns</A>(      PPvoid_t PPArray, const Word_t * PIndex, Word_t Length, PJError_t PJError);
+int      <A href="#JudyNLDel"      >JudyNLDel</A>(      PPvoid_t PPArray, const Word_t * PIndex, Word_t Length, PJError_t PJError);
+PPvoid_t <A href="#JudyNLFirst"    >JudyNLFirst</A>(    Pcvoid_t  PArray,       Word_t * PIndex, Word_t Length, PJError_t PJError);
+PPvoid_t <A href="#JudyNLNext"     >JudyNLNext</A>(     Pcvoid_t  PArray,       Word_t * PIndex, Word_t Length, PJError_t PJError);
+PPvoid_t <A href="#JudyNLLast"     >JudyNLLast</A>(     Pcvoid_t  PArray,       Word_t * PIndex, Word_t Length, PJError_t PJError);
+PPvoid_t <A href="#JudyNLPrev"     >JudyNLPrev</A>(     Pcvoid_t  PArray,       Word_t * PIndex, Word_t Length, PJError_t PJError);
+Word_t   <A href="#JudyNLFreeArray">JudyNLFreeArray</A>(PPvoid_t PPArray, PJError_t PJError);
+</PRE></B>
+<P>
+A macro equivalent exists for each function call.
+These macros provide a shorthand way of calling <B>JudyNL</B> functions
+with consistent parameter lists, hidden error checking (but otherwise no
+performance impacts), and the function's non-error return code placed in
+the caller's <B>Rc</B> variable (which should match the function's
+return type).
+<B><PRE>
+<A href="#JudyNLGet"      >JNLG</A>( Rc, PArray, PIndex, Length);
+<A href="#JudyNLIns"      >JNLI</A>( Rc, PArray, PIndex, Length);
+<A href="#JudyNLDel"      >JNLD</A>( Rc, PArray, PIndex, Length);
+<A href="#JudyNLFirst"    >JNLF</A>( Rc, PArray, PIndex, Length);
+<A href="#JudyNLNext"     >JNLN</A>( Rc, PArray, PIndex, Length);
+<A href="#JudyNLLast"     >JNLL</A>( Rc, PArray, PIndex, Length);
+<A href="#JudyNLPrev"     >JNLP</A>( Rc, PArray, PIndex, Length);
+<A href="#JudyNLFreeArray">JNLFA</A>(Rc, PArray);
+
+JU_ERRNO(&amp;JError);
+JU_ERRID(&amp;JError);
+</PRE></B>
+<P>
+For error handling, optionally choose one of:
+<B><PRE>
+#define JUDYERROR(CallerFile, CallerLine, JudyFunc, JudyErrno, JudyErrID) ...
+#define JUDYERROR_NOTEST 1
+</PRE></B>
+
+<!----------------->
+<P>
+<DT><B>DESCRIPTION</B></DT>
+<DD>
+The <B>JudyNL</B> functions provide an efficient way to use long
+(multi-word) numeric values as indexes into a
+<A href="Judy_3x.htm">Judy</A> array.
+The indexes can actually be any bit patterns treated as (cast to) arrays
+of Word_t's.
+The <B>JudyNL</B> functions support large, sparse arrays with
+long-number indexes, a form of associative arrays, where array elements
+are sorted by index sizes, then numerically by indexes of the same size.
+This can be thought of as:
+<P><PRE>
+void * JudyNLArray[Word_t[*]];
+</PRE>
+<P>
+Since an initial (empty) JudyNL array is represented by a null pointer,
+JudyNL arrays can be easily made multi-dimensional, which can be thought
+of as:
+<P><PRE>
+void * JudyNLArray[Word_t[*]][Word_t[*]]...;
+</PRE>
+<P>
+In other words, a JudyNL array's values can be pointers to other JudyNL
+arrays.
+
+<P>
+<DL>
+<DT><A name="JudyNLGet"><B>JudyNLGet(PArray, &amp;Index, Length, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to a JudyNL long-number array, an array index to locate
+that is a series of words (Word_t), and the length of the index in
+bytes, return a pointer to the value area (array element) corresponding
+to the specified index, a null pointer if <B>Index</B> is not stored (valid),
+or <B>PPJERR</B> in case of serious error (see
+<A href="#ERRORS">ERRORS</A>).
+<B>PIndex</B> must be word-aligned and <B>Length</B> must be a multiple
+of the system's word size in bytes.
+These conditions are always true for non-string native C data types and
+sizeof() those types.
+<P>
+The following statements would be equivalent if C supported multi-word
+numbers, <B>Value</B> is a pointer, and no error occurs:
+<P><PRE>
+void * Array[Word_t[5]];          // native C
+Array[Index] = Value;
+Value = Array[Index];
+
+Pvoid_t PArray = (Pvoid_t) NULL;  // JudyNL array
+*JudyNLIns(&amp;PArray, &amp;Index, 20, PJE0) = Value;
+Value = *JudyNLGet(PArray, &amp;Index, 20, PJE0);
+</PRE>
+
+<P>
+<DT><A name="JudyNLIns"><B>JudyNLIns(&amp;PArray, &amp;Index, Length, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to a pointer to a JudyNL long-number array, the latter
+of which must be initialized to <B>(Pvoid_t) NULL</B> before the first
+call of <B>JudyNLIns()</B>, an array index to insert (store) that is a
+series of words (Word_t), and the length of the index in bytes, return
+a pointer to the value area (array element) corresponding to the
+specified index, or <B>PPJERR</B> in case of serious error (see
+<A href="#ERRORS">ERRORS</A>).
+<B>PIndex</B> must be word-aligned and <B>Length</B> must be a multiple
+of the system's word size in bytes.
+These conditions are always true for non-string native C data types and
+sizeof() those types.
+<B>PIndex</B> must be non-null unless <B>Length</B> is zero.
+The caller must save the desired value in the value area,
+which is set to zero upon insertion of a new index.
+If the JudyNL array is initially empty, it is created.
+<B>*PPArray</B> may be modified whenever a new <B>Index</B> is inserted.
+<P>
+The following statements would be equivalent if C supported multi-word
+numbers, <B>Value</B> is a pointer, and no error occurs:
+<P><PRE>
+Array[Index] = Value;                                          // native C
+*(Array + Index) = Value;                                      // native C
+*(Word_t *) JudyNLIns(&amp;PArray, &amp;Index, Length, PJE0) = Value;  // JudyNL array
+</PRE>
+<P>
+<B>Notes</B>:
+<BR>
+1.  Like an ordinary array, there are no duplicate indexes in a JudyNL
+array.
+Each inserted index maps to one value word.
+It's up to the calling application to build a "synonym chain", if
+desired, at a higher level.
+<BR>
+2.  <B>JudyNLIns()</B> reorganizes the JudyNL array.
+Pointers returned from previous <B>JudyNL</B> function calls become
+invalid and must be reacquired by calling <B>JudyNLGet()</B>, etc. again.
+
+<P>
+<DT><A name="JudyNLDel"><B>JudyNLDel(&amp;PArray, &amp;Index, Length, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to a pointer to a JudyNL long-number array, an array
+index to delete that is a series of words (Word_t), and the length of
+the index in bytes, delete the specified index/value pair (array
+element) from the JudyNL array.
+Return 1 if <B>Index</B> is successfully deleted from the array and it
+was previously inserted (valid).
+Return 0 if <B>Index</B> was already invalid,
+or <B>JERR</B> in case of serious error (see
+<A href="#ERRORS">ERRORS</A>).
+<B>PIndex</B> must be word-aligned and <B>Length</B> must be a multiple
+of the system's word size in bytes.
+These conditions are always true for non-string native C data types and
+sizeof() those types.
+If the JudyNL array is initially non-empty and the last index is deleted,
+the array becomes empty and <B>*PPArray</B> becomes <B>NULL</B>.
+<B>*PPArray</B> may be modified whenever a valid <B>Index</B> is deleted.
+<P>
+(There is no equivalent to <B>JudyNLDel()</B> nor any of the following
+search functions in native C because array elements are not marked as
+valid/invalid in native C.)
+<P>
+<B>Note</B>:
+<B>JudyNLDel()</B> reorganizes the JudyNL array.
+Pointers returned from previous <B>JudyNL</B> function calls become
+invalid and must be reacquired by calling <B>JudyNLGet()</B>, etc. again.
+
+<P>
+<DT><A name="JudyNLFirst"><B>JudyNLFirst(PArray, &amp;Index, Length, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to a JudyNL long-number array, an array index that is a
+series of words (Word_t), and the length of the index in bytes, locate
+the specified or next (higher-valued) index stored in the JudyNL array
+(start with 0 to look up the first index in the array)
+and return a pointer to its value area,
+a null pointer if there is no valid index at or above <B>Index</B>,
+or <B>PPJERR</B> in case of serious error (see
+<A href="#ERRORS">ERRORS</A>).
+<B>PIndex</B> must be word-aligned and <B>Length</B> must be a multiple
+of the system's word size in bytes.
+These conditions are always true for non-string native C data types and
+sizeof() those types.
+If successful, <B>*PIndex</B> is also modified to the new index;
+otherwise the value of <B>*PIndex</B> is unspecified.
+<B>JudyNLFirst()</B> is typically used to begin a sorted-order scan
+of the valid indexes in a JudyNL long-number array.
+<P>
+<B>Note</B>:  If the caller's <B>Index</B> buffer and <B>Length</B> are
+not at least as large as the largest long-number index stored in the
+array, <B>JudyNLFirst()</B> returns "no first/higher index" when the
+first/next index is larger than <B>Length</B>.
+
+<P>
+<DT><A name="JudyNLNext"><B>JudyNLNext(PArray, &amp;Index, Length, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to a JudyNL long-number array, an array index that is a
+series of words (Word_t), and the length of the index in bytes, locate
+the next (higher-valued or longer) index stored in the JudyNL array and
+return a pointer to its value area,
+a null pointer if there is no valid index above <B>Index</B>,
+or <B>PPJERR</B> in case of serious error (see
+<A href="#ERRORS">ERRORS</A>).
+<B>PIndex</B> must be word-aligned and <B>Length</B> must be a multiple
+of the system's word size in bytes.
+These conditions are always true for non-string native C data types and
+sizeof() those types.
+If successful, <B>*PIndex</B> is also modified to the new index;
+otherwise the value of <B>*PIndex</B> is unspecified.
+<B>JudyNLNext()</B> is typically used to continue a sorted-order scan of
+the valid indexes in a JudyNL long-number array, or to locate a
+"neighbor" of a given index.
+<P>
+<B>Note</B>:  If the caller's <B>Index</B> buffer and <B>Length</B> are
+not at least as large as the largest long-number index stored in the
+array, <B>JudyNLNext()</B> returns "no higher index" when the next index
+is larger than <B>Length</B>.
+
+<P>
+<DT><A name="JudyNLLast"><B>JudyNLLast(PArray, &amp;Index, Length, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to JudyNL long-number array, an array index that is a
+series of words (Word_t), and the length of the index in bytes, locate
+the specified or previous (lower-valued) index stored in the JudyNL array
+(start with a maximum-length index of all ~0UL words, that is, all ones,
+to look up the last index in the array)
+and return a pointer to its value area,
+a null pointer if there is no valid index at or below <B>Index</B>,
+or <B>PPJERR</B> in case of serious error (see
+<A href="#ERRORS">ERRORS</A>).
+<B>PIndex</B> must be word-aligned and <B>Length</B> must be a multiple
+of the system's word size in bytes.
+These conditions are always true for non-string native C data types and
+sizeof() those types.
+If successful, <B>*PIndex</B> is also modified to the new index
+(right-justified to <B>Length</B> if shorter); otherwise the value of
+<B>*PIndex</B> is unspecified.
+<B>JudyNLLast()</B> is typically used to begin a reverse-sorted-order
+scan of the valid indexes in a JudyNL long-number array.
+
+<P>
+<DT><A name="JudyNLPrev"><B>JudyNLPrev(PArray, &amp;Index, Length, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to a JudyNL long-number array, an array index that is a
+series of words (Word_t), and the length of the index in bytes, locate
+the previous (lower-valued or shorter) index stored in the JudyNL array
+and return a pointer to its value area,
+a null pointer if there is no valid index below <B>Index</B>,
+or <B>PPJERR</B> in case of serious error (see
+<A href="#ERRORS">ERRORS</A>).
+<B>PIndex</B> must be word-aligned and <B>Length</B> must be a multiple
+of the system's word size in bytes.
+These conditions are always true for non-string native C data types and
+sizeof() those types.
+If successful, <B>*PIndex</B> is also modified to the new index
+(right-justified to <B>Length</B> if shorter); otherwise the value of
+<B>*PIndex</B> is unspecified.
+<B>JudyNLPrev()</B> is typically used to continue a reverse-sorted-order
+scan of the valid indexes in a JudyNL long-number array or to locate a
+"neighbor" of a given index.
+
+<P>
+<DT><A name="JudyNLFreeArray"><B>JudyNLFreeArray(&amp;PArray, &amp;JError)</B></A></DT>
+<DD>
+Given a pointer to a JudyNL long-number array, free the entire array
+(much faster
+than using
+<A href="#JudyNLNext">JudyNLNext()</A> and
+<A href="#JudyNLDel">JudyNLDel()</A>), set
+<B>*PPArray</B> to <B>NULL</B>, and return the number of bytes freed,
+including 0 for an already empty array or <B>JERR</B> in case of a
+serious error (see
+<A href="#ERRORS">ERRORS</A>).
+Note:  <B>JudyNLFreeArray()</B> does not return memory to the operating
+system, but holds it for other Judy use.
+</DL>
+
+<P>
+<B>Notes</B>:
+<BR>
+1.  The <B>JudyNL</B> functions are implemented using hierarchical
+trees of JudyL arrays.
+<BR>
+2.  There are no <B>JudyNL*Empty()</B> functions because there are
+infinitely many empty (absent) neighbors to a variable-size index.
+<BR>
+3.  There is no <B>JudyNLCount()</B>, <B>JudyNLByCount()</B>, or
+<B>JudyNLMemUsed()</B>.
+<BR>
+4.  There are no <B>JudyN1</B> capabilities because they would not save
+significant memory.
+<P>
+Definitions for all the Judy functions, the types
+<B>Pvoid_t</B>,
+<B>Pcvoid_t</B>,
+<B>PPvoid_t</B>,
+<B>Word_t</B>,
+<B>JError_t</B>,
+and
+<B>PJError_t</B>,
+the constants
+<B>NULL</B>,
+<B>JU_ERRNO_*</B>,
+<B>JERR</B>,
+<B>PPJERR</B>,
+and
+<B>PJE0</B>,
+the macros
+<B>JU_ERRNO()</B>
+and
+<B>JU_ERRID()</B>,
+and the macro equivalents for calling the <B>JudyNL</B> functions with
+error checking, are provided in the <B>Judy.h</B> header file
+(/usr/include/Judy.h).
+<B>Note</B>:  Callers should define JudyNL arrays as type <B>Pvoid_t</B>,
+which can be passed by value to functions that take
+<B>Pcvoid_t</B> (constant <B>Pvoid_t</B>),
+and also by address to functions that take <B>PPvoid_t</B>.
+<P>
+The return type from most <B>JudyNL</B> functions is <B>PPvoid_t</B> so
+that the values stored in the array can be pointers to other objects,
+which is a typical usage, or cast to a <B>Word_t *</B> when a pointer
+to a value is required instead of a pointer to a pointer.
+<P>
+If the <B>PJError</B> parameter is null (<B>((PJError_t) NULL)</B> or
+you can use <B>PJE0</B> as a shorthand notation), no additional error
+information is returned when an error occurs; for example:
+<P>
+<PRE>
+if (Judy1FreeArray(&amp;PArray, PJE0) == JERR) ...
+</PRE>
+<P>
+Otherwise <B>PJError</B> should be the address of a <B>JError_t</B>
+object on the caller's stack; for example:
+<P>
+<PRE>
+JError_t JError;
+if (Judy1FreeArray(&amp;PArray, &amp;JError) == JERR) ...
+</PRE>
+<P>
+When using the macro forms, such as <B>JNLG()</B>, for calling
+<B>JudyNL</B> functions, either accept default error handling or else
+#define a macro with the <B>JUDYERROR()</B> signature for custom error
+handling.
+See the default <B>JUDYERROR()</B> in <B>Judy.h</B> for an example.
+
+<P>
+Alternatively, when using the macro forms, turn off default error
+handling with "#define JUDYERROR_NOTEST 1" or with "cc -DJUDYERROR_NOTEST".
+
+<!----------------->
+<P>
+<DT><B>RETURN VALUE</B></DT>
+<DD>
+In general the <B>JudyNL</B> functions return <B>JERR</B> or
+<B>PPJERR</B> in case of serious error.
+The return values from all the functions are:
+
+<P>
+<DL>
+<DT><I>non-null pointer</I></DT>
+<DD>
+For
+<A href="#JudyNLGet">JudyNLGet()</A>, <B>Index</B> is valid;
+or for
+<A href="#JudyNLIns">JudyNLIns()</A>, <B>Index</B> is or was previously
+inserted and is now valid;
+or
+<A href="#JudyNLFirst">JudyNLFirst()</A>,
+<A href="#JudyNLNext">JudyNLNext()</A>,
+<A href="#JudyNLLast">JudyNLLast()</A>,
+or
+<A href="#JudyNLPrev">JudyNLPrev()</A>
+found a neighbor index.
+
+<DT><I>null pointer</I></DT>
+<DD>
+For
+<A href="#JudyNLGet">JudyNLGet()</A>, <B>Index</B> is not valid;
+or
+<A href="#JudyNLFirst">JudyNLFirst()</A>,
+<A href="#JudyNLNext">JudyNLNext()</A>,
+<A href="#JudyNLLast">JudyNLLast()</A>,
+or
+<A href="#JudyNLPrev">JudyNLPrev()</A>
+did not find a neighbor index.
+
+<DT>1</DT>
+<DD>
+For
+<A href="#JudyNLDel">JudyNLDel()</A>, <B>Index</B> was deleted
+and is now invalid.
+
+<DT>0</DT>
+<DD>
+For
+<A href="#JudyNLDel">JudyNLDel()</A>, <B>Index</B> was already invalid;
+or for
+<A href="#JudyNLFreeArray">JudyNLFreeArray()</A>, the array was already empty.
+
+<DT><I>n</I></DT>
+<DD>
+Bytes freed from
+<A href="#JudyNLFreeArray">JudyNLFreeArray()</A>.
+
+<DT><B>PPJERR</B></DT>
+<DD>
+An error occurred in a <B>JudyNL</B> function that returns a pointer;
+check <B>JError</B>.
+
+<DT><B>JERR</B></DT>
+<DD>
+An error occurred in
+<A href="#JudyNLDel">JudyNLDel()</A> or
+<A href="#JudyNLFreeArray">JudyNLFreeArray()</A>;
+check <B>JError</B>.
+
+</DL>
+
+<!----------------->
+<P>
+<A name="ERRORS">
+<DT><B>ERRORS</B></DT></A>
+<DD>
+If (and only if) any <B>JudyNL</B> function returns <B>JERR</B> or
+<B>PPJERR</B>,
+and the <B>PJError</B> parameter is non-null, additional error
+information is returned in <B>*PJError</B>.
+Use <B>JU_ERRNO(&amp;JError)</B> to obtain the Judy error number, and
+<B>JU_ERRID(&amp;JError)</B> to obtain an additional unique error ID
+mainly for HP-internal use.
+Or use the macro forms, such as <B>JSLG()</B>, to call the
+<B>JudyNL</B> functions with default error handling.
+<P>
+Judy error numbers are defined in <B>Judy.h</B> and include:
+
+<P>
+<DL>
+<DT><B>JU_ERRNO_NOMEM</B>
+(<A href="#JudyNLIns">JudyNLIns()</A>,
+ <A href="#JudyNLDel">JudyNLDel()</A>)</DT>
+<DD>
+The Judy memory manager cannot obtain needed memory from <I>malloc</I>(3C).
+The system <B>errno</B> value is also set to <B>ENOMEM</B>.
+This error can be recoverable if the calling application frees other
+memory.
+<B>Note</B>:  Currently there may be small memory leaks if you continue
+after receiving <B>JU_ERRNO_NOMEM</B>.
+
+<P>
+<DT><B>JU_ERRNO_NULLPPARRAY</B>
+(<A href="#JudyNLIns">JudyNLIns()</A>,
+ <A href="#JudyNLDel">JudyNLDel()</A>,
+ <A href="#JudyNLFreeArray">JudyNLFreeArray()</A>)</DT>
+<DD>
+The <B>PPArray</B> parameter (pointer to Judy Array Pointer) is null.
+Perhaps <B>PArray</B> was passed where <B>&amp;PArray</B> was intended.
+
+<P>
+<DT><B>JU_ERRNO_NULLPINDEX</B>
+(<A href="#JudyNLFirst">JudyNLFirst()</A>,
+ <A href="#JudyNLNext">JudyNLNext()</A>,
+ <A href="#JudyNLLast">JudyNLLast()</A>,
+ <A href="#JudyNLPrev">JudyNLPrev()</A>)
+<DD>
+The <B>PIndex</B> parameter is null.
+Perhaps <B>Index</B> was passed where <B>&amp;Index</B> was intended.
+
+<P>
+<DT><B>JU_ERRNO_NOTJUDYNL</B> (all <B>JudyNL</B> functions)</DT>
+<DD>
+The <B>PArray</B> or <B>*PPArray</B> parameter does not point to a JudyNL
+array (not even an empty array).
+
+<P>
+<DT><B>JU_ERRNO_CORRUPT</B> (all <B>JudyNL</B> functions)</DT>
+<DT><B>JU_ERRNO_OVERRUN</B>
+(<A href="#JudyNLIns">JudyNLIns()</A>,
+ <A href="#JudyNLDel">JudyNLDel()</A>)</DT>
+<DD>
+An impossible value was detected in a JudyNL array
+(<B>JU_ERRNO_CORRUPT</B>) or the Judy memory manager noticed that a
+block of memory in its own freelist was modified
+(<B>JU_ERRNO_OVERRUN</B>), probably due to external modification of the
+memory used by Judy.
+Further tries to access the JudyNL array might result in <B>EFAULT</B>
+and a core dump.
+
+</DL>
+
+<!----------------->
+<P>
+<DT><B>EXAMPLES</B></DT>
+<DD>
+See
+<A href="JudyL_3x.htm#Examples">JudyL(3X) <B>EXAMPLES</B></A>.
+
+<!----------------->
+<P>
+<DT><B>AUTHOR</B></DT>
+<DD>
+Judy was invented by Doug Baskins and implemented by Hewlett-Packard.
+
+<!----------------->
+<P>
+<DT><B>FILES</B></DT>
+<DD>
+Several variations of the Judy library are delivered.
+See
+<A href="Judy_3x.htm#FILES">Judy(3X) <B>FILES</B></A>
+for details.
+
+<!----------------->
+<P>
+<DT><B>SEE ALSO</B></DT>
+<DD>
+<A href="Judy_3x.htm">Judy(3X)</A>
+<A href="Judy1_3x.htm">Judy1(3X)</A>,
+<A href="JudyL_3x.htm">JudyL(3X)</A>,
+<A href="JudySL_3x.htm">JudySL(3X)</A>,
+<BR>
+<I>errno</I>(2), <I>malloc</I>(3C)
+<P>
+"Programming with Judy" (PDF) under the Judy website,
+<A href="http://judy.sourceforge.net"/A>.
+</DL>
+
+</BODY>
+</HTML>

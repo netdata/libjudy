@@ -1,0 +1,79 @@
+judy (1.0.1-1) unstable; urgency=low
+
+  * New version of Judy with new 1.0.1 API 
+  * Troy Heber is taking over maintainership from Theodore Y. Ts'o.
+  * Closes: Bug#2277142 
+
+ -- Troy Heber <troy.heber@hp.com>  Tue, 14 Dec 2004 09:23:48 -0700 
+
+judy (0.0.4-7) unstable; urgency=low
+
+  * Fix incorrect symlinks in man pages (Closes: #203995)
+
+ -- Theodore Y. Ts'o <tytso@mit.edu>  Sat, 17 Jan 2004 00:04:53 -0500
+
+judy (0.0.4-6) unstable; urgency=low
+
+  * Fix maintainer field in debian control file (mea culpa, mea maximum
+    culpa)
+
+ -- Theodore Y. Ts'o <tytso@mit.edu>  Sat, 11 Oct 2003 02:31:47 -0400
+
+judy (0.0.4-5) unstable; urgency=low
+
+  * New maintainer.
+  * Clean up some lintian warnings
+      - Compress man pages with -9
+      - Remove (s) from "Upstream Author(s)"
+      - Use symbolic links for man pages
+  * Don't use hard-coded /usr/bin/{cc,ld,ar}
+
+ -- Theodore Y. Ts'o <tytso@mit.edu>  Sat, 12 Jul 2003 01:39:27 -0400
+
+judy (0.0.4-4) unstable; urgency=low
+
+  * Fix multiline strings so judy will build with gcc 3.3.  closes: #194936.
+  * Orphan package; cf. #172772.
+  * Drop hppa build-dep on gcc-3.2.
+  * Bump Standards-Version to 3.5.10.
+
+ -- Clint Adams <schizo@debian.org>  Sun,  1 Jun 2003 00:26:32 -0400
+
+judy (0.0.4-3) unstable; urgency=medium
+
+  * Set soname on all arches. 
+
+ -- Clint Adams <schizo@debian.org>  Sun, 22 Sep 2002 17:57:30 -0400
+
+judy (0.0.4-2) unstable; urgency=medium
+
+  * Fix bad shlibs. 
+
+ -- Clint Adams <schizo@debian.org>  Sun, 22 Sep 2002 17:07:28 -0400
+
+judy (0.0.4-1) unstable; urgency=medium
+
+  * New, slightly more portable upstream "trial" version.
+
+ -- Clint Adams <schizo@debian.org>  Sat, 21 Sep 2002 18:55:43 -0400
+
+judy (0.0.0-3) unstable; urgency=medium
+
+  * Due to gcc 3.0 bugs, build with 3.2 on hppa.
+
+ -- Clint Adams <schizo@debian.org>  Sat, 14 Sep 2002 12:14:01 -0400
+
+judy (0.0.0-2) unstable; urgency=low
+
+  * Add Eric Schwartz <emschwar@debian.org> to Uploaders.
+  * ia64 uses a different build directory, so be cognizant of that.
+  * Update to Standards-Version 3.5.7.
+
+ -- Clint Adams <schizo@debian.org>  Fri,  6 Sep 2002 16:42:57 -0400
+
+judy (0.0.0-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Clint Adams <schizo@debian.org>  Thu, 29 Aug 2002 05:51:20 +0000
+

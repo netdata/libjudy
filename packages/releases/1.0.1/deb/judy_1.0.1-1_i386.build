@@ -1,0 +1,1151 @@
+dpkg-buildpackage: source package is judy
+dpkg-buildpackage: source version is 1.0.1-1
+dpkg-buildpackage: source maintainer is Troy Heber <troy.heber@hp.com>
+dpkg-buildpackage: host architecture is i386
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp configure-stamp
+# Add here commands to clean up after the build process.
+/usr/bin/make distclean
+make[1]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[1]: *** No rule to make target `distclean'.  Stop.
+make[1]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1'
+make: [clean] Error 2 (ignored)
+dh_clean
+ dpkg-source -b judy-1.0.1
+dpkg-source: building judy in judy_1.0.1-1.tar.gz
+dpkg-source: building judy in judy_1.0.1-1.dsc
+ debian/rules build
+dh_testdir
+# Add here commands to configure the package.
+./configure --enable-32-bit --prefix=/usr
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking which flavor to build... product
+checking for gcc... gcc
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ANSI C... none needed
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking how to run the C preprocessor... gcc -E
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking for egrep... grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking for inttypes.h... (cached) yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking malloc.h usability... yes
+checking malloc.h presence... yes
+checking for malloc.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking for stdint.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking for strings.h... (cached) yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for unistd.h... (cached) yes
+checking for stdbool.h that conforms to C99... yes
+checking for _Bool... yes
+checking for an ANSI C-conforming const... yes
+checking for inline... inline
+checking for size_t... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for working volatile... yes
+checking for ptrdiff_t... yes
+checking whether byte ordering is bigendian... no
+Building 32-bit
+checking for error_at_line... yes
+checking for stdlib.h... (cached) yes
+checking for GNU libc compatible malloc... yes
+checking for working memcmp... yes
+checking for stdlib.h... (cached) yes
+checking for unistd.h... (cached) yes
+checking for getpagesize... yes
+checking for working mmap... yes
+checking whether lstat dereferences a symlink specified with a trailing slash... yes
+checking whether stat accepts an empty string... no
+checking for vprintf... yes
+checking for _doprnt... no
+checking for getpagesize... (cached) yes
+checking for gettimeofday... yes
+checking for memset... yes
+checking for munmap... yes
+checking for pow... no
+checking for strchr... yes
+checking for strcspn... yes
+checking for strerror... yes
+checking for strstr... yes
+checking for strtoul... yes
+checking for uname... yes
+checking for ar... ar
+checking for ld... ld
+checking for ranlib... ranlib
+checking build system type... i686-pc-linux-gnu
+checking host system type... i686-pc-linux-gnu
+checking for a sed that does not truncate output... /bin/sed
+checking for ld used by gcc... ld
+checking if the linker (ld) is GNU ld... yes
+checking for ld option to reload object files... -r
+checking for BSD-compatible nm... /usr/bin/nm -B
+checking how to recognise dependent libraries... pass_all
+checking dlfcn.h usability... yes
+checking dlfcn.h presence... yes
+checking for dlfcn.h... yes
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking how to run the C++ preprocessor... g++ -E
+checking for g77... no
+checking for f77... no
+checking for xlf... no
+checking for frt... no
+checking for pgf77... no
+checking for fort77... no
+checking for fl32... no
+checking for af77... no
+checking for f90... no
+checking for xlf90... no
+checking for pgf90... no
+checking for epcf90... no
+checking for f95... no
+checking for fort... no
+checking for xlf95... no
+checking for ifc... no
+checking for efc... no
+checking for pgf95... no
+checking for lf95... no
+checking for gfortran... no
+checking whether we are using the GNU Fortran 77 compiler... no
+checking whether  accepts -g... no
+checking the maximum length of command line arguments... 32768
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for objdir... .libs
+checking for ar... (cached) ar
+checking for ranlib... (cached) ranlib
+checking for strip... strip
+checking if gcc static flag  works... yes
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC
+checking if gcc PIC flag -fPIC works... yes
+checking if gcc supports -c -o file.o... yes
+checking whether the gcc linker (ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+configure: creating libtool
+appending configuration tag "CXX" to libtool
+checking for ld used by g++... ld
+checking if the linker (ld) is GNU ld... yes
+checking whether the g++ linker (ld) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC
+checking if g++ PIC flag -fPIC works... yes
+checking if g++ supports -c -o file.o... yes
+checking whether the g++ linker (ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+appending configuration tag "F77" to libtool
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Judy1/Makefile
+config.status: creating src/JudyCommon/Makefile
+config.status: creating src/JudyHS/Makefile
+config.status: creating src/JudyL/Makefile
+config.status: creating src/JudySL/Makefile
+config.status: creating src/Makefile
+config.status: creating src/obj/Makefile
+config.status: creating tool/Makefile
+config.status: creating doc/Makefile
+config.status: creating test/Makefile
+config.status: creating config.h
+config.status: executing depfiles commands
+touch configure-stamp
+dh_testdir
+# Add here commands to compile the package.
+/usr/bin/make
+make[1]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1'
+/usr/bin/make  all-recursive
+make[2]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1'
+Making all in src
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+Making all in .
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+make[4]: Nothing to be done for `all-am'.
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+Making all in JudyCommon
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyCommon'
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I..   -UJU_64BIT -g -O2   -UJU_64BIT -g -O2 -MT JudyMalloc.lo -MD -MP -MF ".deps/JudyMalloc.Tpo" -c -o JudyMalloc.lo JudyMalloc.c; \
+then mv -f ".deps/JudyMalloc.Tpo" ".deps/JudyMalloc.Plo"; else rm -f ".deps/JudyMalloc.Tpo"; exit 1; fi
+mkdir .libs
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -UJU_64BIT -g -O2 -UJU_64BIT -g -O2 -MT JudyMalloc.lo -MD -MP -MF .deps/JudyMalloc.Tpo -c JudyMalloc.c  -fPIC -DPIC -o .libs/JudyMalloc.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -UJU_64BIT -g -O2 -UJU_64BIT -g -O2 -MT JudyMalloc.lo -MD -MP -MF .deps/JudyMalloc.Tpo -c JudyMalloc.c -o JudyMalloc.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -UJU_64BIT -g -O2   -UJU_64BIT -g -O2   -o libJudyMalloc.la   JudyMalloc.lo  
+ar cru .libs/libJudyMalloc.a .libs/JudyMalloc.o
+ranlib .libs/libJudyMalloc.a
+creating libJudyMalloc.la
+(cd .libs && rm -f libJudyMalloc.la && ln -s ../libJudyMalloc.la libJudyMalloc.la)
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyCommon'
+Making all in JudyL
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyL'
+cp -f ../JudyCommon/JudyByCount.c      		JudyLByCount.c   
+cp -f ../JudyCommon/JudyCascade.c       	JudyLCascade.c
+cp -f ../JudyCommon/JudyCount.c        		JudyLCount.c
+cp -f ../JudyCommon/JudyCreateBranch.c 		JudyLCreateBranch.c
+cp -f ../JudyCommon/JudyDecascade.c    		JudyLDecascade.c
+cp -f ../JudyCommon/JudyDel.c          		JudyLDel.c
+cp -f ../JudyCommon/JudyFirst.c        		JudyLFirst.c
+cp -f ../JudyCommon/JudyFreeArray.c    		JudyLFreeArray.c
+cp -f ../JudyCommon/JudyGet.c          		JudyLGet.c
+cp -f ../JudyCommon/JudyGet.c          		j__udyLGet.c
+cp -f ../JudyCommon/JudyInsArray.c     		JudyLInsArray.c
+cp -f ../JudyCommon/JudyIns.c          		JudyLIns.c
+cp -f ../JudyCommon/JudyInsertBranch.c 		JudyLInsertBranch.c
+cp -f ../JudyCommon/JudyMallocIF.c     		JudyLMallocIF.c
+cp -f ../JudyCommon/JudyMemActive.c    		JudyLMemActive.c
+cp -f ../JudyCommon/JudyMemUsed.c      		JudyLMemUsed.c
+cp -f ../JudyCommon/JudyPrevNext.c     		JudyLNext.c
+cp -f ../JudyCommon/JudyPrevNext.c     		JudyLPrev.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		JudyLNextEmpty.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		JudyLPrevEmpty.c
+cp -f ../JudyCommon/JudyTables.c       	 	JudyLTablesGen.c
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLCascade.lo -MD -MP -MF ".deps/JudyLCascade.Tpo" -c -o JudyLCascade.lo JudyLCascade.c; \
+then mv -f ".deps/JudyLCascade.Tpo" ".deps/JudyLCascade.Plo"; else rm -f ".deps/JudyLCascade.Tpo"; exit 1; fi
+mkdir .libs
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCascade.lo -MD -MP -MF .deps/JudyLCascade.Tpo -c JudyLCascade.c  -fPIC -DPIC -o .libs/JudyLCascade.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCascade.lo -MD -MP -MF .deps/JudyLCascade.Tpo -c JudyLCascade.c -o JudyLCascade.o >/dev/null 2>&1
+gcc -I. -I.. -I../JudyCommon/  -DJUDYL   -UJU_64BIT -g -O2 -o JudyLTablesGen JudyLTablesGen.c; ./JudyLTablesGen 
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLTables.lo -MD -MP -MF ".deps/JudyLTables.Tpo" -c -o JudyLTables.lo JudyLTables.c; \
+then mv -f ".deps/JudyLTables.Tpo" ".deps/JudyLTables.Plo"; else rm -f ".deps/JudyLTables.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLTables.lo -MD -MP -MF .deps/JudyLTables.Tpo -c JudyLTables.c  -fPIC -DPIC -o .libs/JudyLTables.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLTables.lo -MD -MP -MF .deps/JudyLTables.Tpo -c JudyLTables.c -o JudyLTables.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLCount.lo -MD -MP -MF ".deps/JudyLCount.Tpo" -c -o JudyLCount.lo JudyLCount.c; \
+then mv -f ".deps/JudyLCount.Tpo" ".deps/JudyLCount.Plo"; else rm -f ".deps/JudyLCount.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCount.lo -MD -MP -MF .deps/JudyLCount.Tpo -c JudyLCount.c  -fPIC -DPIC -o .libs/JudyLCount.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCount.lo -MD -MP -MF .deps/JudyLCount.Tpo -c JudyLCount.c -o JudyLCount.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLCreateBranch.lo -MD -MP -MF ".deps/JudyLCreateBranch.Tpo" -c -o JudyLCreateBranch.lo JudyLCreateBranch.c; \
+then mv -f ".deps/JudyLCreateBranch.Tpo" ".deps/JudyLCreateBranch.Plo"; else rm -f ".deps/JudyLCreateBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCreateBranch.lo -MD -MP -MF .deps/JudyLCreateBranch.Tpo -c JudyLCreateBranch.c  -fPIC -DPIC -o .libs/JudyLCreateBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCreateBranch.lo -MD -MP -MF .deps/JudyLCreateBranch.Tpo -c JudyLCreateBranch.c -o JudyLCreateBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLDecascade.lo -MD -MP -MF ".deps/JudyLDecascade.Tpo" -c -o JudyLDecascade.lo JudyLDecascade.c; \
+then mv -f ".deps/JudyLDecascade.Tpo" ".deps/JudyLDecascade.Plo"; else rm -f ".deps/JudyLDecascade.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDecascade.lo -MD -MP -MF .deps/JudyLDecascade.Tpo -c JudyLDecascade.c  -fPIC -DPIC -o .libs/JudyLDecascade.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDecascade.lo -MD -MP -MF .deps/JudyLDecascade.Tpo -c JudyLDecascade.c -o JudyLDecascade.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLDel.lo -MD -MP -MF ".deps/JudyLDel.Tpo" -c -o JudyLDel.lo JudyLDel.c; \
+then mv -f ".deps/JudyLDel.Tpo" ".deps/JudyLDel.Plo"; else rm -f ".deps/JudyLDel.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDel.lo -MD -MP -MF .deps/JudyLDel.Tpo -c JudyLDel.c  -fPIC -DPIC -o .libs/JudyLDel.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDel.lo -MD -MP -MF .deps/JudyLDel.Tpo -c JudyLDel.c -o JudyLDel.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLFirst.lo -MD -MP -MF ".deps/JudyLFirst.Tpo" -c -o JudyLFirst.lo JudyLFirst.c; \
+then mv -f ".deps/JudyLFirst.Tpo" ".deps/JudyLFirst.Plo"; else rm -f ".deps/JudyLFirst.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFirst.lo -MD -MP -MF .deps/JudyLFirst.Tpo -c JudyLFirst.c  -fPIC -DPIC -o .libs/JudyLFirst.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFirst.lo -MD -MP -MF .deps/JudyLFirst.Tpo -c JudyLFirst.c -o JudyLFirst.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLFreeArray.lo -MD -MP -MF ".deps/JudyLFreeArray.Tpo" -c -o JudyLFreeArray.lo JudyLFreeArray.c; \
+then mv -f ".deps/JudyLFreeArray.Tpo" ".deps/JudyLFreeArray.Plo"; else rm -f ".deps/JudyLFreeArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFreeArray.lo -MD -MP -MF .deps/JudyLFreeArray.Tpo -c JudyLFreeArray.c  -fPIC -DPIC -o .libs/JudyLFreeArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFreeArray.lo -MD -MP -MF .deps/JudyLFreeArray.Tpo -c JudyLFreeArray.c -o JudyLFreeArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLGet.lo -MD -MP -MF ".deps/JudyLGet.Tpo" -c -o JudyLGet.lo JudyLGet.c; \
+then mv -f ".deps/JudyLGet.Tpo" ".deps/JudyLGet.Plo"; else rm -f ".deps/JudyLGet.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLGet.lo -MD -MP -MF .deps/JudyLGet.Tpo -c JudyLGet.c  -fPIC -DPIC -o .libs/JudyLGet.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLGet.lo -MD -MP -MF .deps/JudyLGet.Tpo -c JudyLGet.c -o JudyLGet.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLInsArray.lo -MD -MP -MF ".deps/JudyLInsArray.Tpo" -c -o JudyLInsArray.lo JudyLInsArray.c; \
+then mv -f ".deps/JudyLInsArray.Tpo" ".deps/JudyLInsArray.Plo"; else rm -f ".deps/JudyLInsArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsArray.lo -MD -MP -MF .deps/JudyLInsArray.Tpo -c JudyLInsArray.c  -fPIC -DPIC -o .libs/JudyLInsArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsArray.lo -MD -MP -MF .deps/JudyLInsArray.Tpo -c JudyLInsArray.c -o JudyLInsArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLIns.lo -MD -MP -MF ".deps/JudyLIns.Tpo" -c -o JudyLIns.lo JudyLIns.c; \
+then mv -f ".deps/JudyLIns.Tpo" ".deps/JudyLIns.Plo"; else rm -f ".deps/JudyLIns.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLIns.lo -MD -MP -MF .deps/JudyLIns.Tpo -c JudyLIns.c  -fPIC -DPIC -o .libs/JudyLIns.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLIns.lo -MD -MP -MF .deps/JudyLIns.Tpo -c JudyLIns.c -o JudyLIns.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLInsertBranch.lo -MD -MP -MF ".deps/JudyLInsertBranch.Tpo" -c -o JudyLInsertBranch.lo JudyLInsertBranch.c; \
+then mv -f ".deps/JudyLInsertBranch.Tpo" ".deps/JudyLInsertBranch.Plo"; else rm -f ".deps/JudyLInsertBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsertBranch.lo -MD -MP -MF .deps/JudyLInsertBranch.Tpo -c JudyLInsertBranch.c  -fPIC -DPIC -o .libs/JudyLInsertBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsertBranch.lo -MD -MP -MF .deps/JudyLInsertBranch.Tpo -c JudyLInsertBranch.c -o JudyLInsertBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLMallocIF.lo -MD -MP -MF ".deps/JudyLMallocIF.Tpo" -c -o JudyLMallocIF.lo JudyLMallocIF.c; \
+then mv -f ".deps/JudyLMallocIF.Tpo" ".deps/JudyLMallocIF.Plo"; else rm -f ".deps/JudyLMallocIF.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMallocIF.lo -MD -MP -MF .deps/JudyLMallocIF.Tpo -c JudyLMallocIF.c  -fPIC -DPIC -o .libs/JudyLMallocIF.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMallocIF.lo -MD -MP -MF .deps/JudyLMallocIF.Tpo -c JudyLMallocIF.c -o JudyLMallocIF.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLMemActive.lo -MD -MP -MF ".deps/JudyLMemActive.Tpo" -c -o JudyLMemActive.lo JudyLMemActive.c; \
+then mv -f ".deps/JudyLMemActive.Tpo" ".deps/JudyLMemActive.Plo"; else rm -f ".deps/JudyLMemActive.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemActive.lo -MD -MP -MF .deps/JudyLMemActive.Tpo -c JudyLMemActive.c  -fPIC -DPIC -o .libs/JudyLMemActive.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemActive.lo -MD -MP -MF .deps/JudyLMemActive.Tpo -c JudyLMemActive.c -o JudyLMemActive.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLMemUsed.lo -MD -MP -MF ".deps/JudyLMemUsed.Tpo" -c -o JudyLMemUsed.lo JudyLMemUsed.c; \
+then mv -f ".deps/JudyLMemUsed.Tpo" ".deps/JudyLMemUsed.Plo"; else rm -f ".deps/JudyLMemUsed.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemUsed.lo -MD -MP -MF .deps/JudyLMemUsed.Tpo -c JudyLMemUsed.c  -fPIC -DPIC -o .libs/JudyLMemUsed.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemUsed.lo -MD -MP -MF .deps/JudyLMemUsed.Tpo -c JudyLMemUsed.c -o JudyLMemUsed.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libJudyL.la   JudyLCascade.lo JudyLTables.lo JudyLCount.lo JudyLCreateBranch.lo JudyLDecascade.lo JudyLDel.lo JudyLFirst.lo JudyLFreeArray.lo JudyLGet.lo JudyLInsArray.lo JudyLIns.lo JudyLInsertBranch.lo JudyLMallocIF.lo JudyLMemActive.lo JudyLMemUsed.lo  
+ar cru .libs/libJudyL.a .libs/JudyLCascade.o .libs/JudyLTables.o .libs/JudyLCount.o .libs/JudyLCreateBranch.o .libs/JudyLDecascade.o .libs/JudyLDel.o .libs/JudyLFirst.o .libs/JudyLFreeArray.o .libs/JudyLGet.o .libs/JudyLInsArray.o .libs/JudyLIns.o .libs/JudyLInsertBranch.o .libs/JudyLMallocIF.o .libs/JudyLMemActive.o .libs/JudyLMemUsed.o
+ranlib .libs/libJudyL.a
+creating libJudyL.la
+(cd .libs && rm -f libJudyL.la && ln -s ../libJudyL.la libJudyL.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNext.lo -MD -MP -MF ".deps/libnext_la-JudyLNext.Tpo" -c -o libnext_la-JudyLNext.lo `test -f 'JudyLNext.c' || echo './'`JudyLNext.c; \
+then mv -f ".deps/libnext_la-JudyLNext.Tpo" ".deps/libnext_la-JudyLNext.Plo"; else rm -f ".deps/libnext_la-JudyLNext.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNext.lo -MD -MP -MF .deps/libnext_la-JudyLNext.Tpo -c JudyLNext.c  -fPIC -DPIC -o .libs/libnext_la-JudyLNext.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNext.lo -MD -MP -MF .deps/libnext_la-JudyLNext.Tpo -c JudyLNext.c -o libnext_la-JudyLNext.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNextEmpty.lo -MD -MP -MF ".deps/libnext_la-JudyLNextEmpty.Tpo" -c -o libnext_la-JudyLNextEmpty.lo `test -f 'JudyLNextEmpty.c' || echo './'`JudyLNextEmpty.c; \
+then mv -f ".deps/libnext_la-JudyLNextEmpty.Tpo" ".deps/libnext_la-JudyLNextEmpty.Plo"; else rm -f ".deps/libnext_la-JudyLNextEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNextEmpty.lo -MD -MP -MF .deps/libnext_la-JudyLNextEmpty.Tpo -c JudyLNextEmpty.c  -fPIC -DPIC -o .libs/libnext_la-JudyLNextEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNextEmpty.lo -MD -MP -MF .deps/libnext_la-JudyLNextEmpty.Tpo -c JudyLNextEmpty.c -o libnext_la-JudyLNextEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libnext.la   libnext_la-JudyLNext.lo libnext_la-JudyLNextEmpty.lo  
+ar cru .libs/libnext.a .libs/libnext_la-JudyLNext.o .libs/libnext_la-JudyLNextEmpty.o
+ranlib .libs/libnext.a
+creating libnext.la
+(cd .libs && rm -f libnext.la && ln -s ../libnext.la libnext.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrev.lo -MD -MP -MF ".deps/libprev_la-JudyLPrev.Tpo" -c -o libprev_la-JudyLPrev.lo `test -f 'JudyLPrev.c' || echo './'`JudyLPrev.c; \
+then mv -f ".deps/libprev_la-JudyLPrev.Tpo" ".deps/libprev_la-JudyLPrev.Plo"; else rm -f ".deps/libprev_la-JudyLPrev.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrev.lo -MD -MP -MF .deps/libprev_la-JudyLPrev.Tpo -c JudyLPrev.c  -fPIC -DPIC -o .libs/libprev_la-JudyLPrev.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrev.lo -MD -MP -MF .deps/libprev_la-JudyLPrev.Tpo -c JudyLPrev.c -o libprev_la-JudyLPrev.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrevEmpty.lo -MD -MP -MF ".deps/libprev_la-JudyLPrevEmpty.Tpo" -c -o libprev_la-JudyLPrevEmpty.lo `test -f 'JudyLPrevEmpty.c' || echo './'`JudyLPrevEmpty.c; \
+then mv -f ".deps/libprev_la-JudyLPrevEmpty.Tpo" ".deps/libprev_la-JudyLPrevEmpty.Plo"; else rm -f ".deps/libprev_la-JudyLPrevEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrevEmpty.lo -MD -MP -MF .deps/libprev_la-JudyLPrevEmpty.Tpo -c JudyLPrevEmpty.c  -fPIC -DPIC -o .libs/libprev_la-JudyLPrevEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrevEmpty.lo -MD -MP -MF .deps/libprev_la-JudyLPrevEmpty.Tpo -c JudyLPrevEmpty.c -o libprev_la-JudyLPrevEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libprev.la   libprev_la-JudyLPrev.lo libprev_la-JudyLPrevEmpty.lo  
+ar cru .libs/libprev.a .libs/libprev_la-JudyLPrev.o .libs/libprev_la-JudyLPrevEmpty.o
+ranlib .libs/libprev.a
+creating libprev.la
+(cd .libs && rm -f libprev.la && ln -s ../libprev.la libprev.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-JudyLByCount.lo -MD -MP -MF ".deps/libcount_la-JudyLByCount.Tpo" -c -o libcount_la-JudyLByCount.lo `test -f 'JudyLByCount.c' || echo './'`JudyLByCount.c; \
+then mv -f ".deps/libcount_la-JudyLByCount.Tpo" ".deps/libcount_la-JudyLByCount.Plo"; else rm -f ".deps/libcount_la-JudyLByCount.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-JudyLByCount.lo -MD -MP -MF .deps/libcount_la-JudyLByCount.Tpo -c JudyLByCount.c  -fPIC -DPIC -o .libs/libcount_la-JudyLByCount.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-JudyLByCount.lo -MD -MP -MF .deps/libcount_la-JudyLByCount.Tpo -c JudyLByCount.c -o libcount_la-JudyLByCount.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libcount.la   libcount_la-JudyLByCount.lo  
+ar cru .libs/libcount.a .libs/libcount_la-JudyLByCount.o
+ranlib .libs/libcount.a
+creating libcount.la
+(cd .libs && rm -f libcount.la && ln -s ../libcount.la libcount.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udyLGet.lo -MD -MP -MF ".deps/libinline_la-j__udyLGet.Tpo" -c -o libinline_la-j__udyLGet.lo `test -f 'j__udyLGet.c' || echo './'`j__udyLGet.c; \
+then mv -f ".deps/libinline_la-j__udyLGet.Tpo" ".deps/libinline_la-j__udyLGet.Plo"; else rm -f ".deps/libinline_la-j__udyLGet.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udyLGet.lo -MD -MP -MF .deps/libinline_la-j__udyLGet.Tpo -c j__udyLGet.c  -fPIC -DPIC -o .libs/libinline_la-j__udyLGet.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udyLGet.lo -MD -MP -MF .deps/libinline_la-j__udyLGet.Tpo -c j__udyLGet.c -o libinline_la-j__udyLGet.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libinline.la   libinline_la-j__udyLGet.lo  
+ar cru .libs/libinline.a .libs/libinline_la-j__udyLGet.o
+ranlib .libs/libinline.a
+creating libinline.la
+(cd .libs && rm -f libinline.la && ln -s ../libinline.la libinline.la)
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyL'
+Making all in Judy1
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/Judy1'
+cp -f ../JudyCommon/JudyByCount.c      		Judy1ByCount.c   
+cp -f ../JudyCommon/JudyCascade.c      		Judy1Cascade.c
+cp -f ../JudyCommon/JudyCount.c        		Judy1Count.c
+cp -f ../JudyCommon/JudyCreateBranch.c 		Judy1CreateBranch.c
+cp -f ../JudyCommon/JudyDecascade.c    		Judy1Decascade.c
+cp -f ../JudyCommon/JudyDel.c          		Judy1Unset.c
+cp -f ../JudyCommon/JudyFirst.c        		Judy1First.c
+cp -f ../JudyCommon/JudyFreeArray.c    		Judy1FreeArray.c
+cp -f ../JudyCommon/JudyGet.c          		Judy1Test.c
+cp -f ../JudyCommon/JudyGet.c          		j__udy1Test.c
+cp -f ../JudyCommon/JudyInsArray.c     		Judy1SetArray.c
+cp -f ../JudyCommon/JudyIns.c          		Judy1Set.c
+cp -f ../JudyCommon/JudyInsertBranch.c 		Judy1InsertBranch.c
+cp -f ../JudyCommon/JudyMallocIF.c     		Judy1MallocIF.c
+cp -f ../JudyCommon/JudyMemActive.c    		Judy1MemActive.c
+cp -f ../JudyCommon/JudyMemUsed.c      		Judy1MemUsed.c
+cp -f ../JudyCommon/JudyPrevNext.c     		Judy1Next.c
+cp -f ../JudyCommon/JudyPrevNext.c     		Judy1Prev.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		Judy1NextEmpty.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		Judy1PrevEmpty.c
+cp -f ../JudyCommon/JudyTables.c	        Judy1TablesGen.c
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Test.lo -MD -MP -MF ".deps/Judy1Test.Tpo" -c -o Judy1Test.lo Judy1Test.c; \
+then mv -f ".deps/Judy1Test.Tpo" ".deps/Judy1Test.Plo"; else rm -f ".deps/Judy1Test.Tpo"; exit 1; fi
+mkdir .libs
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Test.lo -MD -MP -MF .deps/Judy1Test.Tpo -c Judy1Test.c  -fPIC -DPIC -o .libs/Judy1Test.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Test.lo -MD -MP -MF .deps/Judy1Test.Tpo -c Judy1Test.c -o Judy1Test.o >/dev/null 2>&1
+gcc -I. -I.. -I../JudyCommon/  -DJUDY1   -UJU_64BIT -g -O2 -o Judy1TablesGen Judy1TablesGen.c; ./Judy1TablesGen
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Tables.lo -MD -MP -MF ".deps/Judy1Tables.Tpo" -c -o Judy1Tables.lo Judy1Tables.c; \
+then mv -f ".deps/Judy1Tables.Tpo" ".deps/Judy1Tables.Plo"; else rm -f ".deps/Judy1Tables.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Tables.lo -MD -MP -MF .deps/Judy1Tables.Tpo -c Judy1Tables.c  -fPIC -DPIC -o .libs/Judy1Tables.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Tables.lo -MD -MP -MF .deps/Judy1Tables.Tpo -c Judy1Tables.c -o Judy1Tables.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Set.lo -MD -MP -MF ".deps/Judy1Set.Tpo" -c -o Judy1Set.lo Judy1Set.c; \
+then mv -f ".deps/Judy1Set.Tpo" ".deps/Judy1Set.Plo"; else rm -f ".deps/Judy1Set.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Set.lo -MD -MP -MF .deps/Judy1Set.Tpo -c Judy1Set.c  -fPIC -DPIC -o .libs/Judy1Set.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Set.lo -MD -MP -MF .deps/Judy1Set.Tpo -c Judy1Set.c -o Judy1Set.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1SetArray.lo -MD -MP -MF ".deps/Judy1SetArray.Tpo" -c -o Judy1SetArray.lo Judy1SetArray.c; \
+then mv -f ".deps/Judy1SetArray.Tpo" ".deps/Judy1SetArray.Plo"; else rm -f ".deps/Judy1SetArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1SetArray.lo -MD -MP -MF .deps/Judy1SetArray.Tpo -c Judy1SetArray.c  -fPIC -DPIC -o .libs/Judy1SetArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1SetArray.lo -MD -MP -MF .deps/Judy1SetArray.Tpo -c Judy1SetArray.c -o Judy1SetArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Unset.lo -MD -MP -MF ".deps/Judy1Unset.Tpo" -c -o Judy1Unset.lo Judy1Unset.c; \
+then mv -f ".deps/Judy1Unset.Tpo" ".deps/Judy1Unset.Plo"; else rm -f ".deps/Judy1Unset.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Unset.lo -MD -MP -MF .deps/Judy1Unset.Tpo -c Judy1Unset.c  -fPIC -DPIC -o .libs/Judy1Unset.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Unset.lo -MD -MP -MF .deps/Judy1Unset.Tpo -c Judy1Unset.c -o Judy1Unset.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Cascade.lo -MD -MP -MF ".deps/Judy1Cascade.Tpo" -c -o Judy1Cascade.lo Judy1Cascade.c; \
+then mv -f ".deps/Judy1Cascade.Tpo" ".deps/Judy1Cascade.Plo"; else rm -f ".deps/Judy1Cascade.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Cascade.lo -MD -MP -MF .deps/Judy1Cascade.Tpo -c Judy1Cascade.c  -fPIC -DPIC -o .libs/Judy1Cascade.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Cascade.lo -MD -MP -MF .deps/Judy1Cascade.Tpo -c Judy1Cascade.c -o Judy1Cascade.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Count.lo -MD -MP -MF ".deps/Judy1Count.Tpo" -c -o Judy1Count.lo Judy1Count.c; \
+then mv -f ".deps/Judy1Count.Tpo" ".deps/Judy1Count.Plo"; else rm -f ".deps/Judy1Count.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Count.lo -MD -MP -MF .deps/Judy1Count.Tpo -c Judy1Count.c  -fPIC -DPIC -o .libs/Judy1Count.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Count.lo -MD -MP -MF .deps/Judy1Count.Tpo -c Judy1Count.c -o Judy1Count.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1CreateBranch.lo -MD -MP -MF ".deps/Judy1CreateBranch.Tpo" -c -o Judy1CreateBranch.lo Judy1CreateBranch.c; \
+then mv -f ".deps/Judy1CreateBranch.Tpo" ".deps/Judy1CreateBranch.Plo"; else rm -f ".deps/Judy1CreateBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1CreateBranch.lo -MD -MP -MF .deps/Judy1CreateBranch.Tpo -c Judy1CreateBranch.c  -fPIC -DPIC -o .libs/Judy1CreateBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1CreateBranch.lo -MD -MP -MF .deps/Judy1CreateBranch.Tpo -c Judy1CreateBranch.c -o Judy1CreateBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Decascade.lo -MD -MP -MF ".deps/Judy1Decascade.Tpo" -c -o Judy1Decascade.lo Judy1Decascade.c; \
+then mv -f ".deps/Judy1Decascade.Tpo" ".deps/Judy1Decascade.Plo"; else rm -f ".deps/Judy1Decascade.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Decascade.lo -MD -MP -MF .deps/Judy1Decascade.Tpo -c Judy1Decascade.c  -fPIC -DPIC -o .libs/Judy1Decascade.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Decascade.lo -MD -MP -MF .deps/Judy1Decascade.Tpo -c Judy1Decascade.c -o Judy1Decascade.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1First.lo -MD -MP -MF ".deps/Judy1First.Tpo" -c -o Judy1First.lo Judy1First.c; \
+then mv -f ".deps/Judy1First.Tpo" ".deps/Judy1First.Plo"; else rm -f ".deps/Judy1First.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1First.lo -MD -MP -MF .deps/Judy1First.Tpo -c Judy1First.c  -fPIC -DPIC -o .libs/Judy1First.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1First.lo -MD -MP -MF .deps/Judy1First.Tpo -c Judy1First.c -o Judy1First.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1FreeArray.lo -MD -MP -MF ".deps/Judy1FreeArray.Tpo" -c -o Judy1FreeArray.lo Judy1FreeArray.c; \
+then mv -f ".deps/Judy1FreeArray.Tpo" ".deps/Judy1FreeArray.Plo"; else rm -f ".deps/Judy1FreeArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1FreeArray.lo -MD -MP -MF .deps/Judy1FreeArray.Tpo -c Judy1FreeArray.c  -fPIC -DPIC -o .libs/Judy1FreeArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1FreeArray.lo -MD -MP -MF .deps/Judy1FreeArray.Tpo -c Judy1FreeArray.c -o Judy1FreeArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1InsertBranch.lo -MD -MP -MF ".deps/Judy1InsertBranch.Tpo" -c -o Judy1InsertBranch.lo Judy1InsertBranch.c; \
+then mv -f ".deps/Judy1InsertBranch.Tpo" ".deps/Judy1InsertBranch.Plo"; else rm -f ".deps/Judy1InsertBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1InsertBranch.lo -MD -MP -MF .deps/Judy1InsertBranch.Tpo -c Judy1InsertBranch.c  -fPIC -DPIC -o .libs/Judy1InsertBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1InsertBranch.lo -MD -MP -MF .deps/Judy1InsertBranch.Tpo -c Judy1InsertBranch.c -o Judy1InsertBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1MallocIF.lo -MD -MP -MF ".deps/Judy1MallocIF.Tpo" -c -o Judy1MallocIF.lo Judy1MallocIF.c; \
+then mv -f ".deps/Judy1MallocIF.Tpo" ".deps/Judy1MallocIF.Plo"; else rm -f ".deps/Judy1MallocIF.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MallocIF.lo -MD -MP -MF .deps/Judy1MallocIF.Tpo -c Judy1MallocIF.c  -fPIC -DPIC -o .libs/Judy1MallocIF.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MallocIF.lo -MD -MP -MF .deps/Judy1MallocIF.Tpo -c Judy1MallocIF.c -o Judy1MallocIF.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1MemActive.lo -MD -MP -MF ".deps/Judy1MemActive.Tpo" -c -o Judy1MemActive.lo Judy1MemActive.c; \
+then mv -f ".deps/Judy1MemActive.Tpo" ".deps/Judy1MemActive.Plo"; else rm -f ".deps/Judy1MemActive.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemActive.lo -MD -MP -MF .deps/Judy1MemActive.Tpo -c Judy1MemActive.c  -fPIC -DPIC -o .libs/Judy1MemActive.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemActive.lo -MD -MP -MF .deps/Judy1MemActive.Tpo -c Judy1MemActive.c -o Judy1MemActive.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1MemUsed.lo -MD -MP -MF ".deps/Judy1MemUsed.Tpo" -c -o Judy1MemUsed.lo Judy1MemUsed.c; \
+then mv -f ".deps/Judy1MemUsed.Tpo" ".deps/Judy1MemUsed.Plo"; else rm -f ".deps/Judy1MemUsed.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemUsed.lo -MD -MP -MF .deps/Judy1MemUsed.Tpo -c Judy1MemUsed.c  -fPIC -DPIC -o .libs/Judy1MemUsed.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemUsed.lo -MD -MP -MF .deps/Judy1MemUsed.Tpo -c Judy1MemUsed.c -o Judy1MemUsed.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libJudy1.la   Judy1Test.lo Judy1Tables.lo Judy1Set.lo Judy1SetArray.lo Judy1Unset.lo Judy1Cascade.lo Judy1Count.lo Judy1CreateBranch.lo Judy1Decascade.lo Judy1First.lo Judy1FreeArray.lo Judy1InsertBranch.lo Judy1MallocIF.lo Judy1MemActive.lo Judy1MemUsed.lo  
+ar cru .libs/libJudy1.a .libs/Judy1Test.o .libs/Judy1Tables.o .libs/Judy1Set.o .libs/Judy1SetArray.o .libs/Judy1Unset.o .libs/Judy1Cascade.o .libs/Judy1Count.o .libs/Judy1CreateBranch.o .libs/Judy1Decascade.o .libs/Judy1First.o .libs/Judy1FreeArray.o .libs/Judy1InsertBranch.o .libs/Judy1MallocIF.o .libs/Judy1MemActive.o .libs/Judy1MemUsed.o
+ranlib .libs/libJudy1.a
+creating libJudy1.la
+(cd .libs && rm -f libJudy1.la && ln -s ../libJudy1.la libJudy1.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1Next.lo -MD -MP -MF ".deps/libnext_la-Judy1Next.Tpo" -c -o libnext_la-Judy1Next.lo `test -f 'Judy1Next.c' || echo './'`Judy1Next.c; \
+then mv -f ".deps/libnext_la-Judy1Next.Tpo" ".deps/libnext_la-Judy1Next.Plo"; else rm -f ".deps/libnext_la-Judy1Next.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1Next.lo -MD -MP -MF .deps/libnext_la-Judy1Next.Tpo -c Judy1Next.c  -fPIC -DPIC -o .libs/libnext_la-Judy1Next.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1Next.lo -MD -MP -MF .deps/libnext_la-Judy1Next.Tpo -c Judy1Next.c -o libnext_la-Judy1Next.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1NextEmpty.lo -MD -MP -MF ".deps/libnext_la-Judy1NextEmpty.Tpo" -c -o libnext_la-Judy1NextEmpty.lo `test -f 'Judy1NextEmpty.c' || echo './'`Judy1NextEmpty.c; \
+then mv -f ".deps/libnext_la-Judy1NextEmpty.Tpo" ".deps/libnext_la-Judy1NextEmpty.Plo"; else rm -f ".deps/libnext_la-Judy1NextEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1NextEmpty.lo -MD -MP -MF .deps/libnext_la-Judy1NextEmpty.Tpo -c Judy1NextEmpty.c  -fPIC -DPIC -o .libs/libnext_la-Judy1NextEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1NextEmpty.lo -MD -MP -MF .deps/libnext_la-Judy1NextEmpty.Tpo -c Judy1NextEmpty.c -o libnext_la-Judy1NextEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libnext.la   libnext_la-Judy1Next.lo libnext_la-Judy1NextEmpty.lo  
+ar cru .libs/libnext.a .libs/libnext_la-Judy1Next.o .libs/libnext_la-Judy1NextEmpty.o
+ranlib .libs/libnext.a
+creating libnext.la
+(cd .libs && rm -f libnext.la && ln -s ../libnext.la libnext.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1Prev.lo -MD -MP -MF ".deps/libprev_la-Judy1Prev.Tpo" -c -o libprev_la-Judy1Prev.lo `test -f 'Judy1Prev.c' || echo './'`Judy1Prev.c; \
+then mv -f ".deps/libprev_la-Judy1Prev.Tpo" ".deps/libprev_la-Judy1Prev.Plo"; else rm -f ".deps/libprev_la-Judy1Prev.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1Prev.lo -MD -MP -MF .deps/libprev_la-Judy1Prev.Tpo -c Judy1Prev.c  -fPIC -DPIC -o .libs/libprev_la-Judy1Prev.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1Prev.lo -MD -MP -MF .deps/libprev_la-Judy1Prev.Tpo -c Judy1Prev.c -o libprev_la-Judy1Prev.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1PrevEmpty.lo -MD -MP -MF ".deps/libprev_la-Judy1PrevEmpty.Tpo" -c -o libprev_la-Judy1PrevEmpty.lo `test -f 'Judy1PrevEmpty.c' || echo './'`Judy1PrevEmpty.c; \
+then mv -f ".deps/libprev_la-Judy1PrevEmpty.Tpo" ".deps/libprev_la-Judy1PrevEmpty.Plo"; else rm -f ".deps/libprev_la-Judy1PrevEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1PrevEmpty.lo -MD -MP -MF .deps/libprev_la-Judy1PrevEmpty.Tpo -c Judy1PrevEmpty.c  -fPIC -DPIC -o .libs/libprev_la-Judy1PrevEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1PrevEmpty.lo -MD -MP -MF .deps/libprev_la-Judy1PrevEmpty.Tpo -c Judy1PrevEmpty.c -o libprev_la-Judy1PrevEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libprev.la   libprev_la-Judy1Prev.lo libprev_la-Judy1PrevEmpty.lo  
+ar cru .libs/libprev.a .libs/libprev_la-Judy1Prev.o .libs/libprev_la-Judy1PrevEmpty.o
+ranlib .libs/libprev.a
+creating libprev.la
+(cd .libs && rm -f libprev.la && ln -s ../libprev.la libprev.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-Judy1ByCount.lo -MD -MP -MF ".deps/libcount_la-Judy1ByCount.Tpo" -c -o libcount_la-Judy1ByCount.lo `test -f 'Judy1ByCount.c' || echo './'`Judy1ByCount.c; \
+then mv -f ".deps/libcount_la-Judy1ByCount.Tpo" ".deps/libcount_la-Judy1ByCount.Plo"; else rm -f ".deps/libcount_la-Judy1ByCount.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-Judy1ByCount.lo -MD -MP -MF .deps/libcount_la-Judy1ByCount.Tpo -c Judy1ByCount.c  -fPIC -DPIC -o .libs/libcount_la-Judy1ByCount.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-Judy1ByCount.lo -MD -MP -MF .deps/libcount_la-Judy1ByCount.Tpo -c Judy1ByCount.c -o libcount_la-Judy1ByCount.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libcount.la   libcount_la-Judy1ByCount.lo  
+ar cru .libs/libcount.a .libs/libcount_la-Judy1ByCount.o
+ranlib .libs/libcount.a
+creating libcount.la
+(cd .libs && rm -f libcount.la && ln -s ../libcount.la libcount.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udy1Test.lo -MD -MP -MF ".deps/libinline_la-j__udy1Test.Tpo" -c -o libinline_la-j__udy1Test.lo `test -f 'j__udy1Test.c' || echo './'`j__udy1Test.c; \
+then mv -f ".deps/libinline_la-j__udy1Test.Tpo" ".deps/libinline_la-j__udy1Test.Plo"; else rm -f ".deps/libinline_la-j__udy1Test.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udy1Test.lo -MD -MP -MF .deps/libinline_la-j__udy1Test.Tpo -c j__udy1Test.c  -fPIC -DPIC -o .libs/libinline_la-j__udy1Test.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udy1Test.lo -MD -MP -MF .deps/libinline_la-j__udy1Test.Tpo -c j__udy1Test.c -o libinline_la-j__udy1Test.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libinline.la   libinline_la-j__udy1Test.lo  
+ar cru .libs/libinline.a .libs/libinline_la-j__udy1Test.o
+ranlib .libs/libinline.a
+creating libinline.la
+(cd .libs && rm -f libinline.la && ln -s ../libinline.la libinline.la)
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/Judy1'
+Making all in JudySL
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudySL'
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -UJU_64BIT -g -O2   -UJU_64BIT -g -O2 -MT JudySL.lo -MD -MP -MF ".deps/JudySL.Tpo" -c -o JudySL.lo JudySL.c; \
+then mv -f ".deps/JudySL.Tpo" ".deps/JudySL.Plo"; else rm -f ".deps/JudySL.Tpo"; exit 1; fi
+mkdir .libs
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -UJU_64BIT -g -O2 -UJU_64BIT -g -O2 -MT JudySL.lo -MD -MP -MF .deps/JudySL.Tpo -c JudySL.c  -fPIC -DPIC -o .libs/JudySL.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -UJU_64BIT -g -O2 -UJU_64BIT -g -O2 -MT JudySL.lo -MD -MP -MF .deps/JudySL.Tpo -c JudySL.c -o JudySL.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -UJU_64BIT -g -O2   -UJU_64BIT -g -O2   -o libJudySL.la   JudySL.lo  
+ar cru .libs/libJudySL.a .libs/JudySL.o
+ranlib .libs/libJudySL.a
+creating libJudySL.la
+(cd .libs && rm -f libJudySL.la && ln -s ../libJudySL.la libJudySL.la)
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudySL'
+Making all in JudyHS
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyHS'
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -UJU_64BIT -g -O2   -UJU_64BIT -g -O2 -MT JudyHS.lo -MD -MP -MF ".deps/JudyHS.Tpo" -c -o JudyHS.lo JudyHS.c; \
+then mv -f ".deps/JudyHS.Tpo" ".deps/JudyHS.Plo"; else rm -f ".deps/JudyHS.Tpo"; exit 1; fi
+mkdir .libs
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -UJU_64BIT -g -O2 -UJU_64BIT -g -O2 -MT JudyHS.lo -MD -MP -MF .deps/JudyHS.Tpo -c JudyHS.c  -fPIC -DPIC -o .libs/JudyHS.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -UJU_64BIT -g -O2 -UJU_64BIT -g -O2 -MT JudyHS.lo -MD -MP -MF .deps/JudyHS.Tpo -c JudyHS.c -o JudyHS.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -UJU_64BIT -g -O2   -UJU_64BIT -g -O2   -o libJudyHS.la   JudyHS.lo  
+ar cru .libs/libJudyHS.a .libs/JudyHS.o
+ranlib .libs/libJudyHS.a
+creating libJudyHS.la
+(cd .libs && rm -f libJudyHS.la && ln -s ../libJudyHS.la libJudyHS.la)
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyHS'
+Making all in obj
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/obj'
+/bin/sh ../../libtool --tag=CC --mode=link gcc  -UJU_64BIT -g -O2   -o libJudy.la -rpath /usr/lib -version-info 1:1:0  ../JudyCommon/*.lo ../JudyL/*.lo ../Judy1/*.lo ../JudyHS/*.lo ../JudySL/*.lo  
+mkdir .libs
+gcc -shared  ../JudyCommon/.libs/JudyMalloc.o ../JudyL/.libs/JudyLCascade.o ../JudyL/.libs/JudyLCount.o ../JudyL/.libs/JudyLCreateBranch.o ../JudyL/.libs/JudyLDecascade.o ../JudyL/.libs/JudyLDel.o ../JudyL/.libs/JudyLFirst.o ../JudyL/.libs/JudyLFreeArray.o ../JudyL/.libs/JudyLGet.o ../JudyL/.libs/JudyLInsArray.o ../JudyL/.libs/JudyLInsertBranch.o ../JudyL/.libs/JudyLIns.o ../JudyL/.libs/JudyLMallocIF.o ../JudyL/.libs/JudyLMemActive.o ../JudyL/.libs/JudyLMemUsed.o ../JudyL/.libs/JudyLTables.o ../JudyL/.libs/libcount_la-JudyLByCount.o ../JudyL/.libs/libinline_la-j__udyLGet.o ../JudyL/.libs/libnext_la-JudyLNextEmpty.o ../JudyL/.libs/libnext_la-JudyLNext.o ../JudyL/.libs/libprev_la-JudyLPrevEmpty.o ../JudyL/.libs/libprev_la-JudyLPrev.o ../Judy1/.libs/Judy1Cascade.o ../Judy1/.libs/Judy1Count.o ../Judy1/.libs/Judy1CreateBranch.o ../Judy1/.libs/Judy1Decascade.o ../Judy1/.libs/Judy1First.o ../Judy1/.libs/Judy1FreeArray.o ../Judy1/.libs/Judy1InsertBranch.o ../Judy1/.libs/Judy1MallocIF.o ../Judy1/.libs/Judy1MemActive.o ../Judy1/.libs/Judy1MemUsed.o ../Judy1/.libs/Judy1SetArray.o ../Judy1/.libs/Judy1Set.o ../Judy1/.libs/Judy1Tables.o ../Judy1/.libs/Judy1Test.o ../Judy1/.libs/Judy1Unset.o ../Judy1/.libs/libcount_la-Judy1ByCount.o ../Judy1/.libs/libinline_la-j__udy1Test.o ../Judy1/.libs/libnext_la-Judy1NextEmpty.o ../Judy1/.libs/libnext_la-Judy1Next.o ../Judy1/.libs/libprev_la-Judy1PrevEmpty.o ../Judy1/.libs/libprev_la-Judy1Prev.o ../JudyHS/.libs/JudyHS.o ../JudySL/.libs/JudySL.o   -Wl,-soname -Wl,libJudy.so.1 -o .libs/libJudy.so.1.0.1
+(cd .libs && rm -f libJudy.so.1 && ln -s libJudy.so.1.0.1 libJudy.so.1)
+(cd .libs && rm -f libJudy.so && ln -s libJudy.so.1.0.1 libJudy.so)
+ar cru .libs/libJudy.a  ../JudyCommon/JudyMalloc.o ../JudyL/JudyLCascade.o ../JudyL/JudyLCount.o ../JudyL/JudyLCreateBranch.o ../JudyL/JudyLDecascade.o ../JudyL/JudyLDel.o ../JudyL/JudyLFirst.o ../JudyL/JudyLFreeArray.o ../JudyL/JudyLGet.o ../JudyL/JudyLInsArray.o ../JudyL/JudyLInsertBranch.o ../JudyL/JudyLIns.o ../JudyL/JudyLMallocIF.o ../JudyL/JudyLMemActive.o ../JudyL/JudyLMemUsed.o ../JudyL/JudyLTables.o ../JudyL/libcount_la-JudyLByCount.o ../JudyL/libinline_la-j__udyLGet.o ../JudyL/libnext_la-JudyLNextEmpty.o ../JudyL/libnext_la-JudyLNext.o ../JudyL/libprev_la-JudyLPrevEmpty.o ../JudyL/libprev_la-JudyLPrev.o ../Judy1/Judy1Cascade.o ../Judy1/Judy1Count.o ../Judy1/Judy1CreateBranch.o ../Judy1/Judy1Decascade.o ../Judy1/Judy1First.o ../Judy1/Judy1FreeArray.o ../Judy1/Judy1InsertBranch.o ../Judy1/Judy1MallocIF.o ../Judy1/Judy1MemActive.o ../Judy1/Judy1MemUsed.o ../Judy1/Judy1SetArray.o ../Judy1/Judy1Set.o ../Judy1/Judy1Tables.o ../Judy1/Judy1Test.o ../Judy1/Judy1Unset.o ../Judy1/libcount_la-Judy1ByCount.o ../Judy1/libinline_la-j__udy1Test.o ../Judy1/libnext_la-Judy1NextEmpty.o ../Judy1/libnext_la-Judy1Next.o ../Judy1/libprev_la-Judy1PrevEmpty.o ../Judy1/libprev_la-Judy1Prev.o ../JudyHS/JudyHS.o ../JudySL/JudySL.o
+ranlib .libs/libJudy.a
+creating libJudy.la
+(cd .libs && rm -f libJudy.la && ln -s ../libJudy.la libJudy.la)
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/obj'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+Making all in tool
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/tool'
+if gcc -DHAVE_CONFIG_H -I. -I. -I.. -I.    -UJU_64BIT -g -O2  -UJU_64BIT -g -O2 -MT jhton.o -MD -MP -MF ".deps/jhton.Tpo" -c -o jhton.o jhton.c; \
+then mv -f ".deps/jhton.Tpo" ".deps/jhton.Po"; else rm -f ".deps/jhton.Tpo"; exit 1; fi
+/bin/sh ../libtool --tag=CC --mode=link gcc -UJU_64BIT -g -O2  -UJU_64BIT -g -O2   -o jhton  jhton.o  
+mkdir .libs
+gcc -UJU_64BIT -g -O2 -UJU_64BIT -g -O2 -o jhton jhton.o 
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/tool'
+Making all in doc
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/doc'
+../tool/jhton ext/Judy_3.htm | grep -v '^[   ]*$'  > man/man3/Judy
+../tool/jhton ext/Judy1_3.htm | grep -v '^[   ]*$'  > man/man3/Judy1
+cd man/man3; ln -s Judy J1T
+cd man/man3; ln -s Judy J1S
+cd man/man3; ln -s Judy J1U
+cd man/man3; ln -s Judy J1F
+cd man/man3; ln -s Judy J1N
+cd man/man3; ln -s Judy J1L
+cd man/man3; ln -s Judy J1P
+cd man/man3; ln -s Judy J1FE
+cd man/man3; ln -s Judy J1NE
+cd man/man3; ln -s Judy J1LE
+cd man/man3; ln -s Judy J1PE
+cd man/man3; ln -s Judy J1C
+cd man/man3; ln -s Judy J1BC
+cd man/man3; ln -s Judy J1FA
+cd man/man3; ln -s Judy J1MU
+../tool/jhton ext/Judy1_funcs_3.htm | grep -v '^[   ]*$' > man/man3/Judy1_funcs
+cd man/man3; ln -s Judy1_funcs Judy1Test 
+cd man/man3; ln -s Judy1_funcs Judy1Set 
+cd man/man3; ln -s Judy1_funcs Judy1Unset 
+cd man/man3; ln -s Judy1_funcs Judy1First 
+cd man/man3; ln -s Judy1_funcs Judy1Next
+cd man/man3; ln -s Judy1_funcs Judy1Last
+cd man/man3; ln -s Judy1_funcs Judy1Prev
+cd man/man3; ln -s Judy1_funcs Judy1FirstEmpty
+cd man/man3; ln -s Judy1_funcs Judy1NextEmpty
+cd man/man3; ln -s Judy1_funcs Judy1LastEmpty
+cd man/man3; ln -s Judy1_funcs Judy1PrevEmpty
+cd man/man3; ln -s Judy1_funcs Judy1Count
+cd man/man3; ln -s Judy1_funcs Judy1ByCount
+cd man/man3; ln -s Judy1_funcs Judy1FreeArray
+cd man/man3; ln -s Judy1_funcs Judy1MemUsed
+../tool/jhton ext/JudyL_3.htm | grep -v '^[   ]*$' > man/man3/JudyL
+cd man/man3; ln -s JudyL JLG
+cd man/man3; ln -s JudyL JLI
+cd man/man3; ln -s JudyL JLD
+cd man/man3; ln -s JudyL JLF
+cd man/man3; ln -s JudyL JLN
+cd man/man3; ln -s JudyL JLL
+cd man/man3; ln -s JudyL JLP
+cd man/man3; ln -s JudyL JLFE
+cd man/man3; ln -s JudyL JLNE
+cd man/man3; ln -s JudyL JLLE
+cd man/man3; ln -s JudyL JLPE
+cd man/man3; ln -s JudyL JLC
+cd man/man3; ln -s JudyL JLBC
+cd man/man3; ln -s JudyL JLFA
+cd man/man3; ln -s JudyL JLMU
+../tool/jhton ext/JudyL_funcs_3.htm | grep -v '^[   ]*$' > man/man3/JudyL_funcs
+cd man/man3; ln -s JudyL_funcs JudyLGet
+cd man/man3; ln -s JudyL_funcs JudyLIns
+cd man/man3; ln -s JudyL_funcs JudyLDel
+cd man/man3; ln -s JudyL_funcs JudyLFirst
+cd man/man3; ln -s JudyL_funcs JudyLNext
+cd man/man3; ln -s JudyL_funcs JudyLLast
+cd man/man3; ln -s JudyL_funcs JudyLPrev
+cd man/man3; ln -s JudyL_funcs JudyLFirstEmpty
+cd man/man3; ln -s JudyL_funcs JudyLNextEmpty
+cd man/man3; ln -s JudyL_funcs JudyLLastEmpty
+cd man/man3; ln -s JudyL_funcs JudyLPrevEmpty
+cd man/man3; ln -s JudyL_funcs JudyLCount
+cd man/man3; ln -s JudyL_funcs JudyLByCount
+cd man/man3; ln -s JudyL_funcs JudyLFreeArray
+cd man/man3; ln -s JudyL_funcs JudyLMemUsed
+../tool/jhton ext/JudySL_3.htm | grep -v '^[   ]*$' > man/man3/JudySL
+cd man/man3; ln -s JudySL JSLG
+cd man/man3; ln -s JudySL JSLI
+cd man/man3; ln -s JudySL JSLD
+cd man/man3; ln -s JudySL JSLF
+cd man/man3; ln -s JudySL JSLN
+cd man/man3; ln -s JudySL JSLL
+cd man/man3; ln -s JudySL JSLP
+cd man/man3; ln -s JudySL JSLFA
+../tool/jhton ext/JudySL_funcs_3.htm | grep -v '^[   ]*$' > man/man3/JudySL_funcs
+cd man/man3; ln -s JudySL_funcs JudySLGet
+cd man/man3; ln -s JudySL_funcs JudySLIns
+cd man/man3; ln -s JudySL_funcs JudySLDel
+cd man/man3; ln -s JudySL_funcs JudySLFirst
+cd man/man3; ln -s JudySL_funcs JudySLNext
+cd man/man3; ln -s JudySL_funcs JudySLLast
+cd man/man3; ln -s JudySL_funcs JudySLPrev
+cd man/man3; ln -s JudySL_funcs JudySLFreeArray
+../tool/jhton ext/JudyHS_3.htm | grep -v '^[   ]*$' > man/man3/JudyHS
+cd man/man3; ln -s JudyHS JHSG 
+cd man/man3; ln -s JudyHS JHSI
+cd man/man3; ln -s JudyHS JHSD
+cd man/man3; ln -s JudyHS JHSFA
+../tool/jhton ext/JudyHS_funcs_3.htm | grep -v '^[   ]*$' > man/man3/JudyHS_funcs
+cd man/man3; ln -s JudyHS_funcs JudyHSGet
+cd man/man3; ln -s JudyHS_funcs JudyHSIns
+cd man/man3; ln -s JudyHS_funcs JudyHSDel
+cd man/man3; ln -s JudyHS_funcs JudyHSFreeArray
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/doc'
+Making all in test
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/test'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/test'
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[2]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[1]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1'
+touch build-stamp
+ fakeroot debian/rules binary
+dh_testdir
+dh_testroot
+dh_clean -k
+dh_installdirs
+# Add here commands to install the package into debian/tmp.
+/usr/bin/make install DESTDIR=/home/troyhebe/proj/b/judy-1.0.1/debian/tmp DISTROS=debian
+make[1]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1'
+Making install in src
+make[2]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+Making install in .
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+Making install in JudyCommon
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyCommon'
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyCommon'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyCommon'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyCommon'
+Making install in JudyL
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyL'
+cp -f ../JudyCommon/JudyByCount.c      		JudyLByCount.c   
+cp -f ../JudyCommon/JudyCascade.c       	JudyLCascade.c
+cp -f ../JudyCommon/JudyCount.c        		JudyLCount.c
+cp -f ../JudyCommon/JudyCreateBranch.c 		JudyLCreateBranch.c
+cp -f ../JudyCommon/JudyDecascade.c    		JudyLDecascade.c
+cp -f ../JudyCommon/JudyDel.c          		JudyLDel.c
+cp -f ../JudyCommon/JudyFirst.c        		JudyLFirst.c
+cp -f ../JudyCommon/JudyFreeArray.c    		JudyLFreeArray.c
+cp -f ../JudyCommon/JudyGet.c          		JudyLGet.c
+cp -f ../JudyCommon/JudyGet.c          		j__udyLGet.c
+cp -f ../JudyCommon/JudyInsArray.c     		JudyLInsArray.c
+cp -f ../JudyCommon/JudyIns.c          		JudyLIns.c
+cp -f ../JudyCommon/JudyInsertBranch.c 		JudyLInsertBranch.c
+cp -f ../JudyCommon/JudyMallocIF.c     		JudyLMallocIF.c
+cp -f ../JudyCommon/JudyMemActive.c    		JudyLMemActive.c
+cp -f ../JudyCommon/JudyMemUsed.c      		JudyLMemUsed.c
+cp -f ../JudyCommon/JudyPrevNext.c     		JudyLNext.c
+cp -f ../JudyCommon/JudyPrevNext.c     		JudyLPrev.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		JudyLNextEmpty.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		JudyLPrevEmpty.c
+cp -f ../JudyCommon/JudyTables.c       	 	JudyLTablesGen.c
+gcc -I. -I.. -I../JudyCommon/  -DJUDYL   -UJU_64BIT -g -O2 -o JudyLTablesGen JudyLTablesGen.c; ./JudyLTablesGen 
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLTables.lo -MD -MP -MF ".deps/JudyLTables.Tpo" -c -o JudyLTables.lo JudyLTables.c; \
+then mv -f ".deps/JudyLTables.Tpo" ".deps/JudyLTables.Plo"; else rm -f ".deps/JudyLTables.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLTables.lo -MD -MP -MF .deps/JudyLTables.Tpo -c JudyLTables.c  -fPIC -DPIC -o .libs/JudyLTables.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLTables.lo -MD -MP -MF .deps/JudyLTables.Tpo -c JudyLTables.c -o JudyLTables.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLCount.lo -MD -MP -MF ".deps/JudyLCount.Tpo" -c -o JudyLCount.lo JudyLCount.c; \
+then mv -f ".deps/JudyLCount.Tpo" ".deps/JudyLCount.Plo"; else rm -f ".deps/JudyLCount.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCount.lo -MD -MP -MF .deps/JudyLCount.Tpo -c JudyLCount.c  -fPIC -DPIC -o .libs/JudyLCount.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCount.lo -MD -MP -MF .deps/JudyLCount.Tpo -c JudyLCount.c -o JudyLCount.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLCreateBranch.lo -MD -MP -MF ".deps/JudyLCreateBranch.Tpo" -c -o JudyLCreateBranch.lo JudyLCreateBranch.c; \
+then mv -f ".deps/JudyLCreateBranch.Tpo" ".deps/JudyLCreateBranch.Plo"; else rm -f ".deps/JudyLCreateBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCreateBranch.lo -MD -MP -MF .deps/JudyLCreateBranch.Tpo -c JudyLCreateBranch.c  -fPIC -DPIC -o .libs/JudyLCreateBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLCreateBranch.lo -MD -MP -MF .deps/JudyLCreateBranch.Tpo -c JudyLCreateBranch.c -o JudyLCreateBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLDecascade.lo -MD -MP -MF ".deps/JudyLDecascade.Tpo" -c -o JudyLDecascade.lo JudyLDecascade.c; \
+then mv -f ".deps/JudyLDecascade.Tpo" ".deps/JudyLDecascade.Plo"; else rm -f ".deps/JudyLDecascade.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDecascade.lo -MD -MP -MF .deps/JudyLDecascade.Tpo -c JudyLDecascade.c  -fPIC -DPIC -o .libs/JudyLDecascade.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDecascade.lo -MD -MP -MF .deps/JudyLDecascade.Tpo -c JudyLDecascade.c -o JudyLDecascade.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLDel.lo -MD -MP -MF ".deps/JudyLDel.Tpo" -c -o JudyLDel.lo JudyLDel.c; \
+then mv -f ".deps/JudyLDel.Tpo" ".deps/JudyLDel.Plo"; else rm -f ".deps/JudyLDel.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDel.lo -MD -MP -MF .deps/JudyLDel.Tpo -c JudyLDel.c  -fPIC -DPIC -o .libs/JudyLDel.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLDel.lo -MD -MP -MF .deps/JudyLDel.Tpo -c JudyLDel.c -o JudyLDel.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLFirst.lo -MD -MP -MF ".deps/JudyLFirst.Tpo" -c -o JudyLFirst.lo JudyLFirst.c; \
+then mv -f ".deps/JudyLFirst.Tpo" ".deps/JudyLFirst.Plo"; else rm -f ".deps/JudyLFirst.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFirst.lo -MD -MP -MF .deps/JudyLFirst.Tpo -c JudyLFirst.c  -fPIC -DPIC -o .libs/JudyLFirst.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFirst.lo -MD -MP -MF .deps/JudyLFirst.Tpo -c JudyLFirst.c -o JudyLFirst.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLFreeArray.lo -MD -MP -MF ".deps/JudyLFreeArray.Tpo" -c -o JudyLFreeArray.lo JudyLFreeArray.c; \
+then mv -f ".deps/JudyLFreeArray.Tpo" ".deps/JudyLFreeArray.Plo"; else rm -f ".deps/JudyLFreeArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFreeArray.lo -MD -MP -MF .deps/JudyLFreeArray.Tpo -c JudyLFreeArray.c  -fPIC -DPIC -o .libs/JudyLFreeArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLFreeArray.lo -MD -MP -MF .deps/JudyLFreeArray.Tpo -c JudyLFreeArray.c -o JudyLFreeArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLGet.lo -MD -MP -MF ".deps/JudyLGet.Tpo" -c -o JudyLGet.lo JudyLGet.c; \
+then mv -f ".deps/JudyLGet.Tpo" ".deps/JudyLGet.Plo"; else rm -f ".deps/JudyLGet.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLGet.lo -MD -MP -MF .deps/JudyLGet.Tpo -c JudyLGet.c  -fPIC -DPIC -o .libs/JudyLGet.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLGet.lo -MD -MP -MF .deps/JudyLGet.Tpo -c JudyLGet.c -o JudyLGet.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLInsArray.lo -MD -MP -MF ".deps/JudyLInsArray.Tpo" -c -o JudyLInsArray.lo JudyLInsArray.c; \
+then mv -f ".deps/JudyLInsArray.Tpo" ".deps/JudyLInsArray.Plo"; else rm -f ".deps/JudyLInsArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsArray.lo -MD -MP -MF .deps/JudyLInsArray.Tpo -c JudyLInsArray.c  -fPIC -DPIC -o .libs/JudyLInsArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsArray.lo -MD -MP -MF .deps/JudyLInsArray.Tpo -c JudyLInsArray.c -o JudyLInsArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLIns.lo -MD -MP -MF ".deps/JudyLIns.Tpo" -c -o JudyLIns.lo JudyLIns.c; \
+then mv -f ".deps/JudyLIns.Tpo" ".deps/JudyLIns.Plo"; else rm -f ".deps/JudyLIns.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLIns.lo -MD -MP -MF .deps/JudyLIns.Tpo -c JudyLIns.c  -fPIC -DPIC -o .libs/JudyLIns.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLIns.lo -MD -MP -MF .deps/JudyLIns.Tpo -c JudyLIns.c -o JudyLIns.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLInsertBranch.lo -MD -MP -MF ".deps/JudyLInsertBranch.Tpo" -c -o JudyLInsertBranch.lo JudyLInsertBranch.c; \
+then mv -f ".deps/JudyLInsertBranch.Tpo" ".deps/JudyLInsertBranch.Plo"; else rm -f ".deps/JudyLInsertBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsertBranch.lo -MD -MP -MF .deps/JudyLInsertBranch.Tpo -c JudyLInsertBranch.c  -fPIC -DPIC -o .libs/JudyLInsertBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLInsertBranch.lo -MD -MP -MF .deps/JudyLInsertBranch.Tpo -c JudyLInsertBranch.c -o JudyLInsertBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLMallocIF.lo -MD -MP -MF ".deps/JudyLMallocIF.Tpo" -c -o JudyLMallocIF.lo JudyLMallocIF.c; \
+then mv -f ".deps/JudyLMallocIF.Tpo" ".deps/JudyLMallocIF.Plo"; else rm -f ".deps/JudyLMallocIF.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMallocIF.lo -MD -MP -MF .deps/JudyLMallocIF.Tpo -c JudyLMallocIF.c  -fPIC -DPIC -o .libs/JudyLMallocIF.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMallocIF.lo -MD -MP -MF .deps/JudyLMallocIF.Tpo -c JudyLMallocIF.c -o JudyLMallocIF.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLMemActive.lo -MD -MP -MF ".deps/JudyLMemActive.Tpo" -c -o JudyLMemActive.lo JudyLMemActive.c; \
+then mv -f ".deps/JudyLMemActive.Tpo" ".deps/JudyLMemActive.Plo"; else rm -f ".deps/JudyLMemActive.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemActive.lo -MD -MP -MF .deps/JudyLMemActive.Tpo -c JudyLMemActive.c  -fPIC -DPIC -o .libs/JudyLMemActive.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemActive.lo -MD -MP -MF .deps/JudyLMemActive.Tpo -c JudyLMemActive.c -o JudyLMemActive.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -UJU_64BIT -g -O2 -MT JudyLMemUsed.lo -MD -MP -MF ".deps/JudyLMemUsed.Tpo" -c -o JudyLMemUsed.lo JudyLMemUsed.c; \
+then mv -f ".deps/JudyLMemUsed.Tpo" ".deps/JudyLMemUsed.Plo"; else rm -f ".deps/JudyLMemUsed.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemUsed.lo -MD -MP -MF .deps/JudyLMemUsed.Tpo -c JudyLMemUsed.c  -fPIC -DPIC -o .libs/JudyLMemUsed.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -UJU_64BIT -g -O2 -MT JudyLMemUsed.lo -MD -MP -MF .deps/JudyLMemUsed.Tpo -c JudyLMemUsed.c -o JudyLMemUsed.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libJudyL.la   JudyLCascade.lo JudyLTables.lo JudyLCount.lo JudyLCreateBranch.lo JudyLDecascade.lo JudyLDel.lo JudyLFirst.lo JudyLFreeArray.lo JudyLGet.lo JudyLInsArray.lo JudyLIns.lo JudyLInsertBranch.lo JudyLMallocIF.lo JudyLMemActive.lo JudyLMemUsed.lo  
+rm -fr  .libs/libJudyL.a .libs/libJudyL.la
+ar cru .libs/libJudyL.a .libs/JudyLCascade.o .libs/JudyLTables.o .libs/JudyLCount.o .libs/JudyLCreateBranch.o .libs/JudyLDecascade.o .libs/JudyLDel.o .libs/JudyLFirst.o .libs/JudyLFreeArray.o .libs/JudyLGet.o .libs/JudyLInsArray.o .libs/JudyLIns.o .libs/JudyLInsertBranch.o .libs/JudyLMallocIF.o .libs/JudyLMemActive.o .libs/JudyLMemUsed.o
+ranlib .libs/libJudyL.a
+creating libJudyL.la
+(cd .libs && rm -f libJudyL.la && ln -s ../libJudyL.la libJudyL.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNext.lo -MD -MP -MF ".deps/libnext_la-JudyLNext.Tpo" -c -o libnext_la-JudyLNext.lo `test -f 'JudyLNext.c' || echo './'`JudyLNext.c; \
+then mv -f ".deps/libnext_la-JudyLNext.Tpo" ".deps/libnext_la-JudyLNext.Plo"; else rm -f ".deps/libnext_la-JudyLNext.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNext.lo -MD -MP -MF .deps/libnext_la-JudyLNext.Tpo -c JudyLNext.c  -fPIC -DPIC -o .libs/libnext_la-JudyLNext.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNext.lo -MD -MP -MF .deps/libnext_la-JudyLNext.Tpo -c JudyLNext.c -o libnext_la-JudyLNext.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNextEmpty.lo -MD -MP -MF ".deps/libnext_la-JudyLNextEmpty.Tpo" -c -o libnext_la-JudyLNextEmpty.lo `test -f 'JudyLNextEmpty.c' || echo './'`JudyLNextEmpty.c; \
+then mv -f ".deps/libnext_la-JudyLNextEmpty.Tpo" ".deps/libnext_la-JudyLNextEmpty.Plo"; else rm -f ".deps/libnext_la-JudyLNextEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNextEmpty.lo -MD -MP -MF .deps/libnext_la-JudyLNextEmpty.Tpo -c JudyLNextEmpty.c  -fPIC -DPIC -o .libs/libnext_la-JudyLNextEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-JudyLNextEmpty.lo -MD -MP -MF .deps/libnext_la-JudyLNextEmpty.Tpo -c JudyLNextEmpty.c -o libnext_la-JudyLNextEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libnext.la   libnext_la-JudyLNext.lo libnext_la-JudyLNextEmpty.lo  
+rm -fr  .libs/libnext.a .libs/libnext.la
+ar cru .libs/libnext.a .libs/libnext_la-JudyLNext.o .libs/libnext_la-JudyLNextEmpty.o
+ranlib .libs/libnext.a
+creating libnext.la
+(cd .libs && rm -f libnext.la && ln -s ../libnext.la libnext.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrev.lo -MD -MP -MF ".deps/libprev_la-JudyLPrev.Tpo" -c -o libprev_la-JudyLPrev.lo `test -f 'JudyLPrev.c' || echo './'`JudyLPrev.c; \
+then mv -f ".deps/libprev_la-JudyLPrev.Tpo" ".deps/libprev_la-JudyLPrev.Plo"; else rm -f ".deps/libprev_la-JudyLPrev.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrev.lo -MD -MP -MF .deps/libprev_la-JudyLPrev.Tpo -c JudyLPrev.c  -fPIC -DPIC -o .libs/libprev_la-JudyLPrev.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrev.lo -MD -MP -MF .deps/libprev_la-JudyLPrev.Tpo -c JudyLPrev.c -o libprev_la-JudyLPrev.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrevEmpty.lo -MD -MP -MF ".deps/libprev_la-JudyLPrevEmpty.Tpo" -c -o libprev_la-JudyLPrevEmpty.lo `test -f 'JudyLPrevEmpty.c' || echo './'`JudyLPrevEmpty.c; \
+then mv -f ".deps/libprev_la-JudyLPrevEmpty.Tpo" ".deps/libprev_la-JudyLPrevEmpty.Plo"; else rm -f ".deps/libprev_la-JudyLPrevEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrevEmpty.lo -MD -MP -MF .deps/libprev_la-JudyLPrevEmpty.Tpo -c JudyLPrevEmpty.c  -fPIC -DPIC -o .libs/libprev_la-JudyLPrevEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-JudyLPrevEmpty.lo -MD -MP -MF .deps/libprev_la-JudyLPrevEmpty.Tpo -c JudyLPrevEmpty.c -o libprev_la-JudyLPrevEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libprev.la   libprev_la-JudyLPrev.lo libprev_la-JudyLPrevEmpty.lo  
+rm -fr  .libs/libprev.a .libs/libprev.la
+ar cru .libs/libprev.a .libs/libprev_la-JudyLPrev.o .libs/libprev_la-JudyLPrevEmpty.o
+ranlib .libs/libprev.a
+creating libprev.la
+(cd .libs && rm -f libprev.la && ln -s ../libprev.la libprev.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-JudyLByCount.lo -MD -MP -MF ".deps/libcount_la-JudyLByCount.Tpo" -c -o libcount_la-JudyLByCount.lo `test -f 'JudyLByCount.c' || echo './'`JudyLByCount.c; \
+then mv -f ".deps/libcount_la-JudyLByCount.Tpo" ".deps/libcount_la-JudyLByCount.Plo"; else rm -f ".deps/libcount_la-JudyLByCount.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-JudyLByCount.lo -MD -MP -MF .deps/libcount_la-JudyLByCount.Tpo -c JudyLByCount.c  -fPIC -DPIC -o .libs/libcount_la-JudyLByCount.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-JudyLByCount.lo -MD -MP -MF .deps/libcount_la-JudyLByCount.Tpo -c JudyLByCount.c -o libcount_la-JudyLByCount.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libcount.la   libcount_la-JudyLByCount.lo  
+rm -fr  .libs/libcount.a .libs/libcount.la
+ar cru .libs/libcount.a .libs/libcount_la-JudyLByCount.o
+ranlib .libs/libcount.a
+creating libcount.la
+(cd .libs && rm -f libcount.la && ln -s ../libcount.la libcount.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDYL   -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udyLGet.lo -MD -MP -MF ".deps/libinline_la-j__udyLGet.Tpo" -c -o libinline_la-j__udyLGet.lo `test -f 'j__udyLGet.c' || echo './'`j__udyLGet.c; \
+then mv -f ".deps/libinline_la-j__udyLGet.Tpo" ".deps/libinline_la-j__udyLGet.Plo"; else rm -f ".deps/libinline_la-j__udyLGet.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udyLGet.lo -MD -MP -MF .deps/libinline_la-j__udyLGet.Tpo -c j__udyLGet.c  -fPIC -DPIC -o .libs/libinline_la-j__udyLGet.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDYL -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udyLGet.lo -MD -MP -MF .deps/libinline_la-j__udyLGet.Tpo -c j__udyLGet.c -o libinline_la-j__udyLGet.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDYL   -UJU_64BIT -g -O2   -o libinline.la   libinline_la-j__udyLGet.lo  
+rm -fr  .libs/libinline.a .libs/libinline.la
+ar cru .libs/libinline.a .libs/libinline_la-j__udyLGet.o
+ranlib .libs/libinline.a
+creating libinline.la
+(cd .libs && rm -f libinline.la && ln -s ../libinline.la libinline.la)
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyL'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyL'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyL'
+Making install in Judy1
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/Judy1'
+cp -f ../JudyCommon/JudyByCount.c      		Judy1ByCount.c   
+cp -f ../JudyCommon/JudyCascade.c      		Judy1Cascade.c
+cp -f ../JudyCommon/JudyCount.c        		Judy1Count.c
+cp -f ../JudyCommon/JudyCreateBranch.c 		Judy1CreateBranch.c
+cp -f ../JudyCommon/JudyDecascade.c    		Judy1Decascade.c
+cp -f ../JudyCommon/JudyDel.c          		Judy1Unset.c
+cp -f ../JudyCommon/JudyFirst.c        		Judy1First.c
+cp -f ../JudyCommon/JudyFreeArray.c    		Judy1FreeArray.c
+cp -f ../JudyCommon/JudyGet.c          		Judy1Test.c
+cp -f ../JudyCommon/JudyGet.c          		j__udy1Test.c
+cp -f ../JudyCommon/JudyInsArray.c     		Judy1SetArray.c
+cp -f ../JudyCommon/JudyIns.c          		Judy1Set.c
+cp -f ../JudyCommon/JudyInsertBranch.c 		Judy1InsertBranch.c
+cp -f ../JudyCommon/JudyMallocIF.c     		Judy1MallocIF.c
+cp -f ../JudyCommon/JudyMemActive.c    		Judy1MemActive.c
+cp -f ../JudyCommon/JudyMemUsed.c      		Judy1MemUsed.c
+cp -f ../JudyCommon/JudyPrevNext.c     		Judy1Next.c
+cp -f ../JudyCommon/JudyPrevNext.c     		Judy1Prev.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		Judy1NextEmpty.c
+cp -f ../JudyCommon/JudyPrevNextEmpty.c		Judy1PrevEmpty.c
+cp -f ../JudyCommon/JudyTables.c	        Judy1TablesGen.c
+gcc -I. -I.. -I../JudyCommon/  -DJUDY1   -UJU_64BIT -g -O2 -o Judy1TablesGen Judy1TablesGen.c; ./Judy1TablesGen
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Tables.lo -MD -MP -MF ".deps/Judy1Tables.Tpo" -c -o Judy1Tables.lo Judy1Tables.c; \
+then mv -f ".deps/Judy1Tables.Tpo" ".deps/Judy1Tables.Plo"; else rm -f ".deps/Judy1Tables.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Tables.lo -MD -MP -MF .deps/Judy1Tables.Tpo -c Judy1Tables.c  -fPIC -DPIC -o .libs/Judy1Tables.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Tables.lo -MD -MP -MF .deps/Judy1Tables.Tpo -c Judy1Tables.c -o Judy1Tables.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Set.lo -MD -MP -MF ".deps/Judy1Set.Tpo" -c -o Judy1Set.lo Judy1Set.c; \
+then mv -f ".deps/Judy1Set.Tpo" ".deps/Judy1Set.Plo"; else rm -f ".deps/Judy1Set.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Set.lo -MD -MP -MF .deps/Judy1Set.Tpo -c Judy1Set.c  -fPIC -DPIC -o .libs/Judy1Set.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Set.lo -MD -MP -MF .deps/Judy1Set.Tpo -c Judy1Set.c -o Judy1Set.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1SetArray.lo -MD -MP -MF ".deps/Judy1SetArray.Tpo" -c -o Judy1SetArray.lo Judy1SetArray.c; \
+then mv -f ".deps/Judy1SetArray.Tpo" ".deps/Judy1SetArray.Plo"; else rm -f ".deps/Judy1SetArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1SetArray.lo -MD -MP -MF .deps/Judy1SetArray.Tpo -c Judy1SetArray.c  -fPIC -DPIC -o .libs/Judy1SetArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1SetArray.lo -MD -MP -MF .deps/Judy1SetArray.Tpo -c Judy1SetArray.c -o Judy1SetArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Unset.lo -MD -MP -MF ".deps/Judy1Unset.Tpo" -c -o Judy1Unset.lo Judy1Unset.c; \
+then mv -f ".deps/Judy1Unset.Tpo" ".deps/Judy1Unset.Plo"; else rm -f ".deps/Judy1Unset.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Unset.lo -MD -MP -MF .deps/Judy1Unset.Tpo -c Judy1Unset.c  -fPIC -DPIC -o .libs/Judy1Unset.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Unset.lo -MD -MP -MF .deps/Judy1Unset.Tpo -c Judy1Unset.c -o Judy1Unset.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Cascade.lo -MD -MP -MF ".deps/Judy1Cascade.Tpo" -c -o Judy1Cascade.lo Judy1Cascade.c; \
+then mv -f ".deps/Judy1Cascade.Tpo" ".deps/Judy1Cascade.Plo"; else rm -f ".deps/Judy1Cascade.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Cascade.lo -MD -MP -MF .deps/Judy1Cascade.Tpo -c Judy1Cascade.c  -fPIC -DPIC -o .libs/Judy1Cascade.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Cascade.lo -MD -MP -MF .deps/Judy1Cascade.Tpo -c Judy1Cascade.c -o Judy1Cascade.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Count.lo -MD -MP -MF ".deps/Judy1Count.Tpo" -c -o Judy1Count.lo Judy1Count.c; \
+then mv -f ".deps/Judy1Count.Tpo" ".deps/Judy1Count.Plo"; else rm -f ".deps/Judy1Count.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Count.lo -MD -MP -MF .deps/Judy1Count.Tpo -c Judy1Count.c  -fPIC -DPIC -o .libs/Judy1Count.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Count.lo -MD -MP -MF .deps/Judy1Count.Tpo -c Judy1Count.c -o Judy1Count.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1CreateBranch.lo -MD -MP -MF ".deps/Judy1CreateBranch.Tpo" -c -o Judy1CreateBranch.lo Judy1CreateBranch.c; \
+then mv -f ".deps/Judy1CreateBranch.Tpo" ".deps/Judy1CreateBranch.Plo"; else rm -f ".deps/Judy1CreateBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1CreateBranch.lo -MD -MP -MF .deps/Judy1CreateBranch.Tpo -c Judy1CreateBranch.c  -fPIC -DPIC -o .libs/Judy1CreateBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1CreateBranch.lo -MD -MP -MF .deps/Judy1CreateBranch.Tpo -c Judy1CreateBranch.c -o Judy1CreateBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1Decascade.lo -MD -MP -MF ".deps/Judy1Decascade.Tpo" -c -o Judy1Decascade.lo Judy1Decascade.c; \
+then mv -f ".deps/Judy1Decascade.Tpo" ".deps/Judy1Decascade.Plo"; else rm -f ".deps/Judy1Decascade.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Decascade.lo -MD -MP -MF .deps/Judy1Decascade.Tpo -c Judy1Decascade.c  -fPIC -DPIC -o .libs/Judy1Decascade.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1Decascade.lo -MD -MP -MF .deps/Judy1Decascade.Tpo -c Judy1Decascade.c -o Judy1Decascade.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1First.lo -MD -MP -MF ".deps/Judy1First.Tpo" -c -o Judy1First.lo Judy1First.c; \
+then mv -f ".deps/Judy1First.Tpo" ".deps/Judy1First.Plo"; else rm -f ".deps/Judy1First.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1First.lo -MD -MP -MF .deps/Judy1First.Tpo -c Judy1First.c  -fPIC -DPIC -o .libs/Judy1First.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1First.lo -MD -MP -MF .deps/Judy1First.Tpo -c Judy1First.c -o Judy1First.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1FreeArray.lo -MD -MP -MF ".deps/Judy1FreeArray.Tpo" -c -o Judy1FreeArray.lo Judy1FreeArray.c; \
+then mv -f ".deps/Judy1FreeArray.Tpo" ".deps/Judy1FreeArray.Plo"; else rm -f ".deps/Judy1FreeArray.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1FreeArray.lo -MD -MP -MF .deps/Judy1FreeArray.Tpo -c Judy1FreeArray.c  -fPIC -DPIC -o .libs/Judy1FreeArray.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1FreeArray.lo -MD -MP -MF .deps/Judy1FreeArray.Tpo -c Judy1FreeArray.c -o Judy1FreeArray.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1InsertBranch.lo -MD -MP -MF ".deps/Judy1InsertBranch.Tpo" -c -o Judy1InsertBranch.lo Judy1InsertBranch.c; \
+then mv -f ".deps/Judy1InsertBranch.Tpo" ".deps/Judy1InsertBranch.Plo"; else rm -f ".deps/Judy1InsertBranch.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1InsertBranch.lo -MD -MP -MF .deps/Judy1InsertBranch.Tpo -c Judy1InsertBranch.c  -fPIC -DPIC -o .libs/Judy1InsertBranch.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1InsertBranch.lo -MD -MP -MF .deps/Judy1InsertBranch.Tpo -c Judy1InsertBranch.c -o Judy1InsertBranch.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1MallocIF.lo -MD -MP -MF ".deps/Judy1MallocIF.Tpo" -c -o Judy1MallocIF.lo Judy1MallocIF.c; \
+then mv -f ".deps/Judy1MallocIF.Tpo" ".deps/Judy1MallocIF.Plo"; else rm -f ".deps/Judy1MallocIF.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MallocIF.lo -MD -MP -MF .deps/Judy1MallocIF.Tpo -c Judy1MallocIF.c  -fPIC -DPIC -o .libs/Judy1MallocIF.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MallocIF.lo -MD -MP -MF .deps/Judy1MallocIF.Tpo -c Judy1MallocIF.c -o Judy1MallocIF.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1MemActive.lo -MD -MP -MF ".deps/Judy1MemActive.Tpo" -c -o Judy1MemActive.lo Judy1MemActive.c; \
+then mv -f ".deps/Judy1MemActive.Tpo" ".deps/Judy1MemActive.Plo"; else rm -f ".deps/Judy1MemActive.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemActive.lo -MD -MP -MF .deps/Judy1MemActive.Tpo -c Judy1MemActive.c  -fPIC -DPIC -o .libs/Judy1MemActive.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemActive.lo -MD -MP -MF .deps/Judy1MemActive.Tpo -c Judy1MemActive.c -o Judy1MemActive.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -UJU_64BIT -g -O2 -MT Judy1MemUsed.lo -MD -MP -MF ".deps/Judy1MemUsed.Tpo" -c -o Judy1MemUsed.lo Judy1MemUsed.c; \
+then mv -f ".deps/Judy1MemUsed.Tpo" ".deps/Judy1MemUsed.Plo"; else rm -f ".deps/Judy1MemUsed.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemUsed.lo -MD -MP -MF .deps/Judy1MemUsed.Tpo -c Judy1MemUsed.c  -fPIC -DPIC -o .libs/Judy1MemUsed.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -UJU_64BIT -g -O2 -MT Judy1MemUsed.lo -MD -MP -MF .deps/Judy1MemUsed.Tpo -c Judy1MemUsed.c -o Judy1MemUsed.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libJudy1.la   Judy1Test.lo Judy1Tables.lo Judy1Set.lo Judy1SetArray.lo Judy1Unset.lo Judy1Cascade.lo Judy1Count.lo Judy1CreateBranch.lo Judy1Decascade.lo Judy1First.lo Judy1FreeArray.lo Judy1InsertBranch.lo Judy1MallocIF.lo Judy1MemActive.lo Judy1MemUsed.lo  
+rm -fr  .libs/libJudy1.a .libs/libJudy1.la
+ar cru .libs/libJudy1.a .libs/Judy1Test.o .libs/Judy1Tables.o .libs/Judy1Set.o .libs/Judy1SetArray.o .libs/Judy1Unset.o .libs/Judy1Cascade.o .libs/Judy1Count.o .libs/Judy1CreateBranch.o .libs/Judy1Decascade.o .libs/Judy1First.o .libs/Judy1FreeArray.o .libs/Judy1InsertBranch.o .libs/Judy1MallocIF.o .libs/Judy1MemActive.o .libs/Judy1MemUsed.o
+ranlib .libs/libJudy1.a
+creating libJudy1.la
+(cd .libs && rm -f libJudy1.la && ln -s ../libJudy1.la libJudy1.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1Next.lo -MD -MP -MF ".deps/libnext_la-Judy1Next.Tpo" -c -o libnext_la-Judy1Next.lo `test -f 'Judy1Next.c' || echo './'`Judy1Next.c; \
+then mv -f ".deps/libnext_la-Judy1Next.Tpo" ".deps/libnext_la-Judy1Next.Plo"; else rm -f ".deps/libnext_la-Judy1Next.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1Next.lo -MD -MP -MF .deps/libnext_la-Judy1Next.Tpo -c Judy1Next.c  -fPIC -DPIC -o .libs/libnext_la-Judy1Next.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1Next.lo -MD -MP -MF .deps/libnext_la-Judy1Next.Tpo -c Judy1Next.c -o libnext_la-Judy1Next.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1NextEmpty.lo -MD -MP -MF ".deps/libnext_la-Judy1NextEmpty.Tpo" -c -o libnext_la-Judy1NextEmpty.lo `test -f 'Judy1NextEmpty.c' || echo './'`Judy1NextEmpty.c; \
+then mv -f ".deps/libnext_la-Judy1NextEmpty.Tpo" ".deps/libnext_la-Judy1NextEmpty.Plo"; else rm -f ".deps/libnext_la-Judy1NextEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1NextEmpty.lo -MD -MP -MF .deps/libnext_la-Judy1NextEmpty.Tpo -c Judy1NextEmpty.c  -fPIC -DPIC -o .libs/libnext_la-Judy1NextEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYNEXT -UJU_64BIT -g -O2 -MT libnext_la-Judy1NextEmpty.lo -MD -MP -MF .deps/libnext_la-Judy1NextEmpty.Tpo -c Judy1NextEmpty.c -o libnext_la-Judy1NextEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libnext.la   libnext_la-Judy1Next.lo libnext_la-Judy1NextEmpty.lo  
+rm -fr  .libs/libnext.a .libs/libnext.la
+ar cru .libs/libnext.a .libs/libnext_la-Judy1Next.o .libs/libnext_la-Judy1NextEmpty.o
+ranlib .libs/libnext.a
+creating libnext.la
+(cd .libs && rm -f libnext.la && ln -s ../libnext.la libnext.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1Prev.lo -MD -MP -MF ".deps/libprev_la-Judy1Prev.Tpo" -c -o libprev_la-Judy1Prev.lo `test -f 'Judy1Prev.c' || echo './'`Judy1Prev.c; \
+then mv -f ".deps/libprev_la-Judy1Prev.Tpo" ".deps/libprev_la-Judy1Prev.Plo"; else rm -f ".deps/libprev_la-Judy1Prev.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1Prev.lo -MD -MP -MF .deps/libprev_la-Judy1Prev.Tpo -c Judy1Prev.c  -fPIC -DPIC -o .libs/libprev_la-Judy1Prev.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1Prev.lo -MD -MP -MF .deps/libprev_la-Judy1Prev.Tpo -c Judy1Prev.c -o libprev_la-Judy1Prev.o >/dev/null 2>&1
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1PrevEmpty.lo -MD -MP -MF ".deps/libprev_la-Judy1PrevEmpty.Tpo" -c -o libprev_la-Judy1PrevEmpty.lo `test -f 'Judy1PrevEmpty.c' || echo './'`Judy1PrevEmpty.c; \
+then mv -f ".deps/libprev_la-Judy1PrevEmpty.Tpo" ".deps/libprev_la-Judy1PrevEmpty.Plo"; else rm -f ".deps/libprev_la-Judy1PrevEmpty.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1PrevEmpty.lo -MD -MP -MF .deps/libprev_la-Judy1PrevEmpty.Tpo -c Judy1PrevEmpty.c  -fPIC -DPIC -o .libs/libprev_la-Judy1PrevEmpty.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYPREV -UJU_64BIT -g -O2 -MT libprev_la-Judy1PrevEmpty.lo -MD -MP -MF .deps/libprev_la-Judy1PrevEmpty.Tpo -c Judy1PrevEmpty.c -o libprev_la-Judy1PrevEmpty.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libprev.la   libprev_la-Judy1Prev.lo libprev_la-Judy1PrevEmpty.lo  
+rm -fr  .libs/libprev.a .libs/libprev.la
+ar cru .libs/libprev.a .libs/libprev_la-Judy1Prev.o .libs/libprev_la-Judy1PrevEmpty.o
+ranlib .libs/libprev.a
+creating libprev.la
+(cd .libs && rm -f libprev.la && ln -s ../libprev.la libprev.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-Judy1ByCount.lo -MD -MP -MF ".deps/libcount_la-Judy1ByCount.Tpo" -c -o libcount_la-Judy1ByCount.lo `test -f 'Judy1ByCount.c' || echo './'`Judy1ByCount.c; \
+then mv -f ".deps/libcount_la-Judy1ByCount.Tpo" ".deps/libcount_la-Judy1ByCount.Plo"; else rm -f ".deps/libcount_la-Judy1ByCount.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-Judy1ByCount.lo -MD -MP -MF .deps/libcount_la-Judy1ByCount.Tpo -c Judy1ByCount.c  -fPIC -DPIC -o .libs/libcount_la-Judy1ByCount.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DNOSMARTJBB -DNOSMARTJBU -DNOSMARTJLB -UJU_64BIT -g -O2 -MT libcount_la-Judy1ByCount.lo -MD -MP -MF .deps/libcount_la-Judy1ByCount.Tpo -c Judy1ByCount.c -o libcount_la-Judy1ByCount.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libcount.la   libcount_la-Judy1ByCount.lo  
+rm -fr  .libs/libcount.a .libs/libcount.la
+ar cru .libs/libcount.a .libs/libcount_la-Judy1ByCount.o
+ranlib .libs/libcount.a
+creating libcount.la
+(cd .libs && rm -f libcount.la && ln -s ../libcount.la libcount.la)
+if /bin/sh ../../libtool --tag=CC --mode=compile gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/    -DJUDY1   -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udy1Test.lo -MD -MP -MF ".deps/libinline_la-j__udy1Test.Tpo" -c -o libinline_la-j__udy1Test.lo `test -f 'j__udy1Test.c' || echo './'`j__udy1Test.c; \
+then mv -f ".deps/libinline_la-j__udy1Test.Tpo" ".deps/libinline_la-j__udy1Test.Plo"; else rm -f ".deps/libinline_la-j__udy1Test.Tpo"; exit 1; fi
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udy1Test.lo -MD -MP -MF .deps/libinline_la-j__udy1Test.Tpo -c j__udy1Test.c  -fPIC -DPIC -o .libs/libinline_la-j__udy1Test.o
+ gcc -DHAVE_CONFIG_H -I. -I. -I../.. -I. -I.. -I../JudyCommon/ -DJUDY1 -DJUDYGETINLINE -UJU_64BIT -g -O2 -MT libinline_la-j__udy1Test.lo -MD -MP -MF .deps/libinline_la-j__udy1Test.Tpo -c j__udy1Test.c -o libinline_la-j__udy1Test.o >/dev/null 2>&1
+/bin/sh ../../libtool --tag=CC --mode=link gcc -DJUDY1   -UJU_64BIT -g -O2   -o libinline.la   libinline_la-j__udy1Test.lo  
+rm -fr  .libs/libinline.a .libs/libinline.la
+ar cru .libs/libinline.a .libs/libinline_la-j__udy1Test.o
+ranlib .libs/libinline.a
+creating libinline.la
+(cd .libs && rm -f libinline.la && ln -s ../libinline.la libinline.la)
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/Judy1'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/Judy1'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/Judy1'
+Making install in JudySL
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudySL'
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudySL'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudySL'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudySL'
+Making install in JudyHS
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyHS'
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyHS'
+make[4]: Nothing to be done for `install-exec-am'.
+make[4]: Nothing to be done for `install-data-am'.
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyHS'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/JudyHS'
+Making install in obj
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/obj'
+/bin/sh ../../libtool --tag=CC --mode=link gcc  -UJU_64BIT -g -O2   -o libJudy.la -rpath /usr/lib -version-info 1:1:0  ../JudyCommon/*.lo ../JudyL/*.lo ../Judy1/*.lo ../JudyHS/*.lo ../JudySL/*.lo  
+rm -fr  .libs/libJudy.a .libs/libJudy.la .libs/libJudy.lai .libs/libJudy.so .libs/libJudy.so.1 .libs/libJudy.so.1.0.1
+gcc -shared  ../JudyCommon/.libs/JudyMalloc.o ../JudyL/.libs/JudyLCascade.o ../JudyL/.libs/JudyLCount.o ../JudyL/.libs/JudyLCreateBranch.o ../JudyL/.libs/JudyLDecascade.o ../JudyL/.libs/JudyLDel.o ../JudyL/.libs/JudyLFirst.o ../JudyL/.libs/JudyLFreeArray.o ../JudyL/.libs/JudyLGet.o ../JudyL/.libs/JudyLInsArray.o ../JudyL/.libs/JudyLInsertBranch.o ../JudyL/.libs/JudyLIns.o ../JudyL/.libs/JudyLMallocIF.o ../JudyL/.libs/JudyLMemActive.o ../JudyL/.libs/JudyLMemUsed.o ../JudyL/.libs/JudyLTables.o ../JudyL/.libs/libcount_la-JudyLByCount.o ../JudyL/.libs/libinline_la-j__udyLGet.o ../JudyL/.libs/libnext_la-JudyLNextEmpty.o ../JudyL/.libs/libnext_la-JudyLNext.o ../JudyL/.libs/libprev_la-JudyLPrevEmpty.o ../JudyL/.libs/libprev_la-JudyLPrev.o ../Judy1/.libs/Judy1Cascade.o ../Judy1/.libs/Judy1Count.o ../Judy1/.libs/Judy1CreateBranch.o ../Judy1/.libs/Judy1Decascade.o ../Judy1/.libs/Judy1First.o ../Judy1/.libs/Judy1FreeArray.o ../Judy1/.libs/Judy1InsertBranch.o ../Judy1/.libs/Judy1MallocIF.o ../Judy1/.libs/Judy1MemActive.o ../Judy1/.libs/Judy1MemUsed.o ../Judy1/.libs/Judy1SetArray.o ../Judy1/.libs/Judy1Set.o ../Judy1/.libs/Judy1Tables.o ../Judy1/.libs/Judy1Test.o ../Judy1/.libs/Judy1Unset.o ../Judy1/.libs/libcount_la-Judy1ByCount.o ../Judy1/.libs/libinline_la-j__udy1Test.o ../Judy1/.libs/libnext_la-Judy1NextEmpty.o ../Judy1/.libs/libnext_la-Judy1Next.o ../Judy1/.libs/libprev_la-Judy1PrevEmpty.o ../Judy1/.libs/libprev_la-Judy1Prev.o ../JudyHS/.libs/JudyHS.o ../JudySL/.libs/JudySL.o   -Wl,-soname -Wl,libJudy.so.1 -o .libs/libJudy.so.1.0.1
+(cd .libs && rm -f libJudy.so.1 && ln -s libJudy.so.1.0.1 libJudy.so.1)
+(cd .libs && rm -f libJudy.so && ln -s libJudy.so.1.0.1 libJudy.so)
+ar cru .libs/libJudy.a  ../JudyCommon/JudyMalloc.o ../JudyL/JudyLCascade.o ../JudyL/JudyLCount.o ../JudyL/JudyLCreateBranch.o ../JudyL/JudyLDecascade.o ../JudyL/JudyLDel.o ../JudyL/JudyLFirst.o ../JudyL/JudyLFreeArray.o ../JudyL/JudyLGet.o ../JudyL/JudyLInsArray.o ../JudyL/JudyLInsertBranch.o ../JudyL/JudyLIns.o ../JudyL/JudyLMallocIF.o ../JudyL/JudyLMemActive.o ../JudyL/JudyLMemUsed.o ../JudyL/JudyLTables.o ../JudyL/libcount_la-JudyLByCount.o ../JudyL/libinline_la-j__udyLGet.o ../JudyL/libnext_la-JudyLNextEmpty.o ../JudyL/libnext_la-JudyLNext.o ../JudyL/libprev_la-JudyLPrevEmpty.o ../JudyL/libprev_la-JudyLPrev.o ../Judy1/Judy1Cascade.o ../Judy1/Judy1Count.o ../Judy1/Judy1CreateBranch.o ../Judy1/Judy1Decascade.o ../Judy1/Judy1First.o ../Judy1/Judy1FreeArray.o ../Judy1/Judy1InsertBranch.o ../Judy1/Judy1MallocIF.o ../Judy1/Judy1MemActive.o ../Judy1/Judy1MemUsed.o ../Judy1/Judy1SetArray.o ../Judy1/Judy1Set.o ../Judy1/Judy1Tables.o ../Judy1/Judy1Test.o ../Judy1/Judy1Unset.o ../Judy1/libcount_la-Judy1ByCount.o ../Judy1/libinline_la-j__udy1Test.o ../Judy1/libnext_la-Judy1NextEmpty.o ../Judy1/libnext_la-Judy1Next.o ../Judy1/libprev_la-Judy1PrevEmpty.o ../Judy1/libprev_la-Judy1Prev.o ../JudyHS/JudyHS.o ../JudySL/JudySL.o
+ranlib .libs/libJudy.a
+creating libJudy.la
+(cd .libs && rm -f libJudy.la && ln -s ../libJudy.la libJudy.la)
+make[4]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/src/obj'
+test -z "/usr/lib" || mkdir -p -- "/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib"
+ /bin/sh ../../libtool --mode=install /usr/bin/install -c  'libJudy.la' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib/libJudy.la'
+/usr/bin/install -c .libs/libJudy.so.1.0.1 /home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib/libJudy.so.1.0.1
+(cd /home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib && rm -f libJudy.so.1 && ln -s libJudy.so.1.0.1 libJudy.so.1)
+(cd /home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib && rm -f libJudy.so && ln -s libJudy.so.1.0.1 libJudy.so)
+/usr/bin/install -c .libs/libJudy.lai /home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib/libJudy.la
+/usr/bin/install -c .libs/libJudy.a /home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib/libJudy.a
+ranlib /home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib/libJudy.a
+chmod 644 /home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/lib/libJudy.a
+libtool: install: warning: remember to run `libtool --finish /usr/lib'
+test -z "/usr/include" || mkdir -p -- "/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/include"
+ /usr/bin/install -c -m 644 '../Judy.h' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/include/Judy.h'
+make[4]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/obj'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src/obj'
+make[2]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/src'
+Making install in tool
+make[2]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/tool'
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/tool'
+make[3]: Nothing to be done for `install-exec-am'.
+make[3]: Nothing to be done for `install-data-am'.
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/tool'
+make[2]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/tool'
+Making install in doc
+make[2]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/doc'
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/doc'
+make[3]: Nothing to be done for `install-exec-am'.
+test -z "/usr/man/man3" || mkdir -p -- "/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3"
+ /usr/bin/install -c -m 644 './man/man3/Judy' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1_funcs' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1_funcs.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyL' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyL.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyL_funcs' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyL_funcs.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySL' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySL.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySL_funcs' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySL_funcs.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyHS' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyHS.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyHS_funcs' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyHS_funcs.3'
+ /usr/bin/install -c -m 644 './man/man3/J1T' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1T.3'
+ /usr/bin/install -c -m 644 './man/man3/J1S' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1S.3'
+ /usr/bin/install -c -m 644 './man/man3/J1U' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1U.3'
+ /usr/bin/install -c -m 644 './man/man3/J1F' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1F.3'
+ /usr/bin/install -c -m 644 './man/man3/J1N' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1N.3'
+ /usr/bin/install -c -m 644 './man/man3/J1L' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1L.3'
+ /usr/bin/install -c -m 644 './man/man3/J1P' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1P.3'
+ /usr/bin/install -c -m 644 './man/man3/J1FE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1FE.3'
+ /usr/bin/install -c -m 644 './man/man3/J1NE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1NE.3'
+ /usr/bin/install -c -m 644 './man/man3/J1LE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1LE.3'
+ /usr/bin/install -c -m 644 './man/man3/J1PE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1PE.3'
+ /usr/bin/install -c -m 644 './man/man3/J1C' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1C.3'
+ /usr/bin/install -c -m 644 './man/man3/J1BC' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1BC.3'
+ /usr/bin/install -c -m 644 './man/man3/J1FA' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1FA.3'
+ /usr/bin/install -c -m 644 './man/man3/J1MU' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/J1MU.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1Test' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1Test.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1Set' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1Set.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1Unset' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1Unset.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1First' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1First.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1Next' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1Next.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1Last' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1Last.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1Prev' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1Prev.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1FirstEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1FirstEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1NextEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1NextEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1LastEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1LastEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1PrevEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1PrevEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1Count' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1Count.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1ByCount' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1ByCount.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1FreeArray' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1FreeArray.3'
+ /usr/bin/install -c -m 644 './man/man3/Judy1MemUsed' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/Judy1MemUsed.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyL' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyL.3'
+ /usr/bin/install -c -m 644 './man/man3/JLG' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLG.3'
+ /usr/bin/install -c -m 644 './man/man3/JLI' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLI.3'
+ /usr/bin/install -c -m 644 './man/man3/JLD' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLD.3'
+ /usr/bin/install -c -m 644 './man/man3/JLF' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLF.3'
+ /usr/bin/install -c -m 644 './man/man3/JLN' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLN.3'
+ /usr/bin/install -c -m 644 './man/man3/JLL' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLL.3'
+ /usr/bin/install -c -m 644 './man/man3/JLP' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLP.3'
+ /usr/bin/install -c -m 644 './man/man3/JLFE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLFE.3'
+ /usr/bin/install -c -m 644 './man/man3/JLNE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLNE.3'
+ /usr/bin/install -c -m 644 './man/man3/JLLE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLLE.3'
+ /usr/bin/install -c -m 644 './man/man3/JLPE' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLPE.3'
+ /usr/bin/install -c -m 644 './man/man3/JLC' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLC.3'
+ /usr/bin/install -c -m 644 './man/man3/JLBC' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLBC.3'
+ /usr/bin/install -c -m 644 './man/man3/JLFA' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLFA.3'
+ /usr/bin/install -c -m 644 './man/man3/JLMU' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JLMU.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLGet' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLGet.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLIns' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLIns.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLDel' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLDel.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLFirst' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLFirst.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLNext' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLNext.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLLast' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLLast.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLPrev' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLPrev.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLFirstEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLFirstEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLNextEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLNextEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLLastEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLLastEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLPrevEmpty' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLPrevEmpty.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLCount' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLCount.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLByCount' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLByCount.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLFreeArray' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLFreeArray.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyLMemUsed' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyLMemUsed.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLG' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLG.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLI' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLI.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLD' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLD.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLF' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLF.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLN' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLN.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLL' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLL.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLP' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLP.3'
+ /usr/bin/install -c -m 644 './man/man3/JSLFA' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JSLFA.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLGet' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLGet.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLIns' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLIns.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLDel' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLDel.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLFirst' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLFirst.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLNext' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLNext.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLLast' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLLast.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLPrev' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLPrev.3'
+ /usr/bin/install -c -m 644 './man/man3/JudySLFreeArray' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudySLFreeArray.3'
+ /usr/bin/install -c -m 644 './man/man3/JHSG' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JHSG.3'
+ /usr/bin/install -c -m 644 './man/man3/JHSI' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JHSI.3'
+ /usr/bin/install -c -m 644 './man/man3/JHSD' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JHSD.3'
+ /usr/bin/install -c -m 644 './man/man3/JHSFA' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JHSFA.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyHSGet' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyHSGet.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyHSIns' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyHSIns.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyHSDel' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyHSDel.3'
+ /usr/bin/install -c -m 644 './man/man3/JudyHSFreeArray' '/home/troyhebe/proj/b/judy-1.0.1/debian/tmp/usr/man/man3/JudyHSFreeArray.3'
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/doc'
+make[2]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/doc'
+Making install in test
+make[2]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/test'
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1/test'
+make[3]: Nothing to be done for `install-exec-am'.
+make[3]: Nothing to be done for `install-data-am'.
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/test'
+make[2]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1/test'
+make[2]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[3]: Entering directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[3]: Nothing to be done for `install-exec-am'.
+make[3]: Nothing to be done for `install-data-am'.
+make[3]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[2]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1'
+make[1]: Leaving directory `/home/troyhebe/proj/b/judy-1.0.1'
+mkdir -p debian/tmp/usr/share
+mv debian/tmp/usr/man debian/tmp/usr/share/man
+dh_testdir
+dh_testroot
+dh_movefiles
+dh_installdocs
+dh_installexamples
+dh_installmenu
+dh_installinit
+dh_installcron
+dh_installman
+dh_installinfo
+dh_installchangelogs ChangeLog
+dh_link
+dh_strip
+dh_compress
+dh_fixperms
+dh_makeshlibs
+dh_installdeb
+dh_shlibdeps
+dh_gencontrol
+dpkg-gencontrol: warning: unknown substitution variable ${shlibs:Depends}
+dh_md5sums
+dh_builddeb
+dpkg-deb: building package `libjudy-dev' in `../libjudy-dev_1.0.1-1_i386.deb'.
+dpkg-deb: building package `libjudydebian1' in `../libjudydebian1_1.0.1-1_i386.deb'.
+ dpkg-genchanges
+dpkg-genchanges: including full source code in upload
+dpkg-buildpackage: full upload; Debian-native package (full source is included)
+Now running lintian...
+W: judy source: native-package-with-dash-version
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile judy_1.0.1-1.dsc Troy Heber <troy.heber@hp.com>
+
+ signfile judy_1.0.1-1_i386.changes Troy Heber <troy.heber@hp.com>
+
+Successfully signed dsc and changes files

@@ -1,0 +1,68 @@
+Judy.0.1.8.tar.bz           This version (June 2004) has added many
+			    platforms and has JudyHS -- a very fast
+			    string version of Judy.  The 64 bit path has
+			    not been tested by me (dlb).  Please give me
+			    feedback at dougbaskins .AT, yahoo.com.
+			    Take a look at src/sh_build for other
+			    platforms. Extract: tar -xvjf Judy.0.1.8.tar.bz
+
+
+
+
+Judy_trial.0.0.4.src.tar.gz This trial version (for BSD) should compile
+			    on anything (look at file 'compile' for
+			    hints on how to Judy compiles)
+
+Judy-am.tar.gz              This is a trial version that uses a "real"
+			    ./configure With a GNU make, it should build
+			    on most platforms.
+
+st_compare.tar.gz           Benchmark to compare ruby-1.6.7 "st.c" with 
+                            JudyL version
+
+JudyPerf.tar.gz             This is a Judy1/L performance testing kit
+                            It includes a lot of performance data
+
+10minutes.htm               A 10 minute description on how Judy works.
+
+JudySLcompare.tar.gz        A benchmark to compare JudySL with the competition
+
+RAMspeed.tar.gz             Program to measure ram access times VS
+			    working set size This program exposes the
+			    P4/DDR ram sham.  (see below)
+
+ramspeed.tgz                This is an update to the program above 
+                            (more resolution).
+
+testmalloc/
+
+    Early in the Judy project, malloc/free often measured to be a
+    significant portion of the performance of Judy.  Therefore the early
+    versions were released with a simple internal but fast memory
+    handling method that did not coalesce the free list.  Late in the
+    Judy project (spring 2002) an in-depth study was completed on how to
+    do fast/ efficient memory management.  The unexpected outcome of
+    this study was:
+
+	On a modern machine, malloc(3) IS the correct place to do memory
+	management.  However, all of the versions tested had at least
+	one significant performance flaw.  The flaw was determined
+	fix-able on the best version tested.
+
+    Therefore the next release of Judy used malloc(3) to do all of its
+    memory management (with future expectations of malloc(3)).  The open
+    source 2.7.0 version of dlmalloc by Doug Lea was the best overall
+    tested, but had a serious flaw.  This flaw appeared primarily in 64
+    bit versions of the Judy tests.  Once characterized, there seemed to
+    be a relatively easy fix.  In email correspondence, Doug Lea
+    provided a fixed prototype version.  It tested nearly perfect on a
+    1Ghz, 48Gb IPF machine using the 64 bit Judy performance tests.
+
+    Not wanting to get into the malloc(3) provider roll, (Judy keeps
+    this person very busy) the malloc testing kit is being provided in
+    hope that somebody will provide a fast, efficient, thread save, flaw
+    free version of malloc(3) to the open source community.  If your
+    malloc does not pass this test (a high probability), and you want to
+    fix it -- email me.  I will give you some pointers.
+
+    Doug Baskins <dougbaskins .AT, yahoo.com>

@@ -1,0 +1,9 @@
+cd /tmp
+rm -Rf trunk judy_web.tgz 
+svn export svn+ssh://ldl/svn/troyhebe/judy/web/trunk
+cd trunk
+./build
+cd ..
+tar zcvf judy_web.tgz trunk 
+socksify scp judy_web.tgz judy.sourceforge.net:/home/users/t/tr/troyhebe/
+#socksify scp -r trunk/* judy.sourceforge.net:/home/users/t/tr/troyhebe/judy/htdocs/
