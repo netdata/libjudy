@@ -3,6 +3,8 @@ judy (1.0.1-2) unstable; urgency=low
   * Updated copyright file to include LGPL
   * Fixing incorrect defaults from 64-bit to 32-bit on PPC & s390
 
+  -- Troy Heber <troy.heber@hp.com>  Thu, 03 Mar 2005 10:20:03 -0700
+
 judy (1.0.1-1) unstable; urgency=low
 
   * New version of Judy with new 1.0.1 API 
