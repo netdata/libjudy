@@ -95,19 +95,13 @@ binary-arch: build install
 	dh_testdir
 	dh_testroot
 	dh_movefiles
-#	dh_installdebconf	
 	dh_installdocs
 	dh_installexamples
 	dh_installmenu
-#	dh_installlogrotate
-#	dh_installemacsen
-#	dh_installpam
-#	dh_installmime
 	dh_installinit
 	dh_installcron
 	dh_installman
 	dh_installinfo
-#	dh_undocumented
 	dh_installchangelogs ChangeLog
 	dh_link
 	dh_strip
@@ -115,7 +109,6 @@ binary-arch: build install
 	dh_fixperms
 	dh_makeshlibs
 	dh_installdeb
-#	dh_perl
 	dh_shlibdeps
 	dh_gencontrol
 	dh_md5sums
