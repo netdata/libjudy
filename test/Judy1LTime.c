@@ -347,7 +347,7 @@ main(int argc, char *argv[])
     Word_t    Meas;
     int       Col;
 
-    int       c;
+    char      c;
     extern char *optarg;
 
 //============================================================
