@@ -3,14 +3,14 @@ judy (1.0.1-3) unstable; urgency=low
   * Fixed Section for libjudy-dev, was devel moved to libdevel.
   * Last upload was debian native, fixing and making non-native.
 
-  -- Troy Heber <troy.heber@hp.com>  Wed, 16 Mar 2005 16:34:18 -0700
+ -- Troy Heber <troy.heber@hp.com>  Wed, 16 Mar 2005 16:41:23 -0700 
 
 judy (1.0.1-2) unstable; urgency=low
   
   * Updated copyright file to include LGPL
   * Fixing incorrect defaults from 64-bit to 32-bit on PPC & s390
 
-  -- Troy Heber <troy.heber@hp.com>  Thu, 03 Mar 2005 10:20:03 -0700
+ -- Troy Heber <troy.heber@hp.com>  Thu, 03 Mar 2005 10:20:03 -0700 
 
 judy (1.0.1-1) unstable; urgency=low
 
