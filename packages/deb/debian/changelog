@@ -1,6 +1,7 @@
-judy (NEXT) unstable; urgency=low
+judy (1.0.1-2) unstable; urgency=low
   
   * Updated copyright file to include LGPL
+  * Fixing incorrect defaults from 64-bit to 32-bit on PPC & s390
 
 judy (1.0.1-1) unstable; urgency=low
 

@@ -20,7 +20,7 @@ ifeq ($(ARCH), amd64)
 endif
 
 ifeq ($(ARCH), s390)
-     BIT := --enable-64-bit
+     BIT := --enable-32-bit
 endif
 
 ifeq ($(ARCH), ia64)
@@ -32,7 +32,7 @@ ifeq ($(ARCH), alpha)
 endif
 
 ifeq ($(ARCH), powerpc)
-     BIT := --enable-64-bit
+     BIT := --enable-32-bit
 endif
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
