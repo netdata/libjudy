@@ -37,8 +37,6 @@
 #else
 #include "JudyL.h"
 #endif
-    
-FILE *fd;
 
 // Definitions come from header files Judy1.h and JudyL.h:
 
@@ -136,46 +134,46 @@ FUNCTION void GenTable(
 
 // Print the PopToWords[] table:
 
-    fprintf(fd,"\n//\tobject uses %d words\n", CurWord);
-    fprintf(fd,"//\t%s = %d\n", TableSize, LeafSize);
+    printf("\n//\tobject uses %d words\n", CurWord);
+    printf("//\t%s = %d\n", TableSize, LeafSize);
 
-    fprintf(fd,"const uint8_t\n");
-    fprintf(fd,"%sPopToWords[%s + 1] =\n", TableName, TableSize);
-    fprintf(fd,"{\n\t 0,");
+    printf("const uint8_t\n");
+    printf("%sPopToWords[%s + 1] =\n", TableName, TableSize);
+    printf("{\n\t 0,");
 
     for (ii = 1; ii <= LeafSize; ii++)
     {
 
 // 8 columns per line, starting with 1:
 
-	if ((ii % 8) == 1) fprintf(fd,"\n\t");
+	if ((ii % 8) == 1) printf("\n\t");
 
-	fprintf(fd,"%2d", Words[ii]);
+	printf("%2d", Words[ii]);
 
 // If not last number place comma:
 
-	if (ii != LeafSize) fprintf(fd,", ");
+	if (ii != LeafSize) printf(", ");
     }
-    fprintf(fd,"\n};\n");
+    printf("\n};\n");
 
 // Print the Offset table if needed:
 
     if (! ValueBytes) return;
 
-    fprintf(fd,"const uint8_t\n");
-    fprintf(fd,"%sOffset[%s + 1] =\n", TableName, TableSize);
-    fprintf(fd,"{\n");
-    fprintf(fd,"\t 0,");
+    printf("const uint8_t\n");
+    printf("%sOffset[%s + 1] =\n", TableName, TableSize);
+    printf("{\n");
+    printf("\t 0,");
 
     for (ii = 1; ii <= LeafSize; ii++)
     {
-        if ((ii % 8) == 1) fprintf(fd,"\n\t");
+        if ((ii % 8) == 1) printf("\n\t");
 
-	fprintf(fd,"%2d", Offset[ii]);
+	printf("%2d", Offset[ii]);
 
-	if (ii != LeafSize) fprintf(fd,", ");
+	if (ii != LeafSize) printf(", ");
     }
-    fprintf(fd,"\n};\n");
+    printf("\n};\n");
 
 } // GenTable()
 
@@ -187,38 +185,26 @@ FUNCTION int main()
 {
     int ii;
 
-#ifdef JUDY1
-    char *fname = "Judy1Tables.c";
-#else
-    char *fname = "JudyLTables.c";
-#endif
-
-    if ((fd = fopen(fname, "w")) == NULL){
-	perror("FATAL ERROR: could not write to Judy[1L]Tables.c file\n");
-	return (-1);
-    }
-
-
-    fprintf(fd,"// @(#) From generation tool: $Revision: 4.37 $ $Source: /judy/src/JudyCommon/JudyTables.c $\n");
-    fprintf(fd,"//\n\n");
+    printf("// @(#) From generation tool: $Revision: 4.37 $ $Source: /judy/src/JudyCommon/JudyTables.c $\n");
+    printf("//\n\n");
 
 
 // ================================ Judy1 =================================
 #ifdef JUDY1
 
-    fprintf(fd,"#include \"Judy1.h\"\n");
+    printf("#include \"Judy1.h\"\n");
 
-    fprintf(fd,"// Leave the malloc() sizes readable in the binary (via "
+    printf("// Leave the malloc() sizes readable in the binary (via "
 	   "strings(1)):\n");
-    fprintf(fd,"const char * Judy1MallocSizes = \"Judy1MallocSizes =");
+    printf("const char * Judy1MallocSizes = \"Judy1MallocSizes =");
 
     for (ii = 0; AllocSizes[ii] != TERMINATOR; ii++)
-	fprintf(fd," %d,", AllocSizes[ii]);
+	printf(" %d,", AllocSizes[ii]);
 
 #ifndef JU_64BIT
-    fprintf(fd," Leaf1 = %d\";\n\n", cJ1_LEAF1_MAXPOP1);
+    printf(" Leaf1 = %d\";\n\n", cJ1_LEAF1_MAXPOP1);
 #else
-    fprintf(fd,"\";\n\n");			// no Leaf1 in this case.
+    printf("\";\n\n");			// no Leaf1 in this case.
 #endif
 
 // ================================ 32 bit ================================
@@ -251,16 +237,16 @@ FUNCTION int main()
 // ================================ JudyL =================================
 #ifdef JUDYL
 
-    fprintf(fd,"#include \"JudyL.h\"\n");
+    printf("#include \"JudyL.h\"\n");
 
-    fprintf(fd,"// Leave the malloc() sizes readable in the binary (via "
+    printf("// Leave the malloc() sizes readable in the binary (via "
 	   "strings(1)):\n");
-    fprintf(fd,"const char * JudyLMallocSizes = \"JudyLMallocSizes =");
+    printf("const char * JudyLMallocSizes = \"JudyLMallocSizes =");
 
     for (ii = 0; AllocSizes[ii] != TERMINATOR; ii++)
-	fprintf(fd," %d,", AllocSizes[ii]);
+	printf(" %d,", AllocSizes[ii]);
 
-    fprintf(fd," Leaf1 = %ld\";\n\n", (Word_t)cJL_LEAF1_MAXPOP1);
+    printf(" Leaf1 = %ld\";\n\n", (Word_t)cJL_LEAF1_MAXPOP1);
 
 #ifndef JU_64BIT
 // ================================ 32 bit ================================
@@ -289,7 +275,6 @@ FUNCTION int main()
 #endif // 64 BIT
 
 #endif // JUDYL
-    fclose(fd);
 
     return(0);
 

@@ -60,6 +60,11 @@ typedef unsigned __int64 uint64_t;
 // ISO C99 Standard: 7.10/5.2.4.2.1 Sizes of integer types
 #include <limits.h>  
 
+// Determine if it is a 64 bit machine
+#if (ULONG_MAX > 0xffffffff && ULONG_MAX == 0xffffffffffffffff)
+#define JU_64BIT 1
+#endif
+
 #ifdef __cplusplus      /* support use by C++ code */
 extern "C" {
 #endif
