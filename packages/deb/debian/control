@@ -7,7 +7,7 @@ Build-Depends: debhelper (>> 3.0.0)
 Standards-Version: 3.6.1.1
 
 Package: libjudy-dev
-Section: devel
+Section: libdevel
 Architecture: any
 Depends: libjudydebian1 (= ${Source-Version}) ${shlibs:Depends}
 Description: C library for creating and accessing dynamic arrays (dev package)
