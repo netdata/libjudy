@@ -5,7 +5,7 @@ judy (1.0.1-5) unstable; urgency=low
     unnecessary nostrip, using --man dir to install man pages, moving from
     dh_movefiles to dh_install.
 
- --Troy Heber <troy.heber@hp.com>  Tue, 22 Mar 2005 06:55:53 -0700
+ -- Troy Heber <troy.heber@hp.com>  Tue, 22 Mar 2005 06:55:53 -0700
 
 judy (1.0.1-4) unstable; urgency=low
 
