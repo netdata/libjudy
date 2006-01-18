@@ -1,3 +1,11 @@
+judy (1.0.2-1) unstable; urgency=low
+
+  * Create .so symlink in the dev package.
+  * Fixed generation of manpages (closes: #331700)
+  * Fixed issues with 32-bit & 64-bit builds
+ 
+ -- Troy Heber <troyh@debian.org>  Wed, 18 Jan 2006 11:43:24 -0700
+
 judy (1.0.1-5) unstable; urgency=low
   
   * Moving LGPL link in copyright back to LGPL-2.1

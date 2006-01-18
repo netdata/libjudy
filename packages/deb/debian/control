@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Troy Heber <troy.heber@hp.com>
 Uploaders: Al Stone <ahs3@debian.org>
 Build-Depends: debhelper (>> 3.0.0)
-Standards-Version: 3.6.1.1
+Standards-Version: 3.6.2.2
 
 Package: libjudy-dev
 Section: libdevel
