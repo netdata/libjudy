@@ -11,22 +11,6 @@ export DH_COMPAT=3
 CFLAGS = -Wall 
 
 
-# Support debian native 64-bit platforms
-BIT := --enable-32-bit
-ARCH := $(shell dpkg --print-installation-architecture)
-
-ifeq ($(ARCH), amd64)
-     BIT := --enable-64-bit
-endif
-
-ifeq ($(ARCH), ia64)
-     BIT := --enable-64-bit
-endif
-
-ifeq ($(ARCH), alpha)
-     BIT := --enable-64-bit
-endif
-
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
 	CFLAGS += -O0
 else
