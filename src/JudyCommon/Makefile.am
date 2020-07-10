@@ -1,4 +1,4 @@
-INCLUDES =  -I. -I..
+INCLUDES =  -I. -I.. -I$(top_srcdir)/src
 AM_CFLAGS = @CFLAGS@ @WARN_CFLAGS@ 
 
 noinst_LTLIBRARIES = libJudyMalloc.la
