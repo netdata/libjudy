@@ -185,7 +185,7 @@ AC_ARG_ENABLE(32-bit, [  --enable-32-bit          Generate code for a 32-bit env
 if test "x$b32" != xno; then
     AC_MSG_RESULT(Configured to Build 32-bit)
     if test "x$GCC" = xyes; then
-      CFLAGS="-UJU_64BIT -m32"
+      CFLAGS="$CFLAGS -UJU_64BIT -m32"
     else
       CFLAGS="-UJU_64BIT"
     fi
@@ -196,7 +196,7 @@ AC_ARG_ENABLE(64-bit, [  --enable-64-bit          Generate code for a 64-bit env
 if test "x$b64" != xno; then
     AC_MSG_RESULT(Configured to Building 64-bit)
     if test "x$GCC" = xyes; then
-      CFLAGS="-DJU_64BIT -m64"
+      CFLAGS="$CFLAGS -DJU_64BIT -m64"
     else
       CFLAGS="-DJU_64BIT"
     fi
@@ -208,10 +208,10 @@ if test "x$b64" = xno -a "x$b32" = xno; then
 	AC_CHECK_SIZEOF(void *)
 	if test "$ac_cv_sizeof_void_p" = 8; then 
 	    AC_MSG_RESULT(Detected 64-bit Build Environment)
-    	CFLAGS="-DJU_64BIT"
+    	CFLAGS="$CFLAGS -DJU_64BIT"
 	else 
     	AC_MSG_RESULT(Detected 32-bit Build Environment)
-      	CFLAGS="-UJU_64BIT"
+      	CFLAGS="$CFLAGS -UJU_64BIT"
 	fi
 fi
 
