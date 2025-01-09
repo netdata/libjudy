@@ -370,7 +370,7 @@ typedef struct J__UDY_BRANCH_UNCOMPRESSED
 
 // Produce 1-digit mask at specified state:
 
-#define cJU_MASKATSTATE(State)  (0xffL << (((State) - 1) * cJU_BITSPERBYTE))
+#define cJU_MASKATSTATE(State)  (0xffLL << (((State) - 1) * cJU_BITSPERBYTE))
 
 // Get byte (digit) from Index at the specified state, right justified:
 //

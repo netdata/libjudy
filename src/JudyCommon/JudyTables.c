@@ -260,7 +260,7 @@ FUNCTION int main()
     for (ii = 0; AllocSizes[ii] != TERMINATOR; ii++)
 	fprintf(fd," %d,", AllocSizes[ii]);
 
-    fprintf(fd," Leaf1 = %ld\";\n\n", (Word_t)cJL_LEAF1_MAXPOP1);
+    fprintf(fd," Leaf1 = %llu\";\n\n", cJL_LEAF1_MAXPOP1);
 
 #ifndef JU_64BIT
 // ================================ 32 bit ================================
